@@ -45,7 +45,9 @@ body <- dashboardBody(
 # --------- Index tab --------------------------------   
   tabItem(tabName = "index",
       # Content for the index tab
-    ),
+      fluidPage()#END FLUIDPAGE
+      
+    ),#END INDEX
 
 
 # ---------- Hazards tab -----------------------------
@@ -71,30 +73,30 @@ body <- dashboardBody(
                   )
                 )
               )
-            ),
-            tabPanel(h4("Extreme Precipitation")),
-            tabPanel(h4("Wildfire")),
-            tabPanel(h4("Flooding")),
-            tabPanel(h4("Sea Level Rise"))
+            ),#END EXTREME HEAT
+            tabPanel(h4("Extreme Precipitation")),#END EXTREME PRECIPITATION
+            tabPanel(h4("Wildfire")),#END WILDFIRE
+            tabPanel(h4("Flooding")),#END FLOODING
+            tabPanel(h4("Sea Level Rise"))#END SEA LEVEL RISE
           )
         )
       )
-    ),
+    ),#END HAZARDS TAB
 
 # ------- Socioeconomic tab ---------------------
   tabItem(tabName = "socio",
-      fluidRow(
-        box(width = 8,
+      fluidPage(
+        box(width = NULL,
           # Content for the socioeconomic tab
         )
-      )
-    ),
+      )#END FLUIDPAGE
+    ),#END SOCIOECONOMIC TAB
 # ------- User guide tab -----------------------
   tabItem(tabName = "guide",
-          )
+          )#END USER GUIDE
 
-)
-)
+)#END TABS CONTENT
+)#END BODY
 
 # -------- Combine all in dashboardPage----------------
 dashboardPage(header, sidebar, body,skin = "yellow")
