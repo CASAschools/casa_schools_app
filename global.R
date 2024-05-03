@@ -1,6 +1,29 @@
+# ----------------------- Load libraries -------------------------------
+## download packages if they're not already installed
+# list of required packages
+required_packages <- c(
+  "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders",
+  "palmerpenguins", "tidyverse", "dplyr", "leaflet", 
+  "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
+  "plotly", "terra", "colorspace"
+)
+
+# install missing packages
+install_missing <- function(package) {
+  if (!require(package, character.only = TRUE)) {
+    install.packages(package)
+    library(package, character.only = TRUE)
+  }
+}
+
+# apply function to list of required packages
+sapply(required_packages, install_missing)
+
+
 # Load libraries
 library(shiny)
 library(shinydashboard)
+library(shinyWidgets)
 library(shinycssloaders)
 library(palmerpenguins)
 library(tidyverse)
@@ -11,6 +34,9 @@ library(leaflet.minicharts)
 library(sf)
 library(countrycode) 
 library(plotly)
+library(terra)
+library(colorspace)
+library(ggvis)
 
 
 # make sure the full cdscode can be seen
@@ -36,3 +62,15 @@ extreme_heat <- read_csv("/capstone/casaschools/shiny_dashboard/data/extreme_hea
 
 extreme_heat1 <- extreme_heat %>%
   filter(CDSCode == 42767864231726)
+
+# ----------------------- Hazard summary -------------------------------
+# load in data
+sb_hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/sb_hazards_test.csv")
+
+## hazard summary plot set up -----
+# labels for each climate hazard
+hazard_labels <- c("flooding", "extreme heat", "extreme precipitation", "coastal flooding", "wildfire")
+
+# lollipop chart color palette
+green_red <- divergingx_hcl(n = 5, palette = "RdYlGn", rev = TRUE)
+

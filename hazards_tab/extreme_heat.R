@@ -3,7 +3,7 @@ fluidRow(
   box(
     width = 6,
     style = "border: none; border-width:0;",
-    plotOutput('extreme_heat')
+    plotlyOutput(outputId = 'extreme_heat')
   ),
   column(
     width = 6,
