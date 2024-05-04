@@ -2,7 +2,7 @@
 header <- dashboardHeader(
   
   title = "CASA Schools Climate Hazards",
-  titleWidth = 400
+  titleWidth = 230
 ) #END dashboardHeader
 
 # -------- dashboard Sidebar--------------------------
