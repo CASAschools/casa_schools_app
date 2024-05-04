@@ -35,8 +35,12 @@ library(sf)
 library(countrycode) 
 library(plotly)
 library(terra)
+library(terra)
 library(colorspace)
 library(ggvis)
+library(tmap)
+library(ggplot2)
+library(RColorBrewer)
 
 
 # make sure the full cdscode can be seen
@@ -62,6 +66,54 @@ extreme_heat <- read_csv("/capstone/casaschools/shiny_dashboard/data/extreme_hea
 
 extreme_heat1 <- extreme_heat %>%
   filter(CDSCode == 42767864231726)
+
+
+# ------------------------Flooding ---------------------------------------
+# Flooding-FEMA Import
+# Read in FEMA data for entire state
+FEMA_state <- st_read("/capstone/casaschools/flooding/NFHL_06_20240401/NFHL_06_20240401.gdb",
+                      layer = "S_FLD_HAZ_AR",
+                      quiet = TRUE)
+
+# read in california schools data
+schools <- st_read("/capstone/casaschools/schools_data/schools_buffer/",
+                   quiet = TRUE)
+
+FEMA_state <- st_transform(FEMA_state, crs = st_crs(schools))
+
+# group smaller categories together and assign "High" or "Moderate to Low" risk to them
+FEMA_reclass <- FEMA_state %>%
+  mutate(flood_risk = ifelse(str_detect(FLD_ZONE, "A") | str_detect(FLD_ZONE, "V"), "high",
+                             ifelse(str_detect(FLD_ZONE, "X"),"moderate to low",
+                                    "undetermined")))
+
+# make sure the crs are the same
+FEMA_reclass <- st_transform(FEMA_reclass, st_crs(schools))
+
+# pick a school
+dp_sr_high <- schools %>% 
+  filter(CDSCode == 42767864231726)
+
+# grab the flooding polgons that intersect with that school area
+dp_sr_high_flood <- FEMA_reclass[dp_sr_high, ]
+
+#intersect flooding polygons so only the extent within school area is shown
+dp_sr_high_intersected <- st_intersection(dp_sr_high, dp_sr_high_flood)
+
+# plot it
+tmap_mode("view")
+
+flood <- tm_shape(dp_sr_high_intersected) +
+  tm_polygons(fill = "flood_risk",
+              title = "Flood Risk",
+              labels = c("High", "Moderate to Low", "Undetermined"),
+              palette = c("#0C46EE", "#AEDBEA", "#8DB6CD"), style = "pretty",
+              alpha = 0.5) +
+  tm_shape(dp_sr_high_flood, alpha = 0.5) + 
+  tm_polygons(fill = "flood_risk", alpha = 0.5, legend.show=FALSE, 
+              palette = c("#0C46EE", "#AEDBEA", "#8DB6CD"), style = "pretty")
+
+flood
 
 # ----------------------- Hazard summary -------------------------------
 # load in data
