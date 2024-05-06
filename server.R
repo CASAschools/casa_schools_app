@@ -129,7 +129,7 @@ server <- function(input, output){
     if (nrow(selectedSchool) == 1) {  #match to only one school or return empty map
       leaflet(data = selectedSchool) %>%
         addTiles() %>%
-        addMarkers(~Longitude, ~Latitude, popup = ~SchoolName)
+        addMarkers(~Longitude, ~Latitude, popup = ~MarkerString)
     } else {
       leaflet() %>%  #empty map return
         addTiles() %>%

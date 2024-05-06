@@ -59,6 +59,22 @@ school_points <- st_transform(school_points, crs = "EPSG:4326" )
 
 school_points <- school_points %>% filter(Status == "Active")
 
+school_points <- school_points %>% mutate(MarkerString = paste(
+                                            SchoolName,", School Type: ",
+                                          SchoolType,", Street Address: ",
+                                          Street,", Enrollment Total: ",
+                                          EnrollTota,", % of African American Students: ",
+                                          AApct,", % of American Indian Students: ",
+                                          AIpct, ", % of Asian Students: ",
+                                          ASpct,", % of Filipino Students: ",
+                                          FIpct, ", % of Hispanic Students: ",
+                                          HIpct, ", % of Pacific Islander Students: ",
+                                          PIpct, ", % of White Students: ",
+                                          WHpct, ", % of Multi-Racial Students: ",
+                                          MRpct, ", % of English Learners: ",
+                                          ELpct, ", % of Socioeconimically Disadvantaged Students: ",
+                                          SEDpct, ", School Locale: ",
+                                          Locale))
 # Drop geometry
 school_points_rm <- school_points %>% st_drop_geometry()
 
