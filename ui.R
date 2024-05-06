@@ -35,7 +35,7 @@ body <- dashboardBody(
                   h3(tags$strong("Getting Started")),
                   sidebarLayout(
                     sidebarPanel(
-                      selectInput("city", "Choose a city:", choices = unique(school_points$City)),
+                      uiOutput("cityMenu"),
                       uiOutput("districtMenu"),
                       uiOutput("schoolMenu")
                     ),

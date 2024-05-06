@@ -5,7 +5,7 @@ required_packages <- c(
   "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders",
   "palmerpenguins", "tidyverse", "dplyr", "leaflet", 
   "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
-  "plotly", "terra", "colorspace"
+  "plotly", "terra", "colorspace", "ggvis"
 )
 
 # install missing packages
@@ -54,6 +54,27 @@ school_points <-  st_read("/capstone/casaschools/schools_data/California_Schools
 
 # Transform CRS
 school_points <- st_transform(school_points, crs = "EPSG:4326" )
+
+#only filter for Active schools
+
+school_points <- school_points %>% filter(Status == "Active")
+
+school_points <- school_points %>% mutate(MarkerString = paste(
+                                            SchoolName,", School Type: ",
+                                          SchoolType,", Street Address: ",
+                                          Street,", Enrollment Total: ",
+                                          EnrollTota,", % of African American Students: ",
+                                          AApct,", % of American Indian Students: ",
+                                          AIpct, ", % of Asian Students: ",
+                                          ASpct,", % of Filipino Students: ",
+                                          FIpct, ", % of Hispanic Students: ",
+                                          HIpct, ", % of Pacific Islander Students: ",
+                                          PIpct, ", % of White Students: ",
+                                          WHpct, ", % of Multi-Racial Students: ",
+                                          MRpct, ", % of English Learners: ",
+                                          ELpct, ", % of Socioeconimically Disadvantaged Students: ",
+                                          SEDpct, ", School Locale: ",
+                                          Locale))
 # Drop geometry
 school_points_rm <- school_points %>% st_drop_geometry()
 
@@ -126,3 +147,35 @@ hazard_labels <- c("flooding", "extreme heat", "extreme precipitation", "coastal
 # lollipop chart color palette
 green_red <- divergingx_hcl(n = 5, palette = "RdYlGn", rev = TRUE)
 
+#---------------------------- Precipitation ----------------------------
+extreme_precip45 <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/precip_rcp45_2000_2064.csv")
+
+extreme_precip45 <- extreme_precip45 %>% 
+  rename(
+    CDSCode = ...1,
+    year = CDSCode,
+    total = year,
+    lat = total,
+    long = geometry
+  )
+extreme_precip85 <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/precip_rcp85_2000_2064.csv")
+
+extreme_precip85 <- extreme_precip85 %>% rename(
+  CDSCode = X,
+  year = CDSCode,
+  total = year,
+  lat = total,
+  long = geometry
+)
+
+dos_pueblos <- extreme_precip45 %>% filter(CDSCode == 42767864231726)
+
+
+
+dos_pueblos$scenario <- 'intermediate scenario'
+
+dos_pueblos85 <- extreme_precip85 %>% filter(CDSCode == 42767864231726)
+
+dos_pueblos85$scenario <- 'business as usual'
+
+dos_combined <- rbind(dos_pueblos, dos_pueblos85)
