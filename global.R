@@ -148,34 +148,34 @@ hazard_labels <- c("flooding", "extreme heat", "extreme precipitation", "coastal
 green_red <- divergingx_hcl(n = 5, palette = "RdYlGn", rev = TRUE)
 
 #---------------------------- Precipitation ----------------------------
-extreme_precip45 <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/precip_rcp45_2000_2064.csv")
-
-extreme_precip45 <- extreme_precip45 %>% 
-  rename(
-    CDSCode = ...1,
-    year = CDSCode,
-    total = year,
-    lat = total,
-    long = geometry
-  )
-extreme_precip85 <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/precip_rcp85_2000_2064.csv")
-
-extreme_precip85 <- extreme_precip85 %>% rename(
-  CDSCode = X,
-  year = CDSCode,
-  total = year,
-  lat = total,
-  long = geometry
-)
-
-dos_pueblos <- extreme_precip45 %>% filter(CDSCode == 42767864231726)
-
-
-
-dos_pueblos$scenario <- 'intermediate scenario'
-
-dos_pueblos85 <- extreme_precip85 %>% filter(CDSCode == 42767864231726)
-
-dos_pueblos85$scenario <- 'business as usual'
-
-dos_combined <- rbind(dos_pueblos, dos_pueblos85)
+# extreme_precip45 <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/precip_rcp45_2000_2064.csv")
+# 
+# extreme_precip45 <- extreme_precip45 %>% 
+#   rename(
+#     CDSCode = ...1,
+#     year = CDSCode,
+#     total = year,
+#     lat = total,
+#     long = geometry
+#   )
+# extreme_precip85 <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/precip_rcp85_2000_2064.csv")
+# 
+# extreme_precip85 <- extreme_precip85 %>% rename(
+#   CDSCode = X,
+#   year = CDSCode,
+#   total = year,
+#   lat = total,
+#   long = geometry
+# )
+# 
+# dos_pueblos <- extreme_precip45 %>% filter(CDSCode == 42767864231726)
+# 
+# 
+# 
+# dos_pueblos$scenario <- 'intermediate scenario'
+# 
+# dos_pueblos85 <- extreme_precip85 %>% filter(CDSCode == 42767864231726)
+# 
+# dos_pueblos85$scenario <- 'business as usual'
+# 
+# dos_combined <- rbind(dos_pueblos, dos_pueblos85)
