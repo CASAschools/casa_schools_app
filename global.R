@@ -5,7 +5,7 @@ required_packages <- c(
   "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders",
   "palmerpenguins", "tidyverse", "dplyr", "leaflet", 
   "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
-  "plotly", "terra", "colorspace"
+  "plotly", "terra", "colorspace", "ggvis"
 )
 
 # install missing packages
@@ -54,6 +54,11 @@ school_points <-  st_read("/capstone/casaschools/schools_data/California_Schools
 
 # Transform CRS
 school_points <- st_transform(school_points, crs = "EPSG:4326" )
+
+#only filter for Active schools
+
+school_points <- school_points %>% filter(Status == "Active")
+
 # Drop geometry
 school_points_rm <- school_points %>% st_drop_geometry()
 
