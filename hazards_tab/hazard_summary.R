@@ -8,16 +8,6 @@ fluidRow(
     plotOutput(outputId = "hazard_summary")
   ),
   
-  # box for picker input
-  box(
-    width = 3,
-    pickerInput(inputId = "school_input",
-                label = "select school",
-                choices = unique(sb_hazards_test$SchoolName),
-                options = pickerOptions(actionsBox = TRUE),
-                multiple = FALSE)
-  ),
-  
   # text column
   column(
     width = 3,
