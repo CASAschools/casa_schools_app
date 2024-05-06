@@ -50,7 +50,13 @@ server <- function(input, output){
            print.eval = FALSE)[1]})  
 
 #---------------------Flooding--------------------------------------------------
-    
+  
+  # source script that filters the hazard scores dataframe and creates a plot
+  source("servers_hazards_plotting/flooding.R")
+  
+  # output hazard summary plot
+  output$flooding <- renderPlot({
+  
   # pick a school
   dp_sr_high <- schools %>% 
     filter(CDSCode == 42767864231726)
@@ -73,6 +79,7 @@ server <- function(input, output){
     tm_shape(dp_sr_high_flood, alpha = 0.5) + 
     tm_polygons(fill = "flood_risk", alpha = 0.5, legend.show=FALSE, 
                 palette = c("#0C46EE", "#AEDBEA", "#8DB6CD"), style = "pretty")
+  })
 #---------------------Coastal Flooding------------------------------------------
     
   output$coastal <- renderPlot({
@@ -117,5 +124,5 @@ server <- function(input, output){
       addTiles() %>%
       addMarkers(~Longitude, ~Latitude, popup = ~SchoolName)
   })
-}
+} 
  
