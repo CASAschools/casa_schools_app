@@ -34,23 +34,24 @@ server <- function(input, output){
   
 #--------------------Extreme Precipitation-------------------------------------
 # 
-#   output$dos_combined <- renderPlotly({
-#     # Develop plot 
-#     heat <- ggplot(data = dos_combined,
-#                    aes(x = year, y = total, color = scenario)) +
-#       geom_line() +
-#       theme_classic() +
-#       labs(x = "Year",
-#            y = "Number of Extreme Precipitation Days") +
-#       theme(legend.position = "top",
-#             legend.title = element_blank())
-#     
-#     ggplotly(heat) %>%
-#       layout(legend = list(orientation = "h", y = 1.1,
-#                            title = list(text = 'Scenarios')),
-#              margin = list( t = 60))
-#     
-#   })  
+  output$extreme_precip1 <- renderPlotly({
+    # Develop plot 
+    heat <- ggplot(data = extreme_precip1,
+                   aes(x = year, y = total, color = scenario)) +
+      geom_line() +
+      theme_classic() +
+      labs(x = "Year",
+           y = "Number of Extreme Precipitation Days") +
+      theme(legend.position = "top",
+            legend.title = element_blank())
+    
+    ggplotly(heat) %>%
+      layout(legend = list(orientation = "h", y = 1.1,
+                           title = list(text = 'Scenarios')),
+             margin = list( t = 60))
+    
+  })
+  
 #   
     
 #---------------------Wildfire--------------------------------------------------
@@ -102,7 +103,7 @@ server <- function(input, output){
   
 
 
-# build leaflet map
+#-------------------------Leaflet Mao-------------------------------------------
 
 
   # output$map <- renderLeaflet({
