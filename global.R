@@ -2,10 +2,9 @@
 ## download packages if they're not already installed
 # list of required packages
 required_packages <- c(
-  "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders",
-  "palmerpenguins", "tidyverse", "dplyr", "leaflet", 
-  "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
-  "plotly", "terra", "colorspace", "tmap", "ggplot2", "RColorBrewer"
+  "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "tidyverse",
+  "leaflet", "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
+  "plotly", "terra", "colorspace", "RColorBrewer"
 )
 
 # install missing packages
@@ -25,9 +24,7 @@ library(shiny)
 library(shinydashboard)
 library(shinyWidgets)
 library(shinycssloaders)
-library(palmerpenguins)
 library(tidyverse)
-library(dplyr)
 library(leaflet)
 library(leaflet.extras)
 library(leaflet.minicharts)
@@ -36,8 +33,6 @@ library(countrycode)
 library(plotly)
 library(terra)
 library(colorspace)
-library(tmap)
-library(ggplot2)
 library(RColorBrewer)
 
 
