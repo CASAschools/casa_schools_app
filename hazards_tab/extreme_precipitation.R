@@ -2,9 +2,8 @@ fluidRow(
   tags$style(".nav-tabs-custom {box-shadow:none;}"),
   box(
     width = 6,
-    
-    # Plot here
-    plotOutput('precip')
+    style = "border: none; border-width:0;",
+    plotlyOutput(outputId = 'extreme_precip1')
   ),
   column(
     width = 6,
