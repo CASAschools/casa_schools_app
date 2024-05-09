@@ -6,15 +6,23 @@ header <- dashboardHeader(
 ) #END dashboardHeader
 
 # -------- dashboard Sidebar--------------------------
-sidebar <- dashboardSidebar(
+sidebar <- dashboardSidebar(width = 300,
   # sidebarMenu ----
   sidebarMenu(
     menuItem(text = h4("Welcome"), tabName = "welcome", icon = icon("star")),
-    menuItem(text = h4(HTML("Explore Your Hazards")), tabName = "hazards", icon = icon("school")),
-    #menuItem(text = h4("Hazard Summary Metric"), tabName = "index", icon = icon("map")),
-    menuItem(text = h4("Adaptation"), tabName = "adapt", icon = icon("person")),
-    menuItem(text = h4("User guide"), tabName = "guide", icon = icon("users"))
-    
+    menuItem(text = h4("Hazard Summary Metric"), tabName = "index", icon = icon("square-poll-horizontal")),
+    menuItem(text = h4("Explore Your Hazards"), tabName = "hazards", icon = icon("earth-americas"),
+      menuSubItem(text = h4("Extreme Heat"), tabName = "heat", icon = icon("temperature-arrow-up")),
+      menuSubItem(text = h4("Wildfire"), tabName = "wildfire", icon = icon("fire")),
+      menuSubItem(text = h4("Extreme Precipitation"), tabName = "precipitation", icon = icon("cloud-showers-heavy")),
+      menuSubItem(text = h4("Flooding"), tabName = "flooding", icon = icon("house-flood-water")),
+      menuSubItem(text = h4("Sea Level Rise"), tabName = "sea_rise", icon = icon("house-tsunami"))
+    ),
+    menuItem(text = h4("User Documentation"), tabName = "user", icon = icon("person")),
+    menuItem(text = h4("Climate Information"), tabName = "info", icon = icon("circle-info")),
+    menuItem(text = h4("Glossary"), tabName = "glossary", icon = icon("book-open")),
+    menuItem(text = h4("User Guide"), tabName = "user", icon = icon("users"))
+
   )#END sidebarMENU
   
   
