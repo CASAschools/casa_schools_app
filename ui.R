@@ -130,7 +130,7 @@ body <- dashboardBody(
                     width = 6,
                     box(
                       width = NULL,
-                      includeMarkdown("text/heat.md")
+                      includeMarkdown("text/wildfire.md")
                       
                     )
                   ))
@@ -149,7 +149,30 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 style = "height: 800px",
-                "precip"
+                fluidRow(
+                  tags$style(".nav-tabs-custom {box-shadow:none;}"),
+                  
+                  # plot output
+                  box(
+                    width = 6,
+                    style = "border: none; border-width:0;",
+                    plotlyOutput(outputId = 'extreme_precip1')
+                  ),
+                  
+                  # text output
+                  column(
+                    width = 6,
+                    box(
+                      width = NULL,
+                      
+                      # Load in text 
+                      includeMarkdown("text/precipitation.md")
+                      
+                    )
+                  )
+                  
+                )
+                
               )#END BOX
               
             )#END FluidPage
@@ -158,105 +181,72 @@ body <- dashboardBody(
     
     # --------- Flooding Tab------------------------------------
     
+    
     tabItem(tabName = "flooding",
             fluidPage(
               box(
+                title = "School",
                 width = NULL,
                 style = "height: 800px",
-                "FLOODING"
+                fluidRow(
+                  box(
+                    width = 6,
+                    tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
+                    
+                    # Plot here
+                    
+                  ),
+                  column(
+                    width = 6,
+                    box(
+                      width = NULL,
+                      tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
+                      style = "border: none; border-width:0;",
+                      includeMarkdown("text/flooding.md")
+                      
+                    )
+                  ))
               )#END BOX
               
             )#END FluidPage
             
-            ),#END Flooding
+    ),#END FLOODING TAB
     
     # --------- Sea Level Rise Tab ------------------------------------------
+    
     
     tabItem(tabName = "sea_rise",
             fluidPage(
               box(
+                title = "School",
                 width = NULL,
                 style = "height: 800px",
-                "sea level"
+                "fire",
+                fluidRow(
+                  box(
+                    width = 6,
+                    tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
+                    
+                    # Plot here
+                    
+                    
+                  ),
+                  column(
+                    width = 6,
+                    box(
+                      width = NULL,
+                      tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
+                      style = "border: none; border-width:0;",
+                      includeMarkdown("text/coastal_inundation.md")
+                      
+                    )
+                  ))
               )#END BOX
               
             )#END FluidPage
             
-    ),#END Sea Level Rise
-    
-    
-    # tabItem(tabName = "hazards",
-    #         fluidPage(
-    #           box(
-    #             width = NULL,
-    #             title = h2(tags$strong("Dos Pueblos Senior High")),
-    #             tabsetPanel(
-    #               tabPanel(h4("Extreme Heat"),
-    #                        # Load extreme heat script
-    #                        source("hazards_tab/extreme_heat.R",
-    #                               # Remove TRUE output
-    #                               local = TRUE, 
-    #                               echo = FALSE, 
-    #                               print.eval = FALSE)[1]
-    #                        
-    #                        
-    #                        ),#END Extreme Heat
-    # 
-    #               tabPanel(h4("Extreme Precipitation"),
-    #                        # Load extreme precipitation script
-    #                        source("hazards_tab/extreme_precipitation.R", 
-    #                               local = TRUE,
-    #                               echo = FALSE,
-    #                               print.eval = FALSE)[1]
-    #                        
-    #                        
-    #                        ),#END EXTREME PRECIPITATION
-    #               
-    #               tabPanel(h4("Wildfire"),
-    #                        # Load wildfire script
-    #                        source("hazards_tab/wildfire.R", 
-    #                               local = TRUE,
-    #                               echo = FALSE,
-    #                               print.eval = FALSE)[1]
-    #                        
-    #                        
-    #                        ),#END WILDFIRE
-    #               
-    #               tabPanel(h4("Flooding"),
-    #                        # Load flooding script
-    #                        source("hazards_tab/flooding.R", 
-    #                               local = TRUE,
-    #                               echo = FALSE,
-    #                               print.eval = FALSE)[1]
-    #                        
-    #                        ),#END FLOODING
-    #               
-    #               tabPanel(h4("Coastal Inundation"),
-    #                        # Load coastal inundation script
-    #                        source("hazards_tab/coastal_inundation.R", 
-    #                               local = TRUE,
-    #                               echo = FALSE,
-    #                               print.eval = FALSE)[1]
-    #                        
-    #                        ),#END COASTAL INUNDATION
-    #               
-    #               tabPanel(h4("Hazard Summary"),
-    #                        #load hazard summary script
-    #                        source("hazards_tab/hazard_summary.R",
-    #                               local = TRUE,
-    #                               echo = FALSE,
-    #                               print.eval = FALSE)[1]
-    #                        
-    #                        )#END HAZARD SUMMARY
-                
-    #           )#END Tabset Panel
-    #           
-    #         )#END Box
-    # 
-    # )# END Fluid Pages
-    # 
-    # ),#END HAZARDS TAB
-    
+    ),#END SEA LEVEL RISE TAB
+  
     
     # ------- Climate Information tab -----------------------------------
     # this will describe time concepts, how, why, etc...
