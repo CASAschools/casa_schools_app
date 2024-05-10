@@ -1,39 +1,62 @@
 server <- function(input, output){
   
-  #------------------- Hazards plot ---------------------------------------------
+  #-------------------Reactive school filtering--------------------------------
+  
+  # school filtering function
+  school_filtered <- function(schools, input_school) {
+    schools %>% 
+      filter(SchoolName %in% c(input_school))
+  }
+  
+  
+  # Update hazards tab title based on the selected school
+  output$school_name <- renderUI({
+    # make sure there's a selection, outputting a message if there is none
+    if (!is.null(input$school_input) && input$school_input != "") {
+      h2(tags$strong(input$school_input))
+    } else {
+      h2(tags$strong("Select a school"))
+    }
+  })
+  
+  #-------------------Hazards plot---------------------------------------------
   
   # source script that filters the hazard scores dataframe and creates a plot
   source("servers_hazards_plotting/hazard_summary_test.R")
   
-  # output hazard summary plot
-  output$hazard_summary <- renderPlot({
-    filtered_data <- school_filtered(sb_hazards_test, input$school_input)
-    generate_hazard_summary_plot(filtered_data)
+  # filter school to build hazard summary plot 
+  hazards_filtered <- reactive({
+    school_filtered(sb_hazards_test, input$school_input)
   })
   
-#--------------------Extreme Heat ---------------------------------------------
+  # output hazard summary plot
+  output$hazard_summary <- renderPlot({
+    hazard_summary_plot(hazards_filtered())
+  })
+  
+  #--------------------Extreme Heat ---------------------------------------------
   
   output$extreme_heat <- renderPlotly({
     # Develop plot 
     heat <- ggplot(data = extreme_heat1,
-                aes(x = year, y = total, color = scenario)) +
+                   aes(x = year, y = total, color = scenario)) +
       geom_line() +
       theme_classic() +
       labs(x = "Year",
            y = "Number of Extreme Heat Days") +
       theme(legend.position = "top",
             legend.title = element_blank())
-
-      ggplotly(heat) %>%
-        layout(legend = list(orientation = "h", y = 1.1,
-                             title = list(text = 'Scenarios')),
-               margin = list( t = 60))
-
-    })
-
+    
+    ggplotly(heat) %>%
+      layout(legend = list(orientation = "h", y = 1.1,
+                           title = list(text = 'Scenarios')),
+             margin = list( t = 60))
+    
+  })
   
-#--------------------Extreme Precipitation-------------------------------------
-# 
+  
+  #--------------------Extreme Precipitation-------------------------------------
+  
   output$extreme_precip1 <- renderPlotly({
     # Develop plot 
     heat <- ggplot(data = extreme_precip1,
@@ -52,60 +75,40 @@ server <- function(input, output){
     
   })
   
-#   
-    
-#---------------------Wildfire--------------------------------------------------
-    
-  output$wildfire <- renderPlot({
-    source("servers_hazards_plotting/wildfire.R",
+  
+  #---------------------Wildfire--------------------------------------------------
+  
+  # filter school to build wildfire 
+  buffers_filtered <- reactive({
+    school_filtered(schools_buffers, input$school_input)
+  })
+  
+  # Render the map in the UI
+  output$wildfire_map <- renderLeaflet({
+    wildfire_map(buffers_filtered())
+  })
+  
+  #---------------------Flooding--------------------------------------------------
+  
+  output$flooding <- renderPlot({
+    source("servers_hazards_plotting/flooding.R",
            local = TRUE,
            echo = FALSE, 
            print.eval = FALSE)[1]})  
-
-#---------------------Flooding--------------------------------------------------
   
-  # source script that filters the hazard scores dataframe and creates a plot
-  source("servers_hazards_plotting/flooding.R")
+  #---------------------Coastal Flooding----------------------------------------
   
-  # output hazard summary plot
-  output$flooding <- renderPlot({
-  
-  # pick a school
-  dp_sr_high <- schools %>% 
-    filter(CDSCode == 42767864231726)
-  
-  # grab the flooding polgons that intersect with that school area
-  dp_sr_high_flood <- FEMA_reclass[dp_sr_high, ]
-  
-  #intersect flooding polygons so only the extent within school area is shown
-  dp_sr_high_intersected <- st_intersection(dp_sr_high, dp_sr_high_flood)
-  
-  # plot it
-  tmap_mode("view")
-  
-  flood <- tm_shape(dp_sr_high_intersected) +
-    tm_polygons(fill = "flood_risk",
-                title = "Flood Risk",
-                labels = c("High", "Moderate to Low", "Undetermined"),
-                palette = c("#0C46EE", "#AEDBEA", "#8DB6CD"), style = "pretty",
-                alpha = 0.5) +
-    tm_shape(dp_sr_high_flood, alpha = 0.5) + 
-    tm_polygons(fill = "flood_risk", alpha = 0.5, legend.show=FALSE, 
-                palette = c("#0C46EE", "#AEDBEA", "#8DB6CD"), style = "pretty")
-  })
-#---------------------Coastal Flooding------------------------------------------
-    
   output$coastal <- renderPlot({
     source("servers_hazards_plotting/coastal_inundation.R",
            local = TRUE,
            echo = FALSE, 
            print.eval = FALSE)[1]})  
   
-
-
-#-------------------------Leaflet Mao-------------------------------------------
-
-
+  
+  
+  #---------------------Homepage leaflet map------------------------------------
+  
+  
   # output$map <- renderLeaflet({
   #   leaflet() %>% 
   #     addTiles() %>%
@@ -157,4 +160,4 @@ server <- function(input, output){
     }
   })
 } 
- 
+

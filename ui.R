@@ -31,13 +31,12 @@ sidebar <- dashboardSidebar(width = 300,
 
 # -------- dashboard Body-----------------------------
 body <- dashboardBody(
-  
-  
   # ---------- Welcome tab -----------------------------    
   tabItems(
     tabItem(tabName = "welcome",
             fluidPage(
               box(width = NULL,
+                  style = "height: 800px",
                   title = h3(tags$strong("Welcome to the CASAschools Climate Hazards Dashboard!")),
                   includeMarkdown("text/about_text.md"),
                   h3(tags$strong("Getting Started")),
@@ -60,6 +59,7 @@ body <- dashboardBody(
             fluidPage(
 
               box(width = NULL,
+                  style = "height: 800px",
                   title = h2(tags$strong("Dos Pueblos Senior High Hazards Summary Metric"))
               )
               
@@ -75,8 +75,26 @@ body <- dashboardBody(
     tabItem(tabName = "heat",
             fluidPage(
               box(
+                title = "School",
                 width = NULL,
-                "fire"
+                style = "height: 800px",
+                "fire",
+                fluidRow(
+                  box(
+                    width = 6,
+                    tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
+                    plotlyOutput(outputId = 'extreme_heat')
+                  ),
+                  column(
+                    width = 6,
+                    box(
+                      width = NULL,
+                      tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
+                      style = "border: none; border-width:0;",
+                      includeMarkdown("text/heat.md")
+                      
+                    )
+                  ))
               )#END BOX
               
             )#END FluidPage
@@ -87,11 +105,39 @@ body <- dashboardBody(
     tabItem(tabName = "wildfire",
             fluidPage(
               box(
+                title = div(style = "display: flex; align-items: center; justify-content: space-between;",
+                            
+                            # school name
+                            uiOutput("school_name"),
+                            
+                            # school picker for the hazards tab, note the different inputId than the school picker in the welcome
+                            box(width = NULL,
+                                pickerInput(inputId = "school_input",
+                                            label = "Select school",
+                                            choices = unique(sb_hazards_test$SchoolName),
+                                            options = pickerOptions(actionsBox = TRUE),
+                                            selected = "Dos Pueblos Senior High", 
+                                            multiple = FALSE)
+                            )
+                ),
                 width = NULL,
-                "wildfire"
-              )# END BOX
+                fluidRow(
+                  box(
+                    width = 6,
+                    leafletOutput(outputId = "wildfire_map")
+                  ),
+                  column(
+                    width = 6,
+                    box(
+                      width = NULL,
+                      includeMarkdown("text/heat.md")
+                      
+                    )
+                  ))
+              )#END BOX
               
             )#END FluidPage
+    
             
             ),#END Wildfire
     
@@ -102,6 +148,7 @@ body <- dashboardBody(
             fluidPage(
               box(
                 width = NULL,
+                style = "height: 800px",
                 "precip"
               )#END BOX
               
@@ -115,6 +162,7 @@ body <- dashboardBody(
             fluidPage(
               box(
                 width = NULL,
+                style = "height: 800px",
                 "FLOODING"
               )#END BOX
               
@@ -128,6 +176,7 @@ body <- dashboardBody(
             fluidPage(
               box(
                 width = NULL,
+                style = "height: 800px",
                 "sea level"
               )#END BOX
               
@@ -215,6 +264,7 @@ body <- dashboardBody(
     tabItem(tabName = "info",
             fluidPage(
               box(width = NULL,
+                  style = "height: 800px",
                   includeMarkdown("text/socio.md"),
               )
             )#END FLUIDPAGE
@@ -224,7 +274,8 @@ body <- dashboardBody(
     # ------- Glossary tab ---------------------------------------------
     tabItem(tabName = "glossary",
             fluidPage(
-              box(width = NULL
+              box(width = NULL,
+                  style = "height: 800px",
                   
               )# END Box
               
@@ -233,13 +284,12 @@ body <- dashboardBody(
             
     ),#END Glossary
     
-    
-    
 
     # ------- User guide tab -----------------------
     tabItem(tabName = "user",
             fluidPage(
-              box(width = NULL
+              box(width = NULL,
+                  style = "height: 800px",
                   
                   )# END Box
               
