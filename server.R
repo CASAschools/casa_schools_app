@@ -36,7 +36,7 @@ server <- function(input, output){
   
   #--------------------Extreme Heat ---------------------------------------------
   
-  output$extreme_heat_plotly <- extreme_heat_map(input)
+  output$extreme_heat_plotly <- extreme_heat_scatter(input)
   
   
   #--------------------Extreme Precipitation-------------------------------------

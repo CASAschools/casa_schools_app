@@ -1,9 +1,9 @@
-extreme_heat_map <- function(inputId){
+extreme_heat_scatter <- function(inputId){
   
   # Develop plot 
   heat <- ggplot(data = extreme_heat1,
-                 aes(x = year, y = total, color = scenario)) +
-    geom_line() +
+                 aes(x = year, y = total, fill = scenario)) +
+    geom_bar(stat = "identity", position = "dodge") +
     theme_classic() +
     labs(x = "Year",
          y = "Number of Extreme Heat Days") +
@@ -15,7 +15,8 @@ extreme_heat_map <- function(inputId){
   plotly::ggplotly(heat) %>%
     layout(legend = list(orientation = "h", y = 1.1,
                          title = list(text = 'Scenarios')),
-           margin = list( t = 60))
+           margin = list( t = 60),
+           barmode = "grouped")
   
   
   

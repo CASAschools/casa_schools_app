@@ -76,29 +76,29 @@ body <- dashboardBody(
             fluidPage(
               box(
                 title = h2(tags$strong("Extreme Heat")),
-                "School",
+                
                 
                 width = NULL,
                 style = "height: 800px",
-                fluidRow(
+                # fluidRow(
                   box(
-                    width = 6,
-                    plotlyOutput(outputId = 'extreme_heat_plotly')
+                    width = NULL,
+                    plotlyOutput(outputId = 'extreme_heat_plotly'),
                     
-                  ),
-                  column(
-                    width = 6,
-                    box(
-                      width = NULL,
+                  # ),
+                  # column(
+                  #   width = 6,
+                  #   box(
+                  #     width = NULL,
                       includeMarkdown("text/heat.md")
                       
                     )
                   ))
-              )#END BOX
+              ),#END BOX
               
-            )#END FluidPage
-      
-            ),#END HEAT TAB
+            # )#END FluidPage
+            # 
+            # ),#END HEAT TAB
     
     # --------- Wildfire Tab -----------------------------------------------
     tabItem(tabName = "wildfire",

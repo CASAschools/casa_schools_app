@@ -84,6 +84,10 @@ calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/di
 extreme_heat <- read_csv("/capstone/casaschools/shiny_dashboard/data/extreme_heat/extreme_heat.csv") %>% 
   select(c(CDSCode, year, total, scenario))
 
+# rename columns 
+extreme_heat <- extreme_heat %>% 
+  mutate(scenario = ifelse(scenario == "Intermediate scenario", "Low emission","High emission"))
+
 extreme_heat1 <- extreme_heat %>%
   filter(CDSCode == 42767864231726)
 #---------------------------- Precipitation ----------------------------
