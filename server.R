@@ -36,23 +36,7 @@ server <- function(input, output){
   
   #--------------------Extreme Heat ---------------------------------------------
   
-  output$extreme_heat <- renderPlotly({
-    # Develop plot 
-    heat <- ggplot(data = extreme_heat1,
-                   aes(x = year, y = total, color = scenario)) +
-      geom_line() +
-      theme_classic() +
-      labs(x = "Year",
-           y = "Number of Extreme Heat Days") +
-      theme(legend.position = "top",
-            legend.title = element_blank())
-    
-    ggplotly(heat) %>%
-      layout(legend = list(orientation = "h", y = 1.1,
-                           title = list(text = 'Scenarios')),
-             margin = list( t = 60))
-    
-  })
+  output$extreme_heat_plotly <- extreme_heat_map(input)
   
   
   #--------------------Extreme Precipitation-------------------------------------
@@ -122,21 +106,21 @@ server <- function(input, output){
   
   # City selection UI
   output$cityMenu <- renderUI({
-    selectInput("city", "Choose a city:", choices = unique(school_points$City))
+    selectInput(inputId = "city", label = "Choose a city:", choices = unique(school_points$City))
   })
   
   # District selection UI based on selected city
   output$districtMenu <- renderUI({
     req(input$city)  # requires city input
     valid_districts <- unique(school_points$DistrictNa[school_points$City == input$city])
-    selectInput("district", "Choose a district:", choices = valid_districts)
+    selectInput(inputId = "district", label = "Choose a district:", choices = valid_districts)
   })
   
   # School selection UI based on selected district
   output$schoolMenu <- renderUI({
     req(input$district)  #requires district input
     valid_schools <- unique(school_points$SchoolName[school_points$DistrictNa == input$district & school_points$City == input$city])
-    selectInput("school", "Choose a school:", choices = valid_schools)
+    selectInput(inputId = "school", label = "Choose a school:", choices = valid_schools)
   })
   
   # Render Leaflet map for the selected school

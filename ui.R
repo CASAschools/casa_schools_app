@@ -75,22 +75,21 @@ body <- dashboardBody(
     tabItem(tabName = "heat",
             fluidPage(
               box(
-                title = "School",
+                title = h2(tags$strong("Extreme Heat")),
+                "School",
+                
                 width = NULL,
                 style = "height: 800px",
-                "fire",
                 fluidRow(
                   box(
                     width = 6,
-                    tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
-                    plotlyOutput(outputId = 'extreme_heat')
+                    plotlyOutput(outputId = 'extreme_heat_plotly')
+                    
                   ),
                   column(
                     width = 6,
                     box(
                       width = NULL,
-                      tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
-                      style = "border: none; border-width:0;",
                       includeMarkdown("text/heat.md")
                       
                     )
@@ -105,7 +104,8 @@ body <- dashboardBody(
     tabItem(tabName = "wildfire",
             fluidPage(
               box(
-                title = div(style = "display: flex; align-items: center; justify-content: space-between;",
+                title = h2(tags$strong("Wildfire")),
+                div(style = "display: flex; align-items: center; justify-content: space-between;",
                             
                             # school name
                             uiOutput("school_name"),
@@ -117,7 +117,7 @@ body <- dashboardBody(
                                             choices = unique(sb_hazards_test$SchoolName),
                                             options = pickerOptions(actionsBox = TRUE),
                                             selected = "Dos Pueblos Senior High", 
-                                            multiple = FALSE)
+                                            multiple = FALSE),
                             )
                 ),
                 width = NULL,
@@ -147,6 +147,7 @@ body <- dashboardBody(
     tabItem(tabName = "precipitation",
             fluidPage(
               box(
+                title = h2(tags$strong("Extreme Precipitation")),
                 width = NULL,
                 style = "height: 800px",
                 fluidRow(
@@ -185,7 +186,7 @@ body <- dashboardBody(
     tabItem(tabName = "flooding",
             fluidPage(
               box(
-                title = "School",
+                title = h2(tags$strong("Flooding")),
                 width = NULL,
                 style = "height: 800px",
                 fluidRow(
@@ -218,7 +219,7 @@ body <- dashboardBody(
     tabItem(tabName = "sea_rise",
             fluidPage(
               box(
-                title = "School",
+                title = h2(tags$strong("Sea Level Rise")),
                 width = NULL,
                 style = "height: 800px",
                 "fire",
@@ -253,7 +254,9 @@ body <- dashboardBody(
     
     tabItem(tabName = "info",
             fluidPage(
-              box(width = NULL,
+              box(
+                  title = h2(tags$strong("Information")),
+                  width = NULL,
                   style = "height: 800px",
                   includeMarkdown("text/socio.md"),
               )
@@ -264,7 +267,9 @@ body <- dashboardBody(
     # ------- Glossary tab ---------------------------------------------
     tabItem(tabName = "glossary",
             fluidPage(
-              box(width = NULL,
+              box(
+                  title = h2(tags$strong("Glossary")),
+                  width = NULL,
                   style = "height: 800px",
                   
               )# END Box
@@ -278,7 +283,9 @@ body <- dashboardBody(
     # ------- User guide tab -----------------------
     tabItem(tabName = "user",
             fluidPage(
-              box(width = NULL,
+              box(
+                  title = h2(tags$strong("User Guide")),
+                  width = NULL,
                   style = "height: 800px",
                   
                   )# END Box
