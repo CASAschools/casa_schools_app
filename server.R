@@ -1,4 +1,4 @@
-server <- function(input, output){
+server <- function(input, output, session){
   
   #-------------------Reactive school filtering--------------------------------
   
@@ -36,29 +36,12 @@ server <- function(input, output){
   
   #--------------------Extreme Heat ---------------------------------------------
   
-  output$extreme_heat_plotly <- extreme_heat_scatter(input)
+  output$extreme_heat_plotly <- extreme_heat_plot(input)
   
   
   #--------------------Extreme Precipitation-------------------------------------
   
-  output$extreme_precip1 <- renderPlotly({
-    # Develop plot 
-    heat <- ggplot(data = extreme_precip1,
-                   aes(x = year, y = total, color = scenario)) +
-      geom_line() +
-      theme_classic() +
-      labs(x = "Year",
-           y = "Number of Extreme Precipitation Days") +
-      theme(legend.position = "top",
-            legend.title = element_blank())
-    
-    ggplotly(heat) %>%
-      layout(legend = list(orientation = "h", y = 1.1,
-                           title = list(text = 'Scenarios')),
-             margin = list( t = 60))
-    
-  })
-  
+  output$extreme_precipitation_plotly <- extreme_precip_plot(input)
   
   #---------------------Wildfire--------------------------------------------------
   
@@ -91,18 +74,6 @@ server <- function(input, output){
   
   
   #---------------------Homepage leaflet map------------------------------------
-  
-  
-  # output$map <- renderLeaflet({
-  #   leaflet() %>% 
-  #     addTiles() %>%
-  #     setView(lng = -122.4194, lat = 37.7749, zoom = 10) %>%
-  #     #addMarkers(data = school_points) %>% 
-  #     addProviderTiles("OpenStreetMap")
-  # })
-  # Reactive output for district based on selected city
-  
-  #Create reactive map that filters for City, School District, and Schools
   
   # City selection UI
   output$cityMenu <- renderUI({
@@ -143,5 +114,20 @@ server <- function(input, output){
         addPopups()
     }
   })
-} 
+
+
+### Test -----------------------------
+# Synchronize picker inputs
+observeEvent(input$school_input, {
+  updatePickerInput(session, "precip_school", selected = input$school_input)
+})
+
+observeEvent(input$precip_school, {
+  updatePickerInput(session, "school_input", selected = input$precip_school)
+})
+
+
+}
+
+
 

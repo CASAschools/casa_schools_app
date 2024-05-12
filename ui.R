@@ -60,14 +60,33 @@ body <- dashboardBody(
 
               box(width = NULL,
                   style = "height: 800px",
-                  title = h2(tags$strong("Dos Pueblos Senior High Hazards Summary Metric"))
-              )
+                  title = h2(tags$strong("Hazard Summary Metric")),
+                  fluidRow(
+                    column(4,
+                           "City Name and School District",
+                           #uiOutput("school_name)
+                    ),
+                    column(4,
+                           selectInput(
+                             inputId = "index_school",
+                             label = "School",
+                             choices = unique(sb_hazards_test$SchoolName),
+                             multiple = FALSE
+                             
+                           )#END Picker
+                           )#END Picker column
+                    
+                    
+                  ),#END FLUID ROW
+                  
+                  box(
+                    width = NULL,
+                    plotOutput(outputId = "hazard_summary")
+                  )
+                  )
               
             )#END FLUIDPAGE
-            
     ),#END INDEX
-    
-    
     # ---------- Explore Your Hazards Sub Tabs -----------------------------
     
     # --------- Extreme Heat Tab -------------------------------------------   
@@ -76,29 +95,31 @@ body <- dashboardBody(
             fluidPage(
               box(
                 title = h2(tags$strong("Extreme Heat")),
-                
-                
                 width = NULL,
                 style = "height: 800px",
-                # fluidRow(
+                  fluidRow(
+                  column(4,
+                         "City Name and School District",
+                         #uiOutput("school_name")
+                  ),
+                  column(4, 
+                         pickerInput(
+                           inputId = "heat_school",
+                           label = "School",
+                           choices = unique(sb_hazards_test$SchoolName),
+                           multiple = FALSE
+                         )
+                         ),
+                  
+                ),
                   box(
                     width = NULL,
                     plotlyOutput(outputId = 'extreme_heat_plotly'),
-                    
-                  # ),
-                  # column(
-                  #   width = 6,
-                  #   box(
-                  #     width = NULL,
                       includeMarkdown("text/heat.md")
                       
                     )
                   ))
-              ),#END BOX
-              
-            # )#END FluidPage
-            # 
-            # ),#END HEAT TAB
+              ),#END EXTREME HEAT
     
     # --------- Wildfire Tab -----------------------------------------------
     tabItem(tabName = "wildfire",
@@ -115,8 +136,6 @@ body <- dashboardBody(
                                 pickerInput(inputId = "school_input",
                                             label = "Select school",
                                             choices = unique(sb_hazards_test$SchoolName),
-                                            options = pickerOptions(actionsBox = TRUE),
-                                            selected = "Dos Pueblos Senior High", 
                                             multiple = FALSE),
                             )
                 ),
@@ -151,34 +170,29 @@ body <- dashboardBody(
                 width = NULL,
                 style = "height: 800px",
                 fluidRow(
-                  tags$style(".nav-tabs-custom {box-shadow:none;}"),
-                  
-                  # plot output
-                  box(
-                    width = 6,
-                    style = "border: none; border-width:0;",
-                    plotlyOutput(outputId = 'extreme_precip1')
+                  column(4,
+                         "City Name and School District",
+                         #uiOutput("school_name")
+                  ),
+                  column(4, 
+                         pickerInput(
+                           inputId = "precip_school",
+                           label = "School",
+                           choices = unique(sb_hazards_test$SchoolName),
+                           multiple = FALSE
+                         )
                   ),
                   
-                  # text output
-                  column(
-                    width = 6,
-                    box(
-                      width = NULL,
-                      
-                      # Load in text 
-                      includeMarkdown("text/precipitation.md")
-                      
-                    )
-                  )
+                ),
+                
+                box(
+                  width = NULL,
+                  plotlyOutput(outputId = 'extreme_precipitation_plotly'),
+                  includeMarkdown("text/heat.md")
                   
                 )
-                
-              )#END BOX
-              
-            )#END FluidPage
-            
-    ),#END Flooding
+              ))
+    ),#END EXTREME PRECIPITATION
     
     # --------- Flooding Tab------------------------------------
     
