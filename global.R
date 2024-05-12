@@ -50,10 +50,6 @@ school_points <-  st_read("/capstone/casaschools/schools_data/California_Schools
 schools_buffers <- st_read("/capstone/casaschools/schools_data/schools_buffer/schools_points_buffer.shp",
                            quiet = TRUE)
 
-# Just the CDSCode and Schoolname for merging to precip + heat csv
-school_names <- school_points_rm %>% select("CDSCode", "SchoolName")
-
-
 # Transform CRS
 school_points <- st_transform(school_points, crs = "EPSG:4326" )
 
@@ -95,16 +91,9 @@ extreme_heat <- extreme_heat %>%
 extreme_heat1 <- extreme_heat %>%
   filter(CDSCode == 42767864231726)
 #---------------------------- Precipitation ----------------------------
-extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all.csv")
+extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all.csv") 
 
-# rename columns 
-# extreme_precip <- extreme_precip %>% 
-#   mutate(scenario = ifelse(scenario == "Intermediate scenario", "Low emission","High emission"))
-
-names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
-# extreme_precip1 <- extreme_precip %>% filter(CDSCode == 42767864231726)
-
-
+extreme_precip1 <- extreme_precip %>% filter(CDSCode == 42767864231726)
 
 # ----------------------- Hazard summary -------------------------------
 # load in data
@@ -125,5 +114,7 @@ whp_reclass <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_recl
 # whp_palette <- c("white", "#fee391", "#fec44f", "#fe9929", "#d95f0e", "#993404")
 # whp_labels <- c("non-burnable", "very low", "low", "moderate", "high", "very high")
 
+school_names <- school_points_rm %>% select("CDSCode", "SchoolName")
 
+names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 
