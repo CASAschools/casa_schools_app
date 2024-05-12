@@ -47,7 +47,8 @@ body <- dashboardBody(
                       uiOutput("schoolMenu")
                     ),
                     mainPanel(
-                      leafletOutput("map")
+                      leafletOutput("map"),
+                      
               )
             )))
     ),
@@ -175,12 +176,16 @@ body <- dashboardBody(
                          #uiOutput("school_name")
                   ),
                   column(4, 
-                         pickerInput(
-                           inputId = "precip_school",
-                           label = "School",
-                           choices = unique(sb_hazards_test$SchoolName),
-                           multiple = FALSE
-                         )
+                         # pickerInput(
+                         #   inputId = "precip_school",
+                         #   label = "School",
+                         #   choices = unique(sb_hazards_test$SchoolName),
+                         #   multiple = FALSE
+                         
+                         pickerInput("schoolPicker", "Select a School:", 
+                                     choices = unique(names_precip_merge$SchoolName), 
+                                     selected = unique(names_precip_merge$SchoolName)[1],
+                                     multiple = FALSE)
                   ),
                   
                 ),
@@ -196,7 +201,6 @@ body <- dashboardBody(
     
     # --------- Flooding Tab------------------------------------
     
-    
     tabItem(tabName = "flooding",
             fluidPage(
               box(
@@ -204,28 +208,29 @@ body <- dashboardBody(
                 width = NULL,
                 style = "height: 800px",
                 fluidRow(
-                  box(
-                    width = 6,
-                    tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
-                    
-                    # Plot here
-                    
+                  column(4,
+                         "City Name and School District",
+                         #uiOutput("school_name")
                   ),
-                  column(
-                    width = 6,
-                    box(
-                      width = NULL,
-                      tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
-                      style = "border: none; border-width:0;",
-                      includeMarkdown("text/flooding.md")
-                      
-                    )
-                  ))
-              )#END BOX
-              
-            )#END FluidPage
-            
-    ),#END FLOODING TAB
+                  column(4, 
+                         pickerInput(
+                           inputId = "flooding_school",
+                           label = "School",
+                           choices = unique(sb_hazards_test$SchoolName),
+                           multiple = FALSE
+                         )
+                  ),
+                  
+                ),
+                
+                box(
+                  width = NULL,
+                  #plot
+                  includeMarkdown("text/flooding.md")
+                  
+                )
+              ))
+    ),#END FLOODING
     
     # --------- Sea Level Rise Tab ------------------------------------------
     
@@ -236,31 +241,30 @@ body <- dashboardBody(
                 title = h2(tags$strong("Sea Level Rise")),
                 width = NULL,
                 style = "height: 800px",
-                "fire",
                 fluidRow(
-                  box(
-                    width = 6,
-                    tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
-                    
-                    # Plot here
-                    
-                    
+                  column(4,
+                         "City Name and School District",
+                         #uiOutput("school_name")
                   ),
-                  column(
-                    width = 6,
-                    box(
-                      width = NULL,
-                      tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
-                      style = "border: none; border-width:0;",
-                      includeMarkdown("text/coastal_inundation.md")
-                      
-                    )
-                  ))
-              )#END BOX
-              
-            )#END FluidPage
-            
-    ),#END SEA LEVEL RISE TAB
+                  column(4, 
+                         pickerInput(
+                           inputId = "sea_school",
+                           label = "School",
+                           choices = unique(sb_hazards_test$SchoolName),
+                           multiple = FALSE
+                         )
+                  ),
+                  
+                ),
+                
+                box(
+                  width = NULL,
+                  #plot
+                  includeMarkdown("text/coastal_inundation.md")
+                  
+                )
+              ))
+    ),#END EXTREME PRECIPITATION
   
     
     # ------- Climate Information tab -----------------------------------

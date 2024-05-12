@@ -2,22 +2,48 @@ server <- function(input, output, session){
   
   #-------------------Reactive school filtering--------------------------------
   
-  # school filtering function
+  # # school filtering function
   school_filtered <- function(schools, input_school) {
-    schools %>% 
-      filter(SchoolName %in% c(input_school))
-  }
+     schools %>%
+       filter(SchoolName %in% c(input_school))
+   }
+
+   # Update hazards tab title based on the selected school
+   output$school_name <- renderUI({
+     # make sure there's a selection, outputting a message if there is none
+     if (!is.null(input$school_input) && input$school_input != "") {
+       h2(tags$strong(input$school_input))
+     } else {
+       h2(tags$strong("Select a school"))
+     }
+   })
   
+  # 
+  # # school filtering function
+  # school_filtered <- function(schools, districts ,input_school) {
+  #   schools %>%
+  #     filter(DistrictNa == districts) %>% 
+  #     filter(CDSCode %in% c(input_school))
+  # }
+  # # Update hazards tab title based on the selected school
+  # output$school_name <- renderUI({
+  #   selected_school <- school_points %>% filter(CDSCode == input$school_input)
+  #   if (nrow(selected_school) == 1) {
+  #     h2(tags$strong(selected_school$SchoolName))
+  #   } else {
+  #     h2(tags$strong("Select a school"))
+  #   }
+  # })
   
-  # Update hazards tab title based on the selected school
-  output$school_name <- renderUI({
-    # make sure there's a selection, outputting a message if there is none
-    if (!is.null(input$school_input) && input$school_input != "") {
-      h2(tags$strong(input$school_input))
-    } else {
-      h2(tags$strong("Select a school"))
-    }
-  })
+  # # Update hazards tab title based on the selected school
+  # output$school_name <- renderUI({
+  #   # make sure there's a selection, outputting a message if there is none
+  #   if (!is.null(input$school_input) && input$school_input != "") {
+  #     h2(tags$strong(input$school_input))
+  #   } else {
+  #     h2(tags$strong("Select a school"))
+  #   }
+  # })
   
   #-------------------Hazards plot---------------------------------------------
   
@@ -118,13 +144,27 @@ server <- function(input, output, session){
 
 ### Test -----------------------------
 # Synchronize picker inputs
+  
+# Extreme Heat Input  
+observeEvent(input$index_school, {
+    updatePickerInput(session, "school", selected = input$index_school)
+  })
+  
+# Wildfire input
 observeEvent(input$school_input, {
   updatePickerInput(session, "precip_school", selected = input$school_input)
 })
 
+# Precipitation Input
 observeEvent(input$precip_school, {
   updatePickerInput(session, "school_input", selected = input$precip_school)
 })
+
+
+# Flooding Input
+
+
+# Sea Level Rise 
 
 
 }
