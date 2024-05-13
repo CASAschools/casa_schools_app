@@ -176,7 +176,7 @@ server <- function(input, output, session){
   #   updateSelectInput(session, "school", selected = input$school_heat)
   # })
   # 
-  # update the wildfire tab school selection based on the welcome page school selection
+  #update the wildfire tab school selection based on the welcome page school selection
   observeEvent(input$school_wildfire, {
     updateSelectInput(session, "school", selected = input$school_wildfire)
   })
