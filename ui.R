@@ -50,7 +50,7 @@ body <- dashboardBody(
                            uiOutput("cityMenu"),
                            uiOutput("districtMenu"),
                            uiOutput("schoolMenu"),
-                           leafletOutput("map")),
+                           leafletOutput("map"))
                     # column(width = 8,
                     #        plotOutput("hazard_summary"))
                     
