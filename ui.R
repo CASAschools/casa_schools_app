@@ -122,7 +122,7 @@ body <- dashboardBody(
                 ),
                 box(
                   width = NULL,
-                  plotlyOutput(outputId = 'extreme_heat_plotly'),
+                  plotlyOutput(outputId = "extreme_heat_plotly"),
                   includeMarkdown("text/heat.md")
                   
                 )

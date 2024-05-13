@@ -1,8 +1,8 @@
 extreme_precip_plot <- function(input,output) {
+  
   extreme_precip_plotly <- renderPlotly({
     # Filter data based on school
-    #filtered_data <- subset(names_precip_merge, SchoolName == input$school_precip)
-    filtered_data <- school_filtered(names_precip_merge, input$district, input$school_precip)
+    filtered_data <- subset(names_precip_merge, SchoolName == input$school_precip)
     
     # output plot
     precip <- ggplot(data = filtered_data,
