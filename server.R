@@ -2,14 +2,14 @@ server <- function(input, output, session){
   
   #-------------------Reactive school filtering--------------------------------
   
-  # school filtering function to get around schools in different districts sharing the same name
-  school_filtered <- function(schools, district, input_school) {
-    # filter for the selected district first
-    district_filter <- filter(schools, DistrictNa %in% c(district))
-    # filter for the selected school within that district
-    district_filter %>% 
-      filter(SchoolName %in% c(input_school))
-  }
+  # # school filtering function to get around schools in different districts sharing the same name
+  # school_filtered <- function(schools, district, input_school) {
+  #   # filter for the selected district first
+  #   district_filter <- filter(schools, DistrictNa %in% c(district))
+  #   # filter for the selected school within that district
+  #   district_filter %>% 
+  #     filter(SchoolName %in% c(input_school))
+  # }
   
   
   # update hazards tab title based on the selected school
@@ -39,31 +39,53 @@ server <- function(input, output, session){
   #-------------------Hazards plot---------------------------------------------
   
   # source script that filters the hazard scores dataframe and creates a plot
-  source("servers_hazards_plotting/hazard_summary_test.R")
+  #source("servers_hazards_plotting/hazard_summary_test.R")
   
-  # filter school hazard summary table based on welcome page district input and hazards tab school input
-  hazards_filtered <- reactive({
-    school_filtered(hazards_test, input$district, input$school_wildfire)
+  # filter school as input for summary tab plot
+  hazards_filtered_sumtab <- reactive({
+    school_filtered(hazards_test, input$district, input$school_summary)
   })
   
-  
-  # render hazard summary plot based on the selected school
-  output$hazard_summary <- renderPlot({
-    hazard_summary_plot(hazards_filtered())
+  # render hazard summary plot based on the selected school for the hazard metric tab
+  output$summary_sumtab <- renderPlot({
+    hazard_summary_plot(hazards_filtered_sumtab())
   })
   
+  # filter school as input for homepage plot
+  hazards_filtered_homepage <- reactive({
+    school_filtered(hazards_test, input$district, input$school)
+  })
+
+  # render hazard summary plot based on the selected school for the homepage
+  output$summary_homepage <- renderPlot({
+    hazard_summary_plot(hazards_filtered_homepage())
+  })
+
   #--------------------Extreme Heat ---------------------------------------------
   
-  heat_filtered <- reactive({
-    school_filtered(extreme_heat, input$district, input$school_heat)
-  })
+  # heat_filtered <- reactive({
+  #   school_filtered(extreme_heat, input$district, input$school)
+  # })
   
-  output$extreme_heat_plotly <- renderPlotly({extreme_heat_plot(heat_filtered())})
+  #output$extreme_heat_plotly <- extreme_heat_plot(heat_filtered())
   
-  
+  heat_filtered <- school_filtered(extreme_heat, "Santa Barbara Unified", "Dos Pueblos Senior High")
+
+  output$extreme_heat_plotly <- extreme_heat_plot(heat_filtered)
+
+
   #--------------------Extreme Precipitation-------------------------------------
+  # precip_filtered <- reactive({
+  #   school_filtered(names_precip_merge, input$district, input$school_precip)
+  # })
+  # 
+  # output$extreme_precipitation_plotly <- extreme_precip_plot(precip_filtered())
   
-  output$extreme_precipitation_plotly <- extreme_precip_plot(input)
+  precip_filtered <- school_filtered(names_precip_merge, "Santa Barbara Unified", "Dos Pueblos Senior High")
+  
+  output$extreme_precipitation_plotly <- extreme_precip_plot_test(precip_filtered)
+  
+  #output$extreme_precipitation_plotly <- extreme_precip_plot(input)
   
   #---------------------Wildfire--------------------------------------------------
   
@@ -152,9 +174,19 @@ server <- function(input, output, session){
     updateSelectInput(session, "school", selected = input$school_heat)
   })
   
-  # update the hazards tab school selection based on the welcome page school selection
+  # update the wildfire tab school selection based on the welcome page school selection
   observeEvent(input$school_wildfire, {
     updateSelectInput(session, "school", selected = input$school_wildfire)
+  })
+  
+  # update the hazards tab school selection based on the welcome page school selection
+  observeEvent(input$school_summary, {
+    updateSelectInput(session, "school", selected = input$school_summary)
+  })
+  
+  # update the hazards tab school selection based on the welcome page school selection
+  observeEvent(input$school_precip, {
+    updateSelectInput(session, "school", selected = input$school_precip)
   })
   
   # #Update district_input pickerInput based on selected district
@@ -162,7 +194,7 @@ server <- function(input, output, session){
   #   updatePickerInput(session, "district_input", selected = input$district)
   # })
   
-  # limit the hazards tab school selection dropdown to only be the schools in the district chosen on the welcome page
+  # limit the wildfire tab school selection dropdown to only be the schools in the district chosen on the welcome page
   observeEvent(input$district, {
     # subsets the schools where the district name matches the district input on the welcome page 
     valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
@@ -172,8 +204,22 @@ server <- function(input, output, session){
   # limit the hazards tab school selection dropdown to only be the schools in the district chosen on the welcome page
   observeEvent(input$district, {
     # subsets the schools where the district name matches the district input on the welcome page 
-    valid_schools <- unique(extreme_heat$SchoolName[extreme_heat$DistrictNa == input$district])
+    valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
+    updateSelectInput(session, "school_summary", choices = valid_schools, selected = NULL)
+  })
+  
+  # limit the heat tab school selection dropdown to only be the schools in the district chosen on the welcome page
+  observeEvent(input$district, {
+    # subsets the schools where the district name matches the district input on the welcome page 
+    valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
     updateSelectInput(session, "school_heat", choices = valid_schools, selected = NULL)
+  })
+  
+  # limit the precipitation tab school selection dropdown to only be the schools in the district chosen on the welcome page
+  observeEvent(input$district, {
+    # subsets the schools where the district name matches the district input on the welcome page 
+    valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
+    updateSelectInput(session, "school_precip", choices = valid_schools, selected = NULL)
   })
   
   

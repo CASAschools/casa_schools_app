@@ -50,9 +50,9 @@ body <- dashboardBody(
                            uiOutput("cityMenu"),
                            uiOutput("districtMenu"),
                            uiOutput("schoolMenu"),
-                           leafletOutput("map"))
-                    # column(width = 8,
-                    #        plotOutput("hazard_summary"))
+                           leafletOutput("map")),
+                    column(width = 8,
+                           plotOutput("summary_homepage"))
                     
                     ),
                   # mainPanel(
@@ -76,7 +76,7 @@ body <- dashboardBody(
                     ),
                     column(4,
                            selectInput(
-                             inputId = "index_school",
+                             inputId = "school_summary",
                              label = "School",
                              choices = unique(hazards_test$SchoolName),
                              multiple = FALSE
@@ -89,7 +89,7 @@ body <- dashboardBody(
                   
                   box(
                     width = NULL,
-                    plotOutput(outputId = "hazard_summary")
+                    plotOutput(outputId = "summary_sumtab")
                   )
               )
               
@@ -111,10 +111,10 @@ body <- dashboardBody(
                          uiOutput("school_name_heat"),
                   ),
                   column(4, 
-                         pickerInput(
-                           inputId = "heat_school",
+                         selectInput(
+                           inputId = "school_heat",
                            label = "School",
-                           choices = unique(hazards_test$SchoolName),
+                           choices = unique(extreme_heat$SchoolName),
                            multiple = FALSE
                          )
                   ),
@@ -179,7 +179,7 @@ body <- dashboardBody(
                   
                   
                   column(4, 
-                         pickerInput("schoolPicker", "Select a School:", 
+                         selectInput("school_precip", "Select a School:", 
                                      choices = unique(names_precip_merge$SchoolName), 
                                      selected = unique(names_precip_merge$SchoolName)[1],
                                      multiple = FALSE)
@@ -210,7 +210,7 @@ body <- dashboardBody(
                          #uiOutput("school_name")
                   ),
                   column(4, 
-                         pickerInput(
+                         selectInput(
                            inputId = "flooding_school",
                            label = "School",
                            choices = unique(hazards_test$SchoolName),
@@ -244,7 +244,7 @@ body <- dashboardBody(
                          #uiOutput("school_name")
                   ),
                   column(4, 
-                         pickerInput(
+                         selectInput(
                            inputId = "sea_school",
                            label = "School",
                            choices = unique(hazards_test$SchoolName),

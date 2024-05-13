@@ -1,11 +1,9 @@
-extreme_precip_plot <- function(input,output) {
-  extreme_precip_plotly <- renderPlotly({
-    # Filter data based on school
-    #filtered_data <- subset(names_precip_merge, SchoolName == input$school_precip)
-    filtered_data <- school_filtered(names_precip_merge, input$district, input$school_precip)
-    
+extreme_precip_plot_test <- function(precip_filtered) {
+  
+ renderPlotly({
+   
     # output plot
-    precip <- ggplot(data = filtered_data,
+    precip <- ggplot(data = precip_filtered,
                      aes(x = year, y = total, fill = scenario)) +
       geom_bar(stat = "identity", position = "dodge") +
       theme_classic() +
