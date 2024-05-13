@@ -114,7 +114,7 @@ whp_reclass <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_recl
 # whp_palette <- c("white", "#fee391", "#fec44f", "#fe9929", "#d95f0e", "#993404")
 # whp_labels <- c("non-burnable", "very low", "low", "moderate", "high", "very high")
 
-school_names <- school_points_rm %>% select("CDSCode", "SchoolName")
+school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
 
 names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 

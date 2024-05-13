@@ -30,12 +30,12 @@ server <- function(input, output, session){
   
   # filter school hazard summary table based on welcome page district input and hazards tab school input
   hazards_filtered <- reactive({
-    school_filtered(hazards_test, input$district, input$school_input)
+    school_filtered(sb_hazards_test, input$district, input$school_input)
   })
   
   # render hazard summary plot based on the selected school
   output$hazard_summary <- renderPlot({
-    hazard_summary_plot(hazards_filtered())
+    generate_hazard_summary_plot(hazards_filtered())
   })
   
   #--------------------Extreme Heat ---------------------------------------------
