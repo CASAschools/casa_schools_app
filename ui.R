@@ -36,23 +36,30 @@ body <- dashboardBody(
     tabItem(tabName = "welcome",
             fluidPage(
               box(width = NULL,
-                  style = "height: 800px",
+                  #style = "height: 800px",
                   title = h3(tags$strong("Welcome to the CASAschools Climate Hazards Dashboard!")),
                   includeMarkdown("text/about_text.md"),
                   h3(tags$strong("Getting Started")),
-                  sidebarLayout(
-                    sidebarPanel(
-                      uiOutput("cityMenu"),
-                      uiOutput("districtMenu"),
-                      uiOutput("schoolMenu")
+                  # sidebarLayout(
+                  #   sidebarPanel(
+                  #     uiOutput("cityMenu"),
+                  #     uiOutput("districtMenu"),
+                  #     uiOutput("schoolMenu")
+                  #   ),
+                  fluidRow(
+                    column(width = 4,
+                           uiOutput("cityMenu"),
+                           uiOutput("districtMenu"),
+                           uiOutput("schoolMenu"),
+                           leafletOutput("map")),
+                    # column(width = 8,
+                    #        plotOutput("hazard_summary"))
+                    
                     ),
-                    mainPanel(
-                      leafletOutput("map")
-                      
-                      
-                    )
-                  )))
-    ),
+                  # mainPanel(
+                  #   leafletOutput("map")
+                  
+              ))),
     
     
     # --------- Hazard Summary Metric tab --------------------------------   
@@ -72,7 +79,7 @@ body <- dashboardBody(
                            selectInput(
                              inputId = "index_school",
                              label = "School",
-                             choices = unique(sb_hazards_test$SchoolName),
+                             choices = unique(hazards_test$SchoolName),
                              multiple = FALSE
                              
                            )#END Picker
@@ -107,7 +114,7 @@ body <- dashboardBody(
                          pickerInput(
                            inputId = "heat_school",
                            label = "School",
-                           choices = unique(sb_hazards_test$SchoolName),
+                           choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )
                   ),
@@ -225,7 +232,7 @@ body <- dashboardBody(
                          # pickerInput(
                          #   inputId = "precip_school",
                          #   label = "School",
-                         #   choices = unique(sb_hazards_test$SchoolName),
+                         #   choices = unique(hazards_test$SchoolName),
                          #   multiple = FALSE
                          
                          pickerInput("schoolPicker", "Select a School:", 
@@ -262,7 +269,7 @@ body <- dashboardBody(
                          pickerInput(
                            inputId = "flooding_school",
                            label = "School",
-                           choices = unique(sb_hazards_test$SchoolName),
+                           choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )
                   ),
@@ -296,7 +303,7 @@ body <- dashboardBody(
                          pickerInput(
                            inputId = "sea_school",
                            label = "School",
-                           choices = unique(sb_hazards_test$SchoolName),
+                           choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )
                   ),
