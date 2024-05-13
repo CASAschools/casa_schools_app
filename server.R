@@ -2,60 +2,38 @@ server <- function(input, output, session){
   
   #-------------------Reactive school filtering--------------------------------
   
-  # # school filtering function
-  school_filtered <- function(schools, input_school) {
-     schools %>%
-       filter(SchoolName %in% c(input_school))
-   }
-
-   # Update hazards tab title based on the selected school
-   output$school_name <- renderUI({
-     # make sure there's a selection, outputting a message if there is none
-     if (!is.null(input$school_input) && input$school_input != "") {
-       h2(tags$strong(input$school_input))
-     } else {
-       h2(tags$strong("Select a school"))
-     }
-   })
+  # school filtering function to get around schools in different districts sharing the same name
+  school_filtered <- function(schools, district, input_school) {
+    # filter for the selected district first
+    district_filter <- filter(schools, DistrictNa %in% c(district))
+    # filter for the selected school within that district
+    district_filter %>% 
+      filter(SchoolName %in% c(input_school))
+  }
   
-  # 
-  # # school filtering function
-  # school_filtered <- function(schools, districts ,input_school) {
-  #   schools %>%
-  #     filter(DistrictNa == districts) %>% 
-  #     filter(CDSCode %in% c(input_school))
-  # }
-  # # Update hazards tab title based on the selected school
-  # output$school_name <- renderUI({
-  #   selected_school <- school_points %>% filter(CDSCode == input$school_input)
-  #   if (nrow(selected_school) == 1) {
-  #     h2(tags$strong(selected_school$SchoolName))
-  #   } else {
-  #     h2(tags$strong("Select a school"))
-  #   }
-  # })
   
-  # # Update hazards tab title based on the selected school
-  # output$school_name <- renderUI({
-  #   # make sure there's a selection, outputting a message if there is none
-  #   if (!is.null(input$school_input) && input$school_input != "") {
-  #     h2(tags$strong(input$school_input))
-  #   } else {
-  #     h2(tags$strong("Select a school"))
-  #   }
-  # })
+  # update hazards tab title based on the selected school
+  output$school_name <- renderUI({
+    # make sure there's a selection, outputting a message if there is none
+    if (!is.null(input$school_input) && input$school_input != "") {
+      h3(tags$strong(input$school_input), style = "font-size: 20px")
+    } else {
+      h3(tags$strong("Select a school", style = "font-size: 20px"))
+    }
+  })
+  
   
   #-------------------Hazards plot---------------------------------------------
   
   # source script that filters the hazard scores dataframe and creates a plot
   source("servers_hazards_plotting/hazard_summary_test.R")
   
-  # filter school to build hazard summary plot 
+  # filter school hazard summary table based on welcome page district input and hazards tab school input
   hazards_filtered <- reactive({
-    school_filtered(sb_hazards_test, input$school_input)
+    school_filtered(hazards_test, input$district, input$school_input)
   })
   
-  # output hazard summary plot
+  # render hazard summary plot based on the selected school
   output$hazard_summary <- renderPlot({
     hazard_summary_plot(hazards_filtered())
   })
@@ -71,12 +49,12 @@ server <- function(input, output, session){
   
   #---------------------Wildfire--------------------------------------------------
   
-  # filter school to build wildfire 
+  # filter school buffers based on welcome page district input and hazards tab school input
   buffers_filtered <- reactive({
-    school_filtered(schools_buffers, input$school_input)
+    school_filtered(schools_buffers, input$district, input$school_input)
   })
   
-  # Render the map in the UI
+  # render wildfire map based on the chosen school
   output$wildfire_map <- renderLeaflet({
     wildfire_map(buffers_filtered())
   })
@@ -101,23 +79,35 @@ server <- function(input, output, session){
   
   #---------------------Homepage leaflet map------------------------------------
   
+  
+  # output$map <- renderLeaflet({
+  #   leaflet() %>% 
+  #     addTiles() %>%
+  #     setView(lng = -122.4194, lat = 37.7749, zoom = 10) %>%
+  #     #addMarkers(data = school_points) %>% 
+  #     addProviderTiles("OpenStreetMap")
+  # })
+  # Reactive output for district based on selected city
+  
+  #Create reactive map that filters for City, School District, and Schools
+  
   # City selection UI
   output$cityMenu <- renderUI({
-    selectInput(inputId = "city", label = "Choose a city:", choices = unique(school_points$City))
+    selectInput("city", "Choose a city:", choices = unique(school_points$City))
   })
   
   # District selection UI based on selected city
   output$districtMenu <- renderUI({
     req(input$city)  # requires city input
     valid_districts <- unique(school_points$DistrictNa[school_points$City == input$city])
-    selectInput(inputId = "district", label = "Choose a district:", choices = valid_districts)
+    selectInput("district", "Choose a district:", choices = valid_districts)
   })
   
   # School selection UI based on selected district
   output$schoolMenu <- renderUI({
     req(input$district)  #requires district input
     valid_schools <- unique(school_points$SchoolName[school_points$DistrictNa == input$district & school_points$City == input$city])
-    selectInput(inputId = "school", label = "Choose a school:", choices = valid_schools)
+    selectInput("school", "Choose a school:", choices = valid_schools)
   })
   
   # Render Leaflet map for the selected school
@@ -140,34 +130,36 @@ server <- function(input, output, session){
         addPopups()
     }
   })
-
-
-### Test -----------------------------
-# Synchronize picker inputs
   
-# Extreme Heat Input  
-observeEvent(input$index_school, {
-    updatePickerInput(session, "school", selected = input$index_school)
+  # --------- update inputs of buttons based on each other -----------------------
+  
+  # update the welcome page school selection based on the hazards tab school selection
+  observeEvent(input$school, {
+    updateSelectInput(session, "school_input", selected = input$school)
   })
   
-# Wildfire input
-observeEvent(input$school_input, {
-  updatePickerInput(session, "precip_school", selected = input$school_input)
-})
-
-# Precipitation Input
-observeEvent(input$precip_school, {
-  updatePickerInput(session, "school_input", selected = input$precip_school)
-})
-
-
-# Flooding Input
-
-
-# Sea Level Rise 
-
-
-}
-
-
+  # update the hazards tab school selection based on the welcome page school selection
+  observeEvent(input$school_input, {
+    updateSelectInput(session, "school", selected = input$school_input)
+  })
+  
+  # #Update district_input pickerInput based on selected district
+  # observeEvent(input$district, {
+  #   updatePickerInput(session, "district_input", selected = input$district)
+  # })
+  
+  # limit the hazards tab school selection dropdown to only be the schools in the district chosen on the welcome page
+  observeEvent(input$district, {
+    # subsets the schools where the district name matches the district input on the welcome page 
+    valid_schools <- unique(schools_buffers$SchoolName[schools_buffers$DistrictNa == input$district])
+    updateSelectInput(session, "school_input", choices = valid_schools, selected = NULL)
+  })
+  
+  # 
+  # observeEvent(input$district_input, {
+  #   valid_schools <- unique(schools_buffers$SchoolName[schools_buffers$DistrictNa == input$district_input])
+  #   updatePickerInput(session, "school_input", choices = valid_schools, selected = NULL)
+  # })
+  
+} 
 

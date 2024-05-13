@@ -97,7 +97,6 @@ body <- dashboardBody(
               box(
                 title = h2(tags$strong("Extreme Heat")),
                 width = NULL,
-                style = "height: 800px",
                   fluidRow(
                   column(4,
                          "City Name and School District",
@@ -123,43 +122,85 @@ body <- dashboardBody(
               ),#END EXTREME HEAT
     
     # --------- Wildfire Tab -----------------------------------------------
+    
     tabItem(tabName = "wildfire",
             fluidPage(
               box(
                 title = h2(tags$strong("Wildfire")),
-                div(style = "display: flex; align-items: center; justify-content: space-between;",
-                            
-                            # school name
-                            uiOutput("school_name"),
-                            
-                            # school picker for the hazards tab, note the different inputId than the school picker in the welcome
-                            box(width = NULL,
-                                pickerInput(inputId = "school_input",
-                                            label = "Select school",
-                                            choices = unique(sb_hazards_test$SchoolName),
-                                            multiple = FALSE),
-                            )
-                ),
                 width = NULL,
                 fluidRow(
-                  box(
-                    width = 6,
-                    leafletOutput(outputId = "wildfire_map")
+                  column(4,
+                         
+                         # school name output
+                         uiOutput("school_name"),
                   ),
-                  column(
-                    width = 6,
-                    box(
-                      width = NULL,
-                      includeMarkdown("text/wildfire.md")
-                      
-                    )
-                  ))
-              )#END BOX
-              
-            )#END FluidPage
+                  column(6, 
+                         selectInput(inputId = "school_input",
+                                     label = "Select School in School District:",
+                                     choices = unique(schools_buffers$SchoolName),
+                                     #options = pickerOptions(actionsBox = TRUE),
+                                     multiple = FALSE)
+                         )
+                  
+                  
+                ),
+                box(
+                  width = NULL,
+                  leafletOutput(outputId = "wildfire_map"),
+                  includeMarkdown("text/wildfire.md")
+                  
+                )
+              )
+            )),#END Wildfire 
     
-            
-            ),#END Wildfire
+    
+    
+    
+    
+    # 
+    # 
+    # 
+    # tabItem(tabName = "wildfire",
+    #         fluidPage(
+    #           box(
+    #             title = h2(tags$strong("Wildfire")),
+    #             width = NULL,
+    #             fluidRow(
+    #               column(4,
+    #             #div(style = "display: flex; align-items: center; justify-content: space-between;",
+    #               
+    #                         # school name
+    #                         uiOutput("school_name"),
+    #               ),
+    #             column(4,
+    #                         
+    #                         # school picker for the hazards tab, note the different inputId than the school picker in the welcome
+    #                 width = NULL,
+    #                     pickerInput(inputId = "school_input",
+    #                                 label = "Select school",
+    #                                 choices = unique(schools_buffers$SchoolName),
+    #                                 options = pickerOptions(actionsBox = TRUE),
+    #                                 selected = "Dos Pueblos Senior High", 
+    #                                 multiple = FALSE)
+    #                 )        
+    #                 
+    #             ),
+    #             fluidRow(
+    #               box(
+    #                 width = 6,
+    #                 leafletOutput(outputId = "wildfire_map"),
+    #               
+    #              
+    #                   includeMarkdown("text/wildfire.md")
+    #                   
+    #                 )
+    #               ))
+    #           )#END BOX
+    #           
+    #         ),#END FluidPage
+    # 
+    #         
+    #         #),#END Wildfire
     
   
     # --------- Precipitation Tab ------------------------------------------
@@ -175,6 +216,10 @@ body <- dashboardBody(
                          "City Name and School District",
                          #uiOutput("school_name")
                   ),
+                  
+                  
+                  
+                  
                   column(4, 
                          # pickerInput(
                          #   inputId = "precip_school",
