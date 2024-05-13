@@ -30,7 +30,7 @@ server <- function(input, output, session){
   
   # filter school hazard summary table based on welcome page district input and hazards tab school input
   hazards_filtered <- reactive({
-    school_filtered(sb_hazards_test, input$district, input$school_input)
+    school_filtered(hazards_test, input$district, input$school_input)
   })
   
   # render hazard summary plot based on the selected school
@@ -93,39 +93,40 @@ server <- function(input, output, session){
   
   # City selection UI
   output$cityMenu <- renderUI({
-    selectInput("city", "Choose a city:", choices = unique(school_points$City))
+    selectInput("city", "Choose a city:", choices = unique(hazards_buffer$City))
   })
   
   # District selection UI based on selected city
   output$districtMenu <- renderUI({
     req(input$city)  # requires city input
-    valid_districts <- unique(school_points$DistrictNa[school_points$City == input$city])
+    valid_districts <- unique(hazards_buffer$DistrictNa[hazards_buffer$City == input$city])
     selectInput("district", "Choose a district:", choices = valid_districts)
   })
   
   # School selection UI based on selected district
   output$schoolMenu <- renderUI({
     req(input$district)  #requires district input
-    valid_schools <- unique(school_points$SchoolName[school_points$DistrictNa == input$district & school_points$City == input$city])
+    valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district & hazards_buffer$City == input$city])
     selectInput("school", "Choose a school:", choices = valid_schools)
   })
   
   # Render Leaflet map for the selected school
   output$map <- renderLeaflet({
-    req(input$school, input$city, input$district)  #require all selections
-    # Filter schools based on both district and city
-    selectedSchool <- school_points[
-      school_points$SchoolName == input$school &
-        school_points$DistrictNa == input$district &
-        school_points$City == input$city, 
-    ]
+    req(input$school, input$city, input$district)  # require all selections
     
-    if (nrow(selectedSchool) == 1) {  #match to only one school or return empty map
+    # Filter schools based on both district and city
+    selectedSchool <- hazards_buffer %>%
+      filter(SchoolName == input$school, DistrictNa == input$district, City == input$city)
+    
+    if (nrow(selectedSchool) == 1) {  # match to only one school or return empty map
       leaflet(data = selectedSchool) %>%
         addTiles() %>%
-        addMarkers(~Longitude, ~Latitude, popup = ~MarkerString)
+        setView(lng = selectedSchool$Longitude[1], lat = selectedSchool$Latitude[1], zoom = 13) %>%
+        # Add a circle marker with a buffer around the school
+        addCircles(~Longitude, ~Latitude, radius = 4828.03,  # Adjust the radius as needed
+                   popup = ~HazardString, color = ~binpal(hazard_score))
     } else {
-      leaflet() %>%  #empty map return
+      leaflet() %>%  # empty map return
         addTiles() %>%
         addPopups()
     }

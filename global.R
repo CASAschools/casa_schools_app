@@ -97,7 +97,7 @@ extreme_precip1 <- extreme_precip %>% filter(CDSCode == 42767864231726)
 
 # ----------------------- Hazard summary -------------------------------
 # load in data
-sb_hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/sb_hazards_test.csv")
+hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/hazards_test.csv")
 
 ## hazard summary plot set up -----
 # labels for each climate hazard
@@ -117,4 +117,15 @@ whp_reclass <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_recl
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
 
 names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
+
+# add cities to hazards test
+hazards_buffer <- schools_buffers %>% left_join(hazards_test)
+
+#buffer color
+binpal <- colorBin("RdYlGn", hazards_buffer$hazard_score, bins = 5, reverse = TRUE)
+
+#Add marker string to hazards data framr
+
+hazards_buffer <- hazards_buffer %>% mutate(
+  HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
 
