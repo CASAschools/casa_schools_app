@@ -71,7 +71,7 @@ body <- dashboardBody(
                            selectInput(
                              inputId = "index_school",
                              label = "School",
-                             choices = unique(sb_hazards_test$SchoolName),
+                             choices = unique(hazards_test$SchoolName),
                              multiple = FALSE
                              
                            )#END Picker
@@ -107,7 +107,7 @@ body <- dashboardBody(
                          pickerInput(
                            inputId = "heat_school",
                            label = "School",
-                           choices = unique(sb_hazards_test$SchoolName),
+                           choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )
                   ),
@@ -208,7 +208,7 @@ body <- dashboardBody(
                          pickerInput(
                            inputId = "flooding_school",
                            label = "School",
-                           choices = unique(sb_hazards_test$SchoolName),
+                           choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )
                   ),
@@ -242,7 +242,7 @@ body <- dashboardBody(
                          pickerInput(
                            inputId = "sea_school",
                            label = "School",
-                           choices = unique(sb_hazards_test$SchoolName),
+                           choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )
                   ),
