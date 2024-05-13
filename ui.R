@@ -47,7 +47,8 @@ body <- dashboardBody(
                       uiOutput("schoolMenu")
                     ),
                     mainPanel(
-                      leafletOutput("map"),
+                      leafletOutput("map")
+                      
                       
                     )
                   )))
