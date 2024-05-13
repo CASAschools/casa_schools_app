@@ -1,7 +1,8 @@
-extreme_heat_plot <- function(inputId){
+extreme_heat_plot <- function(heat_filtered){
   
+  renderPlotly({
   # Develop plot 
-  heat <- ggplot(data = extreme_heat1,
+  heat <- ggplot(data = heat_filtered,
                  aes(x = year, y = total, fill = scenario)) +
     geom_bar(stat = "identity", position = "dodge") +
     theme_classic() +
@@ -11,17 +12,17 @@ extreme_heat_plot <- function(inputId){
     theme(legend.position = "top",
           legend.title = element_blank())
   
-  renderPlotly({
+
   
-  plotly::ggplotly(heat) %>%
+  heat_plot <- plotly::ggplotly(heat) %>%
     layout(legend = list(orientation = "h", y = 1.1,
                          title = list(text = 'Scenarios')),
            margin = list( t = 60),
            barmode = "grouped")
   
   
-  
+  }
 
-  })
+)
   
 }

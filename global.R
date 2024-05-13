@@ -77,9 +77,12 @@ school_points <- school_points %>% mutate(MarkerString = paste(
 # Drop geometry
 school_points_rm <- school_points %>% st_drop_geometry()
 
+school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
+
 # Calmatters Load In
 calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/disasterDays.csv")
 
+# -------------------- EXTREME HEAT --------------------------------------
 # Extreme Heat Import
 extreme_heat <- read_csv("/capstone/casaschools/shiny_dashboard/data/extreme_heat/extreme_heat.csv") %>% 
   select(c(CDSCode, year, total, scenario))
@@ -88,12 +91,11 @@ extreme_heat <- read_csv("/capstone/casaschools/shiny_dashboard/data/extreme_hea
 extreme_heat <- extreme_heat %>% 
   mutate(scenario = ifelse(scenario == "Intermediate scenario", "Low emission","High emission"))
 
-extreme_heat1 <- extreme_heat %>%
-  filter(CDSCode == 42767864231726)
+extreme_heat <- merge(extreme_heat, school_names, by = "CDSCode")
 #---------------------------- Precipitation ----------------------------
 extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all.csv") 
 
-extreme_precip1 <- extreme_precip %>% filter(CDSCode == 42767864231726)
+names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 
 # ----------------------- Hazard summary -------------------------------
 # load in data
@@ -109,10 +111,6 @@ green_red <- divergingx_hcl(n = 5, palette = "RdYlGn", rev = TRUE)
 # ----------------------- Wildfire -------------------------------
 # load in data
 whp_reclass <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_reclass.tif")
-
-# define custom color palette and labels
-# whp_palette <- c("white", "#fee391", "#fec44f", "#fe9929", "#d95f0e", "#993404")
-# whp_labels <- c("non-burnable", "very low", "low", "moderate", "high", "very high")
 
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
 

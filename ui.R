@@ -36,7 +36,6 @@ body <- dashboardBody(
     tabItem(tabName = "welcome",
             fluidPage(
               box(width = NULL,
-                  #style = "height: 800px",
                   title = h3(tags$strong("Welcome to the CASAschools Climate Hazards Dashboard!")),
                   includeMarkdown("text/about_text.md"),
                   h3(tags$strong("Getting Started")),
@@ -107,8 +106,9 @@ body <- dashboardBody(
                 width = NULL,
                 fluidRow(
                   column(4,
-                         "City Name and School District",
-                         #uiOutput("school_name")
+                         
+                         # school name output
+                         uiOutput("school_name_heat"),
                   ),
                   column(4, 
                          pickerInput(
@@ -118,7 +118,7 @@ body <- dashboardBody(
                            multiple = FALSE
                          )
                   ),
-                  
+
                 ),
                 box(
                   width = NULL,
@@ -126,10 +126,10 @@ body <- dashboardBody(
                   includeMarkdown("text/heat.md")
                   
                 )
-              ))
-    ),#END EXTREME HEAT
+              )
+            )),#END EXTREME HEAT
     
-    # --------- Wildfire Tab -----------------------------------------------
+        # --------- Wildfire Tab -----------------------------------------------
     
     tabItem(tabName = "wildfire",
             fluidPage(
@@ -143,10 +143,9 @@ body <- dashboardBody(
                          uiOutput("school_name"),
                   ),
                   column(6, 
-                         selectInput(inputId = "school_input",
+                         selectInput(inputId = "school_wildfire",
                                      label = "Select School in School District:",
                                      choices = unique(schools_buffers$SchoolName),
-                                     #options = pickerOptions(actionsBox = TRUE),
                                      multiple = FALSE)
                   )
                   
@@ -161,56 +160,7 @@ body <- dashboardBody(
               )
             )),#END Wildfire 
     
-    
-    
-    
-    
-    # 
-    # 
-    # 
-    # tabItem(tabName = "wildfire",
-    #         fluidPage(
-    #           box(
-    #             title = h2(tags$strong("Wildfire")),
-    #             width = NULL,
-    #             fluidRow(
-    #               column(4,
-    #             #div(style = "display: flex; align-items: center; justify-content: space-between;",
-    #               
-    #                         # school name
-    #                         uiOutput("school_name"),
-    #               ),
-    #             column(4,
-    #                         
-    #                         # school picker for the hazards tab, note the different inputId than the school picker in the welcome
-    #                 width = NULL,
-    #                     pickerInput(inputId = "school_input",
-    #                                 label = "Select school",
-    #                                 choices = unique(schools_buffers$SchoolName),
-    #                                 options = pickerOptions(actionsBox = TRUE),
-    #                                 selected = "Dos Pueblos Senior High", 
-    #                                 multiple = FALSE)
-    #                 )        
-    #                 
-    #             ),
-    #             fluidRow(
-    #               box(
-    #                 width = 6,
-    #                 leafletOutput(outputId = "wildfire_map"),
-    #               
-    #              
-    #                   includeMarkdown("text/wildfire.md")
-    #                   
-    #                 )
-    #               ))
-    #           )#END BOX
-    #           
-    #         ),#END FluidPage
-    # 
-    #         
-    #         #),#END Wildfire
-    
-    
+
     # --------- Precipitation Tab ------------------------------------------
     
     tabItem(tabName = "precipitation",
@@ -229,12 +179,6 @@ body <- dashboardBody(
                   
                   
                   column(4, 
-                         # pickerInput(
-                         #   inputId = "precip_school",
-                         #   label = "School",
-                         #   choices = unique(hazards_test$SchoolName),
-                         #   multiple = FALSE
-                         
                          pickerInput("schoolPicker", "Select a School:", 
                                      choices = unique(names_precip_merge$SchoolName), 
                                      selected = unique(names_precip_merge$SchoolName)[1],
