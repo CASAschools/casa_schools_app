@@ -7,25 +7,25 @@ header <- dashboardHeader(
 
 # -------- dashboard Sidebar--------------------------
 sidebar <- dashboardSidebar(width = 300,
-  # sidebarMenu ----
-  sidebarMenu(
-    menuItem(text = h4("Welcome"), tabName = "welcome", icon = icon("star")),
-    menuItem(text = h4("Hazard Summary Metric"), tabName = "index", icon = icon("square-poll-horizontal")),
-    menuItem(text = h4("Explore Your Hazards"), tabName = "hazards", icon = icon("earth-americas"),
-      # Explore Your Hazards Sub tabs
-      menuSubItem(text = h4("Extreme Heat"), tabName = "heat", icon = icon("temperature-arrow-up")),
-      menuSubItem(text = h4("Wildfire"), tabName = "wildfire", icon = icon("fire")),
-      menuSubItem(text = h4("Extreme Precipitation"), tabName = "precipitation", icon = icon("cloud-showers-heavy")),
-      menuSubItem(text = h4("Flooding"), tabName = "flooding", icon = icon("house-flood-water")),
-      menuSubItem(text = h4("Sea Level Rise"), tabName = "sea_rise", icon = icon("house-tsunami"))
-    ),
-    menuItem(text = h4("Climate Information"), tabName = "info", icon = icon("circle-info")),
-    menuItem(text = h4("Glossary"), tabName = "glossary", icon = icon("book-open")),
-    menuItem(text = h4("User Guide"), tabName = "user", icon = icon("users"))
-
-  )#END sidebarMENU
-  
-  
+                            # sidebarMenu ----
+                            sidebarMenu(
+                              menuItem(text = h4("Welcome"), tabName = "welcome", icon = icon("star")),
+                              menuItem(text = h4("Hazard Summary Metric"), tabName = "index", icon = icon("square-poll-horizontal")),
+                              menuItem(text = h4("Explore Your Hazards"), tabName = "hazards", icon = icon("earth-americas"),
+                                       # Explore Your Hazards Sub tabs
+                                       menuSubItem(text = h4("Extreme Heat"), tabName = "heat", icon = icon("temperature-arrow-up")),
+                                       menuSubItem(text = h4("Wildfire"), tabName = "wildfire", icon = icon("fire")),
+                                       menuSubItem(text = h4("Extreme Precipitation"), tabName = "precipitation", icon = icon("cloud-showers-heavy")),
+                                       menuSubItem(text = h4("Flooding"), tabName = "flooding", icon = icon("house-flood-water")),
+                                       menuSubItem(text = h4("Sea Level Rise"), tabName = "sea_rise", icon = icon("house-tsunami"))
+                              ),
+                              menuItem(text = h4("Climate Information"), tabName = "info", icon = icon("circle-info")),
+                              menuItem(text = h4("Glossary"), tabName = "glossary", icon = icon("book-open")),
+                              menuItem(text = h4("User Guide"), tabName = "user", icon = icon("users"))
+                              
+                            )#END sidebarMENU
+                            
+                            
 )#END dashboard Sidebar
 
 
@@ -46,18 +46,19 @@ body <- dashboardBody(
                       uiOutput("schoolMenu")
                     ),
                     mainPanel(
-                      leafletOutput("map"),
+                      leafletOutput("map")
                       
-              )
-            )))
+                      
+                    )
+                  )))
     ),
     
-
+    
     # --------- Hazard Summary Metric tab --------------------------------   
     tabItem(tabName = "index",
             # Content for the index tab
             fluidPage(
-
+              
               box(width = NULL,
                   style = "height: 800px",
                   title = h2(tags$strong("Hazard Summary Metric")),
@@ -74,7 +75,7 @@ body <- dashboardBody(
                              multiple = FALSE
                              
                            )#END Picker
-                           )#END Picker column
+                    )#END Picker column
                     
                     
                   ),#END FLUID ROW
@@ -83,7 +84,7 @@ body <- dashboardBody(
                     width = NULL,
                     plotOutput(outputId = "hazard_summary")
                   )
-                  )
+              )
               
             )#END FLUIDPAGE
     ),#END INDEX
@@ -102,14 +103,15 @@ body <- dashboardBody(
                          # school name output
                          uiOutput("school_name_heat"),
                   ),
-                  column(6, 
-                         selectInput(inputId = "school_heat",
-                                     label = "Select School in School District:",
-                                     choices = unique(extreme_heat$SchoolName),
-                                     multiple = FALSE)
-                  )
-                  
-                  
+                  column(4, 
+                         pickerInput(
+                           inputId = "heat_school",
+                           label = "School",
+                           choices = unique(sb_hazards_test$SchoolName),
+                           multiple = FALSE
+                         )
+                  ),
+
                 ),
                 box(
                   width = NULL,
@@ -120,9 +122,7 @@ body <- dashboardBody(
               )
             )),#END EXTREME HEAT
     
-    
-    
-    # --------- Wildfire Tab -----------------------------------------------
+        # --------- Wildfire Tab -----------------------------------------------
     
     tabItem(tabName = "wildfire",
             fluidPage(
@@ -140,7 +140,7 @@ body <- dashboardBody(
                                      label = "Select School in School District:",
                                      choices = unique(schools_buffers$SchoolName),
                                      multiple = FALSE)
-                         )
+                  )
                   
                   
                 ),
@@ -153,7 +153,7 @@ body <- dashboardBody(
               )
             )),#END Wildfire 
     
-  
+
     # --------- Precipitation Tab ------------------------------------------
     
     tabItem(tabName = "precipitation",
@@ -257,7 +257,7 @@ body <- dashboardBody(
                 )
               ))
     ),#END EXTREME PRECIPITATION
-  
+    
     
     # ------- Climate Information tab -----------------------------------
     # this will describe time concepts, how, why, etc...
@@ -265,10 +265,10 @@ body <- dashboardBody(
     tabItem(tabName = "info",
             fluidPage(
               box(
-                  title = h2(tags$strong("Information")),
-                  width = NULL,
-                  style = "height: 800px",
-                  includeMarkdown("text/socio.md"),
+                title = h2(tags$strong("Information")),
+                width = NULL,
+                style = "height: 800px",
+                includeMarkdown("text/socio.md"),
               )
             )#END FLUIDPAGE
     ),#END Climate Info TAB
@@ -278,10 +278,10 @@ body <- dashboardBody(
     tabItem(tabName = "glossary",
             fluidPage(
               box(
-                  title = h2(tags$strong("Glossary")),
-                  width = NULL,
-                  style = "height: 800px",
-                  
+                title = h2(tags$strong("Glossary")),
+                width = NULL,
+                style = "height: 800px",
+                
               )# END Box
               
             )# END FluidPage
@@ -289,16 +289,16 @@ body <- dashboardBody(
             
     ),#END Glossary
     
-
+    
     # ------- User guide tab -----------------------
     tabItem(tabName = "user",
             fluidPage(
               box(
-                  title = h2(tags$strong("User Guide")),
-                  width = NULL,
-                  style = "height: 800px",
-                  
-                  )# END Box
+                title = h2(tags$strong("User Guide")),
+                width = NULL,
+                style = "height: 800px",
+                
+              )# END Box
               
             )# END FluidPage
             
@@ -311,3 +311,4 @@ body <- dashboardBody(
 
 # -------- Combine all in dashboardPage----------------
 dashboardPage(header, sidebar, body,skin = "yellow")
+
