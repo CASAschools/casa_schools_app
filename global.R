@@ -94,7 +94,7 @@ extreme_heat <- extreme_heat %>%
 extreme_heat <- merge(extreme_heat, school_names, by = "CDSCode")
 
 #---------------------------- Precipitation ----------------------------
-extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all.csv") 
+extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all_zeros.csv") 
 
 names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 
