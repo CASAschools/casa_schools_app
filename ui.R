@@ -252,7 +252,7 @@ body <- dashboardBody(
                   ),
                   column(4, 
                          selectInput(
-                           inputId = "school_sea",
+                           inputId = "school_slr",
                            label = "School",
                            choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
@@ -263,12 +263,13 @@ body <- dashboardBody(
                 
                 box(
                   width = NULL,
-                  #plot
+                  leafletOutput(outputId = "slr_map") %>% 
+                    withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/coastal_inundation.md")
                   
                 )
               ))
-    ),#END EXTREME PRECIPITATION
+    ),#END SEA LEVEL RISE
     
     
     # ------- Climate Information tab -----------------------------------
