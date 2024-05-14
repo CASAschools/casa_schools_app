@@ -4,7 +4,7 @@
 required_packages <- c(
   "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "tidyverse",
   "leaflet", "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
-  "plotly", "terra", "colorspace", "RColorBrewer", "gridExtra"
+  "plotly", "terra", "colorspace", "RColorBrewer", "gridExtra", "fontawesome"
 )
 
 # install missing packages
@@ -35,6 +35,7 @@ library(terra)
 library(colorspace)
 library(RColorBrewer)
 library(gridExtra)
+library(fontawesome)
 
 
 # make sure the full cdscode can be seen
@@ -84,7 +85,7 @@ calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/di
 
 # -------------------- EXTREME HEAT --------------------------------------
 # Extreme Heat Import
-extreme_heat <- read_csv("/capstone/casaschools/shiny_dashboard/data/extreme_heat/extreme_heat.csv") %>% 
+extreme_heat <- read_csv("/capstone/casaschools/shiny_dashboard/data/extreme_heat/extreme_heat_zeros.csv") %>% 
   select(c(CDSCode, year, total, scenario))
 
 # rename columns 
@@ -94,7 +95,7 @@ extreme_heat <- extreme_heat %>%
 extreme_heat <- merge(extreme_heat, school_names, by = "CDSCode")
 
 #---------------------------- Precipitation ----------------------------
-extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all.csv") 
+extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all_zeros.csv") 
 
 names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 
@@ -139,3 +140,22 @@ binpal <- colorBin("RdYlGn", hazards_buffer$hazard_score, bins = 5, reverse = TR
 hazards_buffer <- hazards_buffer %>% mutate(
   HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
 
+# markers <- awesomeIconList(
+#   `1` = makeAwesomeIcon(
+#     icon="empty",
+#     markerColor = "white",
+#     library="fa"
+#   ))
+# 
+# icons <- iconList(
+#   `1` = makeIcon(
+#     iconUrl = "https://www.svgrepo.com/svg/533533/school-flag.svg",
+#     iconWidth = 31*215/230,
+#     iconHeight = 20, 
+#     iconAnchorY = 33,
+#     iconAnchorX = 31*215/230/2
+#   ))
+# 
+# 
+# addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
+#   addMarkers(~Longitude, ~Latitude, icon = ~icons)
