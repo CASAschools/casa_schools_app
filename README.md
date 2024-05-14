@@ -35,7 +35,7 @@ Under this tab, users will be given links to additional resources to protect the
 This tab will include a written and video walk-through of the dashboard to inform users on how to navigate each page, and filter for their prefered school for each hazard.
 ### Libraries and Packages
 | Col1 | Col2 | Col2 | Col3 | 
-| kjbk|   ||-|
+| -----|----- | -----|------|
 | tidyverse | R1C2 | R1C2 | R1C2 |
 | R2C1 | R2C2 | R2C2 | R1C2 |
 | R1C1 | R1C2 | R1C2 | R1C2 |
