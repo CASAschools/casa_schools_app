@@ -119,7 +119,7 @@ server <- function(input, output, session){
   # update the welcome page school selection based on the hazards tab school selection
   observeEvent(input$school, {
     updateSelectInput(session, "school_wildfire", selected = input$school)
-    #updateSelectInput(session, "school_heat", selected = input$school)
+    #updateSelectInput(session, "school_slr", selected = input$school_wildfire)
   })
 
   # limit the wildfire tab school selection dropdown to only be the schools in the district chosen on the welcome page
@@ -127,9 +127,9 @@ server <- function(input, output, session){
     # subsets the schools where the district name matches the district input on the welcome page
     valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
     updateSelectInput(session, "school_wildfire", choices = valid_schools, selected = NULL)
-    #updateSelectInput(session, "school_heat", choices = valid_schools, selected = NULL)
+    #updateSelectInput(session, "school_slr", choices = valid_schools, selected = NULL)
   })
-  
+
 } 
 
 
