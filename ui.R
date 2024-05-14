@@ -75,13 +75,14 @@ body <- dashboardBody(
                   title = h2(tags$strong("Hazard Summary Metric")),
                   fluidRow(
                     column(4,
-                           "City Name and School District",
-                           #uiOutput("school_name)
+                           # output school name as tab title
+                           uiOutput("school_name_summary")
                     ),
-                    column(4,
+                    # school dropdown
+                    column(6,
                            selectInput(
                              inputId = "school_summary",
-                             label = "School",
+                             label = "Select another school in the same district:",
                              choices = unique(hazards_test$SchoolName),
                              multiple = FALSE
                              
@@ -111,14 +112,14 @@ body <- dashboardBody(
                 width = NULL,
                 fluidRow(
                   column(4,
-                         
-                         # school name output
+                         # output school name as tab title
                          uiOutput("school_name_heat"),
                   ),
-                  column(4, 
+                  # school dropdown
+                  column(6, 
                          selectInput(
                            inputId = "school_heat",
-                           label = "School",
+                           label = "Select another school in the same district:",
                            choices = unique(extreme_heat$SchoolName),
                            multiple = FALSE
                          )
@@ -144,13 +145,14 @@ body <- dashboardBody(
                 width = NULL,
                 fluidRow(
                   column(4,
-                         
-                         # school name output
-                         uiOutput("school_name"),
+                         # output school name as tab title
+                         uiOutput("school_name_wildfire"),
                   ),
+                  
+                  # school dropdown
                   column(6, 
                          selectInput(inputId = "school_wildfire",
-                                     label = "Select School in School District:",
+                                     label = "Select another school in the same district:",
                                      choices = unique(schools_buffers$SchoolName),
                                      multiple = FALSE)
                   )
@@ -177,16 +179,14 @@ body <- dashboardBody(
                 width = NULL,
                 fluidRow(
                   column(4,
-                         "City Name and School District",
-                         #uiOutput("school_name")
+                         # output school name as tab title
+                         uiOutput("school_name_precip")
                   ),
                   
-                  
-                  
-                  
-                  column(4, 
+                  # school dropdown
+                  column(6, 
                          selectInput(inputId = "school_precip", 
-                                     label = "Select a School:", 
+                                     label = "Select another school in the same district:", 
                                      choices = unique(names_precip_merge$SchoolName), 
                                      selected = unique(names_precip_merge$SchoolName)[1],
                                      multiple = FALSE)
@@ -214,13 +214,14 @@ body <- dashboardBody(
                 style = "height: 800px",
                 fluidRow(
                   column(4,
-                         "City Name and School District",
-                         #uiOutput("school_name")
+                         # output school name as tab title
+                         uiOutput("school_name_flood")
                   ),
-                  column(4, 
+                  # school dropdown
+                  column(6, 
                          selectInput(
                            inputId = "school_flooding",
-                           label = "School",
+                           label = "Select another school in the same district:",
                            choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )
@@ -247,13 +248,14 @@ body <- dashboardBody(
                 width = NULL,
                 fluidRow(
                   column(4,
-                         "City Name and School District",
-                         #uiOutput("school_name")
+                         # output school name as tab title
+                         uiOutput("school_name_slr")
                   ),
-                  column(4, 
+                  # school dropdown
+                  column(6, 
                          selectInput(
                            inputId = "school_slr",
-                           label = "School",
+                           label = "Select another school in the same district:",
                            choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
                          )

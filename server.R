@@ -1,19 +1,19 @@
 server <- function(input, output, session){
   
-  #-------------------Reactive school filtering--------------------------------
+  #-------------------Reactive tab titles--------------------------------
+
+  # update hazard summary tab title based on the selected school
+  output$school_name_summary <- renderUI({
+    # make sure there's a selection, outputting a message if there is none
+    if (!is.null(input$school_summary) && input$school_summary != "") {
+      h3(tags$strong(input$school_summary), style = "font-size: 20px")
+    } else {
+      h3(tags$strong("Select a school", style = "font-size: 20px"))
+    }
+  })
   
-  # # school filtering function to get around schools in different districts sharing the same name
-  # school_filtered <- function(schools, district, input_school) {
-  #   # filter for the selected district first
-  #   district_filter <- filter(schools, DistrictNa %in% c(district))
-  #   # filter for the selected school within that district
-  #   district_filter %>% 
-  #     filter(SchoolName %in% c(input_school))
-  # }
-  
-  
-  # update hazards tab title based on the selected school
-  output$school_name <- renderUI({
+  # update wildfire tab title based on the selected school
+  output$school_name_wildfire <- renderUI({
     # make sure there's a selection, outputting a message if there is none
     if (!is.null(input$school_wildfire) && input$school_wildfire != "") {
       h3(tags$strong(input$school_wildfire), style = "font-size: 20px")
@@ -22,11 +22,41 @@ server <- function(input, output, session){
     }
   })
   
-  # update Heat tab title based on the selected school
+  # update heat tab title based on the selected school
   output$school_name_heat <- renderUI({
     # make sure there's a selection, outputting a message if there is none
     if (!is.null(input$school_heat) && input$school_heat != "") {
       h3(tags$strong(input$school_heat), style = "font-size: 20px")
+    } else {
+      h3(tags$strong("Select a school", style = "font-size: 20px"))
+    }
+  })
+  
+  # update precip tab title based on the selected school
+  output$school_name_precip <- renderUI({
+    # make sure there's a selection, outputting a message if there is none
+    if (!is.null(input$school_precip) && input$school_precip != "") {
+      h3(tags$strong(input$school_precip), style = "font-size: 20px")
+    } else {
+      h3(tags$strong("Select a school", style = "font-size: 20px"))
+    }
+  })
+  
+  # update flood tab title based on the selected school
+  output$school_name_flood <- renderUI({
+    # make sure there's a selection, outputting a message if there is none
+    if (!is.null(input$school_flooding) && input$school_flooding != "") {
+      h3(tags$strong(input$school_flooding), style = "font-size: 20px")
+    } else {
+      h3(tags$strong("Select a school", style = "font-size: 20px"))
+    }
+  })
+  
+  # update sea level rise tab title based on the selected school
+  output$school_name_slr <- renderUI({
+    # make sure there's a selection, outputting a message if there is none
+    if (!is.null(input$school_slr) && input$school_slr != "") {
+      h3(tags$strong(input$school_slr), style = "font-size: 20px")
     } else {
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
@@ -103,7 +133,7 @@ server <- function(input, output, session){
     if (nrow(selectedSchool) == 1) {  #match to only one school or return empty map
       leaflet(data = selectedSchool) %>%
         addTiles() %>% 
-        setView(lng = selectedSchool$Longitude[1], lat = selectedSchool$Latitude[1], zoom = 13) %>% 
+        setView(lng = selectedSchool$Longitude[1], lat = selectedSchool$Latitude[1], zoom = 11) %>% 
         # Add a circle marker with buffer around the school
         addCircles(~Longitude, ~Latitude, radius = 4828.03, #Adjust the radius as needed
                    color = ~binpal(hazard_score)) %>% 
