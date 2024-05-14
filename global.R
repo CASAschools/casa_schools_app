@@ -92,12 +92,14 @@ extreme_heat <- extreme_heat %>%
   mutate(scenario = ifelse(scenario == "Intermediate scenario", "Low emission","High emission"))
 
 extreme_heat <- merge(extreme_heat, school_names, by = "CDSCode")
+
 #---------------------------- Precipitation ----------------------------
 extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all.csv") 
 
 names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 
 # ----------------------- Hazard summary -------------------------------
+
 # load in data
 hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/hazards_test.csv")
 
@@ -109,8 +111,18 @@ hazard_labels <- c("flooding", "extreme heat", "extreme precipitation", "coastal
 green_red <- divergingx_hcl(n = 5, palette = "RdYlGn", rev = TRUE)
 
 # ----------------------- Wildfire -------------------------------
+
 # load in data
 whp_reclass <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_reclass.tif")
+
+whp_reclass2012 <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_reclass2012.tif")
+
+# --------------------Sea Level Rise-----------------------------
+
+# load in data
+ca_slr <- st_read("/capstone/casaschools/sea_level_rise/intermediate_layers/ca_slr.shp")
+
+# ----------------------------------------------------------------
 
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
 

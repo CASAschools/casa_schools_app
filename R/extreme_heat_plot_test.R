@@ -1,11 +1,13 @@
-extreme_heat_plot_test <- function(input, output) {
- 
-  extreme_heat_plotly <- renderPlotly({
-    # filter data based on selected school
-    heat_filtered <- subset(extreme_heat, SchoolName == input$school_heat)
+extreme_heat_plot_test <- function(input) {
+  
+  heat_filtered <- reactive({
+    filter(extreme_heat, SchoolName == input$school_heat)
+  })
+  
+  renderPlotly({
     
-    # output plot
-    heat <- ggplot(data = heat_filtered,
+    # Output plot
+    heat <- ggplot(data = heat_filtered(),
                    aes(x = year, y = total, fill = scenario)) +
       geom_bar(stat = "identity", position = "dodge") +
       theme_classic() +
@@ -15,12 +17,10 @@ extreme_heat_plot_test <- function(input, output) {
       theme(legend.position = "top",
             legend.title = element_blank())
     
-    
     plotly::ggplotly(heat) %>%
       layout(legend = list(orientation = "h", y = 1.1,
                            title = list(text = 'Scenarios')),
-             margin = list( t = 60),
+             margin = list(t = 60),
              barmode = "grouped")
   })
-
 }
