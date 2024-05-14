@@ -39,7 +39,7 @@ library(gridExtra)
 
 # make sure the full cdscode can be seen
 options(scipen = 999)
-
+options(warn = -1)
 # ----------------------- CA school points -------------------------------
 #Load in data
 school_points <-  st_read("/capstone/casaschools/schools_data/California_Schools_2022-23/California_Schools_2022-23.shp") %>% 

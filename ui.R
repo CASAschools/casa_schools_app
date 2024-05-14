@@ -50,9 +50,14 @@ body <- dashboardBody(
                            uiOutput("cityMenu"),
                            uiOutput("districtMenu"),
                            uiOutput("schoolMenu"),
-                           leafletOutput("map")),
+                           leafletOutput("map") %>% 
+                             withSpinner(color="#0dc5c1")
+                           
+                           
+                           ),
                     column(width = 8,
-                           plotOutput("summary_homepage"))
+                           plotOutput("summary_homepage") %>% 
+                             withSpinner(color="#0dc5c1") )
                     
                     ),
                   # mainPanel(
@@ -67,7 +72,6 @@ body <- dashboardBody(
             fluidPage(
               
               box(width = NULL,
-                  style = "height: 800px",
                   title = h2(tags$strong("Hazard Summary Metric")),
                   fluidRow(
                     column(4,
@@ -89,7 +93,8 @@ body <- dashboardBody(
                   
                   box(
                     width = NULL,
-                    plotOutput(outputId = "summary_sumtab")
+                    plotOutput(outputId = "summary_sumtab") %>% 
+                      withSpinner(color="#0dc5c1")
                   )
               )
               
@@ -122,7 +127,8 @@ body <- dashboardBody(
                 ),
                 box(
                   width = NULL,
-                  plotlyOutput(outputId = "extreme_heat_plotly"),
+                  plotlyOutput(outputId = "extreme_heat_plotly") %>% 
+                    withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/heat.md")
                   
                 )
@@ -153,7 +159,8 @@ body <- dashboardBody(
                 ),
                 box(
                   width = NULL,
-                  leafletOutput(outputId = "wildfire_map"),
+                  leafletOutput(outputId = "wildfire_map") %>% 
+                    withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/wildfire.md")
                   
                 )
@@ -168,7 +175,6 @@ body <- dashboardBody(
               box(
                 title = h2(tags$strong("Extreme Precipitation")),
                 width = NULL,
-                style = "height: 800px",
                 fluidRow(
                   column(4,
                          "City Name and School District",
@@ -179,7 +185,8 @@ body <- dashboardBody(
                   
                   
                   column(4, 
-                         selectInput("school_precip", "Select a School:", 
+                         selectInput(inputId = "school_precip", 
+                                     label = "Select a School:", 
                                      choices = unique(names_precip_merge$SchoolName), 
                                      selected = unique(names_precip_merge$SchoolName)[1],
                                      multiple = FALSE)
@@ -189,7 +196,8 @@ body <- dashboardBody(
                 
                 box(
                   width = NULL,
-                  plotlyOutput(outputId = 'extreme_precipitation_plotly'),
+                  plotlyOutput(outputId = 'extreme_precipitation_plotly') %>% 
+                    withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/heat.md")
                   
                 )
@@ -211,7 +219,7 @@ body <- dashboardBody(
                   ),
                   column(4, 
                          selectInput(
-                           inputId = "flooding_school",
+                           inputId = "school_flooding",
                            label = "School",
                            choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
@@ -237,7 +245,6 @@ body <- dashboardBody(
               box(
                 title = h2(tags$strong("Sea Level Rise")),
                 width = NULL,
-                style = "height: 800px",
                 fluidRow(
                   column(4,
                          "City Name and School District",
@@ -245,7 +252,7 @@ body <- dashboardBody(
                   ),
                   column(4, 
                          selectInput(
-                           inputId = "sea_school",
+                           inputId = "school_sea",
                            label = "School",
                            choices = unique(hazards_test$SchoolName),
                            multiple = FALSE
@@ -272,7 +279,6 @@ body <- dashboardBody(
               box(
                 title = h2(tags$strong("Information")),
                 width = NULL,
-                style = "height: 800px",
                 includeMarkdown("text/socio.md"),
               )
             )#END FLUIDPAGE
@@ -285,8 +291,7 @@ body <- dashboardBody(
               box(
                 title = h2(tags$strong("Glossary")),
                 width = NULL,
-                style = "height: 800px",
-                
+
               )# END Box
               
             )# END FluidPage
@@ -301,8 +306,7 @@ body <- dashboardBody(
               box(
                 title = h2(tags$strong("User Guide")),
                 width = NULL,
-                style = "height: 800px",
-                
+
               )# END Box
               
             )# END FluidPage
