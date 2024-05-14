@@ -11,7 +11,10 @@ To help schools and communities understand their climate risks, we will create a
 - [License](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#license)
 
 ### Usage
-## Aggregated Hazard Risk
+## Hazard Summary Metric
+
+This tab features our hazard summary metric which displays a summarized risk score for all five climate hazards. The hazard summary score for each school buffer area is measured on a scale from 5-25, with lower values representing lower climate hazard risk and higher values representing higher climate hazard risk. The composite score is the sum of individual scores for each climate hazard.
+
 ## Explore Your Hazards
 
 This tab features our five interactive climate hazard visualizations:
@@ -19,14 +22,27 @@ This tab features our five interactive climate hazard visualizations:
 - **Extreme Precipitation**
 - **Wildfire**
 - **Flooding**
-- **Seal-level Rise**
+- **Sea-level Rise**
 
 Users can click on each tab at the top of the webpage to explore the risks associated with each climate hazard relative to their location. Users will be able to input their address in a search bar to get the information most relevant to them.
-## User Guide
-## Resources
+
+## Climate Information
 
 Under this tab, users will be given links to additional resources to protect themselves and their communities against climate hazards, as well as short write-ups that provide more information on how to engage their community to address climate change.
+
+## User Guide
+
+This tab will include a written and video walk-through of the dashboard to inform users on how to navigate each page, and filter for their prefered school for each hazard.
 ### Libraries and Packages
+| Col1 | Col2 | Col2 | Col3 | 
+|------|------|------|------|
+| tidyverse | R1C2 | R1C2 | R1C2 |
+| R2C1 | R2C2 | R2C2 | R1C2 |
+| R1C1 | R1C2 | R1C2 | R1C2 |
+| R2C1 | R2C2 | R2C2 | R1C2 |
+| R1C1 | R1C2 | R1C2 | R1C2 |
+| R2C1 | R2C2 | R2C2 | R1C2 |
+
 ### Authors 
 The authors of this dashboard are [Liane Chen](https://github.com/lchenhub), [Charlie Curtin](https://github.com/charliecurtin1), [Kristina Glass](https://github.com/kristinaglass), and [Hazel Vaquero](https://github.com/hazelvaq). For any comments or questions about this dashboard, please reach out to @cp-casaschools@bren.ucsb.edu
 
