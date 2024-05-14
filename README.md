@@ -34,14 +34,14 @@ Under this tab, users will be given links to additional resources to protect the
 
 This tab will include a written and video walk-through of the dashboard to inform users on how to navigate each page, and filter for their prefered school for each hazard.
 ### Libraries and Packages
-| Col1 | Col2 | Col2 | Col3 | 
+| tidyverse | sf | terra | dplyer | 
 | -----|----- | -----|------|
-| tidyverse | R1C2 | R1C2 | R1C2 |
-| R2C1 | R2C2 | R2C2 | R1C2 |
-| R1C1 | R1C2 | R1C2 | R1C2 |
-| R2C1 | R2C2 | R2C2 | R1C2 |
-| R1C1 | R1C2 | R1C2 | R1C2 |
-| R2C1 | R2C2 | R2C2 | R1C2 |
+| spData | spDataLarge | ggplot | tmap |
+| RColorBrewer | caladaptr | shiny | shinydashboard |
+| shinyWidgets | shinycssloaders | leaflet | leaflet.extras |
+| leaflet.minicharts | countrycode | plotly | terra |
+| colorspace | gridExtra | zoo | janitor |
+| devtools | lubridate | rlist | tidyr |
 
 ### Authors 
 The authors of this dashboard are [Liane Chen](https://github.com/lchenhub), [Charlie Curtin](https://github.com/charliecurtin1), [Kristina Glass](https://github.com/kristinaglass), and [Hazel Vaquero](https://github.com/hazelvaq). For any comments or questions about this dashboard, please reach out to @cp-casaschools@bren.ucsb.edu
