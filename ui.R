@@ -159,12 +159,26 @@ body <- dashboardBody(
                   
                   
                 ),
+                # box(
+                #   width = NULL,
+                #   leafletOutput(outputId = "wildfire_map2012") %>% 
+                #     withSpinner(color="#0dc5c1"),
+                #   leafletOutput(outputId = "wildfire_map2023") %>% 
+                #     withSpinner(color="#0dc5c1"),
+                #   includeMarkdown("text/wildfire.md")
+                # )
                 box(
                   width = NULL,
-                  leafletOutput(outputId = "wildfire_map2012") %>% 
-                    withSpinner(color="#0dc5c1"),
-                  leafletOutput(outputId = "wildfire_map2023") %>% 
-                    withSpinner(color="#0dc5c1"),
+                  column(
+                    width = 6,
+                    leafletOutput(outputId = "wildfire_map2012") %>%
+                      withSpinner(color="#0dc5c1")
+                  ),
+                  column(
+                    width = 6,
+                    leafletOutput(outputId = "wildfire_map2023") %>%
+                      withSpinner(color="#0dc5c1")
+                  ),
                   includeMarkdown("text/wildfire.md")
                 )
               )

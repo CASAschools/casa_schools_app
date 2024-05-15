@@ -50,7 +50,7 @@ wildfire_map2023 <- function(input) {
       addLayersControl(
         overlayGroups = c("wildfire hazard", "school community area", "school point"),
         baseGroups = c("topographic map", "satellite imagery"),
-        options = layersControlOptions(collapsed = FALSE))
+        options = layersControlOptions(collapsed = TRUE))
     
   })
   
