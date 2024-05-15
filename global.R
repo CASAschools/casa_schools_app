@@ -4,7 +4,7 @@
 required_packages <- c(
   "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "tidyverse",
   "leaflet", "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
-  "plotly", "terra", "colorspace", "RColorBrewer", "gridExtra"
+  "plotly", "terra", "colorspace", "RColorBrewer", "gridExtra", "fontawesome"
 )
 
 # install missing packages
@@ -35,6 +35,7 @@ library(terra)
 library(colorspace)
 library(RColorBrewer)
 library(gridExtra)
+library(fontawesome)
 
 
 # make sure the full cdscode can be seen
@@ -147,3 +148,22 @@ binpal <- colorBin("RdYlGn", hazards_buffer$hazard_score, bins = 5, reverse = TR
 hazards_buffer <- hazards_buffer %>% mutate(
   HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
 
+# markers <- awesomeIconList(
+#   `1` = makeAwesomeIcon(
+#     icon="empty",
+#     markerColor = "white",
+#     library="fa"
+#   ))
+# 
+# icons <- iconList(
+#   `1` = makeIcon(
+#     iconUrl = "https://www.svgrepo.com/svg/533533/school-flag.svg",
+#     iconWidth = 31*215/230,
+#     iconHeight = 20, 
+#     iconAnchorY = 33,
+#     iconAnchorX = 31*215/230/2
+#   ))
+# 
+# 
+# addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
+#   addMarkers(~Longitude, ~Latitude, icon = ~icons)
