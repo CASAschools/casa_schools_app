@@ -22,7 +22,7 @@ wildfire_map2023 <- function(input) {
     school_point <- st_transform(school_point, crs = 4326)
     
     # Define color palette and labels for wildfire hazard potential
-    labels <- c("developed or open water", "very low", "low", "moderate", "high", "very high", "")
+    labels <- c("developed or<br>open water", "very low", "low", "moderate", "high", "very high", "")
     whp_colors <- c("grey", "#fee391", "#fec44f", "#fe9929", "#d95f0e", "#993404", "transparent")
     whp_palette <- colorFactor(palette = whp_colors,
                                domain = values(whp_school2023),
@@ -45,7 +45,7 @@ wildfire_map2023 <- function(input) {
                        weight = 3, radius = 5, fillOpacity = 1, group = "school point") %>%
       # add legend for wildfire hazard potential with custom labels
       addLegend("bottomright", colors = rev(whp_colors), labels = rev(labels),
-                title = "wildfire hazard potential", opacity = 1) %>% 
+                title = "", opacity = 1) %>% 
       # add option to toggle data on and off
       addLayersControl(
         overlayGroups = c("wildfire hazard", "school community area", "school point"),

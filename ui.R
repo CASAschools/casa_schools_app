@@ -171,11 +171,21 @@ body <- dashboardBody(
                   width = NULL,
                   column(
                     width = 6,
+                    # column title
+                    div(
+                      style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                      "2012 wildfire hazard"
+                    ),
                     leafletOutput(outputId = "wildfire_map2012") %>%
                       withSpinner(color="#0dc5c1")
                   ),
                   column(
                     width = 6,
+                    # column title
+                    div(
+                      style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                      "2023 wildfire hazard"
+                    ),
                     leafletOutput(outputId = "wildfire_map2023") %>%
                       withSpinner(color="#0dc5c1")
                   ),
