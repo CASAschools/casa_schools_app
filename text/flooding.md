@@ -1,6 +1,6 @@
 ### What does this map tell us?
 # <br>
-# <span style="font-size:18px;">Dos Pueblos Senior High is within a Moderate to Low flooding risk zone.</span>
+<!--# <span style="font-size:18px;">Dos Pueblos Senior High is within a Moderate to Low flooding risk zone.</span>-->
 # <br>
 
 ### How is flood risk measured?
