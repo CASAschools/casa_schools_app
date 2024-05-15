@@ -1,22 +1,51 @@
-# pick a school
-dp_sr_high <- schools %>% 
-  filter(CDSCode == 42767864231726)
+# filter school buffers for school name
+selected_school <- buffers_filtered_flood
+
+# crop to selected school
+flooding_school <- crop(FEMA_reclass, selected_school)
+
+# create school point based on centroid of buffer
+selected_school_point <- selected_school %>% 
+  st_centroid()
 
 # grab the flooding polgons that intersect with that school area
-dp_sr_high_flood <- FEMA_reclass[dp_sr_high, ]
+selected_flood <- FEMA_reclass[selected_school, ]
 
 #intersect flooding polygons so only the extent within school area is shown
-dp_sr_high_intersected <- st_intersection(dp_sr_high, dp_sr_high_flood)
+selected_flood_intersected <- st_intersection(selected_school, selected_flood)
 
+# overlay the school buffer and school point on the FEMA flood risk shapefile
 # plot it
-tmap_mode("view")
+selected_flood_intersected <- st_transform(selected_flood_intersected, crs = 4326)
+selected_flood <- st_transform(selected_flood, crs = 4326)
+selected_school <- st_transform(selected_school, crs = 4326)
+selected_school_point <- st_transform(selected_school_point, crs = 4326)
 
-flood <- tm_shape(dp_sr_high_intersected) +
-  tm_polygons(fill = "flood_risk",
-              title = "Flood Risk",
-              labels = c("High", "Moderate to Low", "Undetermined"),
-              palette = c("#0C46EE", "#AEDBEA", "#8DB6CD"), style = "pretty",
-              alpha = 0.5) +
-  tm_shape(dp_sr_high_flood, alpha = 0.5) + 
-  tm_polygons(fill = "flood_risk", alpha = 0.5, legend.show=FALSE, 
-              palette = c("#0C46EE", "#AEDBEA", "#8DB6CD"), style = "pretty")
+
+# define color palette and labels for FEMA flood zone classification
+labels <- c("High", "Moderate to Low", "Undetermined")
+flood_colors <- colorFactor(c("#0C46EE", "#AEDBEA", "#8DB6CD"), levels = c("High", "Moderate to Low", "Undetermined"))
+flood_palette <- colorFactor(palette = flood_colors,
+                             domain = selected_flood_intersected$flood_risk)
+
+# leaflet map of flood risk potential
+leaflet() %>% 
+  
+  # add basemap
+  addProviderTiles(providers$Esri.WorldTopoMap) %>% 
+  
+  # add cropped flood risk
+  addPolygons(data = selected_flood_intersected, fillColor = c("#0C46EE", "#AEDBEA", "#8DB6CD"),  fillOpacity = .7, group = "Flood Risk") %>% 
+  
+  # add school buffer polygon
+  addPolygons(data = selected_school, color = "darkgrey", fill = FALSE, 
+              weight = 2, group = "School Community Area") %>% 
+  
+  # add school point
+  addCircleMarkers(data = selected_school_point, color = "black", stroke = FALSE, 
+                   weight = 10, radius = 5, fillOpacity = 1,
+                   group = "School Point") %>% 
+  
+  # add legend for flood risk with custom labels
+  addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#8DB6CD"), labels = labels,
+            title = "Flood Risk", opacity = 0.7)

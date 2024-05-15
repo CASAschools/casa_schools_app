@@ -122,6 +122,14 @@ whp_reclass2012 <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_
 # load in data
 ca_slr <- st_read("/capstone/casaschools/sea_level_rise/intermediate_layers/ca_slr.shp")
 
+
+# ----------------------- Flooding -------------------------------
+# load in data
+FEMA_reclass <- st_read("/capstone/casaschools/flooding/intermediate_layers/fema_high_union.shp")
+
+# make sure the crs are the same (WGS 84)
+FEMA_reclass <- st_transform(FEMA_reclass, st_crs(schools_buffers))
+
 # ----------------------------------------------------------------
 
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
