@@ -1,7 +1,12 @@
 extreme_heat_plot_test <- function(input) {
   
+  # filter for school
+  # heat_filtered <- reactive({
+  #   filter(extreme_heat, SchoolName == input$school_heat)
+  # })
+  
   heat_filtered <- reactive({
-    filter(extreme_heat, SchoolName == input$school_heat)
+    school_filtered(extreme_heat, input$district, input$school_heat)
   })
   
   renderPlotly({
@@ -23,4 +28,5 @@ extreme_heat_plot_test <- function(input) {
              margin = list(t = 60),
              barmode = "grouped")
   })
+  
 }
