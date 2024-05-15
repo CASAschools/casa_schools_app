@@ -11,7 +11,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update wildfire tab title based on the selected school
   output$school_name_wildfire <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -21,7 +21,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update heat tab title based on the selected school
   output$school_name_heat <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -31,7 +31,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update precip tab title based on the selected school
   output$school_name_precip <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -41,7 +41,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update flood tab title based on the selected school
   output$school_name_flood <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -51,7 +51,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update sea level rise tab title based on the selected school
   output$school_name_slr <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -61,7 +61,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   
   #-------------------Hazards plots---------------------------------------------
   

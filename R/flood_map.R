@@ -2,7 +2,7 @@ flood_map <- function(input) {
   
   # filter buffers based on school
   buffers_filtered <- reactive({
-    school_filtered(hazards_buffer, input$district, input$school_slr)
+    school_filtered(hazards_buffer, input$district, input$school_flooding)
   })
   
   renderLeaflet({
