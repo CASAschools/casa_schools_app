@@ -91,11 +91,8 @@ server <- function(input, output, session){
   
   #---------------------Flooding--------------------------------------------------
   
-  output$flooding <- renderPlot({
-    source("servers_hazards_plotting/flooding.R",
-           local = TRUE,
-           echo = FALSE, 
-           print.eval = FALSE)[1]})  
+  # output flood map
+  output$flood_map <- flood_map(input)
   
   #---------------------Sea Level Rise----------------------------------------
   
@@ -163,6 +160,13 @@ server <- function(input, output, session){
     updateSelectInput(session, "school_wildfire", choices = valid_schools, selected = NULL)
     #updateSelectInput(session, "school_slr", choices = valid_schools, selected = NULL)
   })
+  
+  # observe({
+  #   # observe a user clicking the first button
+  #   input$school
+  #   
+  # }) %>% 
+  #   bindEvent(updateSelectInput(session, "school_wildfire", selected = input$school))
 
 } 
 

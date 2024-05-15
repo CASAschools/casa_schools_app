@@ -256,7 +256,8 @@ body <- dashboardBody(
                 
                 box(
                   width = NULL,
-                  #plot
+                  leafletOutput(outputId = "flood_map") %>% 
+                    withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/flooding.md")
                   
                 )
@@ -290,8 +291,8 @@ body <- dashboardBody(
                 
                 box(
                   width = NULL,
-                  leafletOutput(outputId = "slr_map") %>% 
-                    withSpinner(color="#0dc5c1"),
+                  leafletOutput(outputId = "slr_map"),
+                    #withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/coastal_inundation.md")
                   
                 )
