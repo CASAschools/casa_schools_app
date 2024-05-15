@@ -83,8 +83,11 @@ server <- function(input, output, session){
   
   #---------------------Wildfire--------------------------------------------------
   
-  # output wildfire map
-  output$wildfire_map <- wildfire_map(input)
+  # output wildfire map for 2023
+  output$wildfire_map2023 <- wildfire_map2023(input)
+  
+  # output wildfire map for 2012
+  output$wildfire_map2012 <- wildfire_map2012(input)
   
   #---------------------Flooding--------------------------------------------------
   

@@ -1,4 +1,4 @@
-wildfire_map <- function(input) {
+wildfire_map2023 <- function(input) {
   
   # filter school buffers based on welcome page district input and wildfire tab school input
   buffers_filtered <- reactive({
@@ -15,8 +15,7 @@ wildfire_map <- function(input) {
     school_point <- st_centroid(school_buffer)
     
     # select the wildfire hazard potential cells that overlap
-    whp_school <- crop(whp_reclass, school_buffer)
-    whp_school2012 <- crop(whp_reclass2012, school_buffer)
+    whp_school2023 <- crop(whp_reclass, school_buffer)
     
     # change the CRS of the buffer and school point to WGS 1984 for mapping
     school_buffer <- st_transform(school_buffer, crs = 4326)
@@ -26,7 +25,7 @@ wildfire_map <- function(input) {
     labels <- c("developed or open water", "very low", "low", "moderate", "high", "very high", "")
     whp_colors <- c("grey", "#fee391", "#fec44f", "#fe9929", "#d95f0e", "#993404", "transparent")
     whp_palette <- colorFactor(palette = whp_colors,
-                               domain = values(whp_school),
+                               domain = values(whp_school2023),
                                na.color = "transparent")
     
     # create wildfire map
@@ -36,11 +35,8 @@ wildfire_map <- function(input) {
       # add imagery basemap
       addProviderTiles(providers$Esri.WorldImagery, group = "satellite imagery") %>% 
       # add cropped whp raster for 2023
-      addRasterImage(whp_school, colors = whp_palette,
-                     opacity = .7, group = "wildfire hazard 2023") %>%
-      # add cropped whp raster for 2012
-      addRasterImage(whp_school2012, colors = whp_palette,
-                     opacity = .7, group = "wildfire hazard 2012") %>% 
+      addRasterImage(whp_school2023, colors = whp_palette,
+                     opacity = .7, group = "wildfire hazard") %>%
       # add school buffer polygon
       addPolygons(data = school_buffer, color = "black", fill = FALSE,
                   weight = 2, group = "school community area") %>%
@@ -52,11 +48,9 @@ wildfire_map <- function(input) {
                 title = "wildfire hazard potential", opacity = 1) %>% 
       # add option to toggle data on and off
       addLayersControl(
-        overlayGroups = c("wildfire hazard 2023", "wildfire hazard 2012", "school community area", "school point"),
+        overlayGroups = c("wildfire hazard", "school community area", "school point"),
         baseGroups = c("topographic map", "satellite imagery"),
-        options = layersControlOptions(collapsed = FALSE)) %>% 
-      # toggle the 2012 whp data off by default
-      hideGroup("wildfire hazard 2012")
+        options = layersControlOptions(collapsed = FALSE))
     
   })
   
