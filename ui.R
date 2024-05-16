@@ -82,9 +82,9 @@ body <- dashboardBody(
                     column(6,
                            selectInput(
                              inputId = "school_summary",
-                             label = "Select another school in the same district:",
+                             label = "Select or type another school in the same district:",
                              choices = unique(hazards_test$SchoolName),
-                             multiple = FALSE
+                             selected = NULL
                              
                            )#END Picker
                     )#END Picker column
@@ -119,9 +119,9 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(
                            inputId = "school_heat",
-                           label = "Select another school in the same district:",
+                           label = "Select or type another school in the same district:",
                            choices = unique(extreme_heat$SchoolName),
-                           multiple = FALSE
+                           selected = NULL
                          )
                   ),
 
@@ -152,21 +152,12 @@ body <- dashboardBody(
                   # school dropdown
                   column(6, 
                          selectInput(inputId = "school_wildfire",
-                                     label = "Select another school in the same district:",
+                                     label = "Select or type another school in the same district:",
                                      choices = unique(schools_buffers$SchoolName),
-                                     multiple = FALSE)
+                                     selected = NULL)
                   )
                   
-                  
                 ),
-                # box(
-                #   width = NULL,
-                #   leafletOutput(outputId = "wildfire_map2012") %>% 
-                #     withSpinner(color="#0dc5c1"),
-                #   leafletOutput(outputId = "wildfire_map2023") %>% 
-                #     withSpinner(color="#0dc5c1"),
-                #   includeMarkdown("text/wildfire.md")
-                # )
                 box(
                   width = NULL,
                   column(
@@ -211,10 +202,9 @@ body <- dashboardBody(
                   # school dropdown
                   column(6, 
                          selectInput(inputId = "school_precip", 
-                                     label = "Select another school in the same district:", 
+                                     label = "Select or type another school in the same district:", 
                                      choices = unique(names_precip_merge$SchoolName), 
-                                     selected = unique(names_precip_merge$SchoolName)[1],
-                                     multiple = FALSE)
+                                     selected = NULL)
                   ),
                   
                 ),
@@ -246,9 +236,9 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(
                            inputId = "school_flooding",
-                           label = "Select another school in the same district:",
+                           label = "Select or type another school in the same district:",
                            choices = unique(hazards_test$SchoolName),
-                           multiple = FALSE
+                           selected = NULL
                          )
                   ),
                   
@@ -281,9 +271,9 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(
                            inputId = "school_slr",
-                           label = "Select another school in the same district:",
+                           label = "Select or type another school in the same district:",
                            choices = unique(hazards_test$SchoolName),
-                           multiple = FALSE
+                           selected = NULL
                          )
                   ),
                   
