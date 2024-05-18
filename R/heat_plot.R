@@ -1,10 +1,6 @@
-extreme_heat_plot_test <- function(input) {
+heat_plot <- function(input) {
   
-  # filter for school
-  # heat_filtered <- reactive({
-  #   filter(extreme_heat, SchoolName == input$school_heat)
-  # })
-  
+  # filter for extreme heat days by school based on homepage district input and heat tab school input
   heat_filtered <- reactive({
     school_filtered(extreme_heat, input$district, input$school_heat)
   })

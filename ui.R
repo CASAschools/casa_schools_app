@@ -38,30 +38,38 @@ body <- dashboardBody(
               box(width = NULL,
                   title = h3(tags$strong("Welcome to the CASAschools Climate Hazards Dashboard!")),
                   includeMarkdown("text/about_text.md"),
-                  h3(tags$strong("Getting Started")),
-                  # sidebarLayout(
-                  #   sidebarPanel(
-                  #     uiOutput("cityMenu"),
-                  #     uiOutput("districtMenu"),
-                  #     uiOutput("schoolMenu")
-                  #   ),
+                  
                   fluidRow(
-                    column(width = 4,
-                           uiOutput("cityMenu"),
-                           uiOutput("districtMenu"),
-                           uiOutput("schoolMenu"),
-                           leafletOutput("map") %>% 
-                             withSpinner(color="#0dc5c1")
-                           
-                           
-                           ),
-                    column(width = 8,
-                           plotOutput("summary_homepage") %>% 
-                             withSpinner(color="#0dc5c1") )
                     
-                    ),
-                  # mainPanel(
-                  #   leafletOutput("map")
+                    # START SELECT CITY, DISTRICT, AND SCHOOL COLUMN
+                    column(width = 4,
+                           # label
+                           h3(tags$strong("Select a school to get started")),
+                           # city selection
+                           uiOutput("cityMenu"),
+                           # district selection
+                           uiOutput("districtMenu"),
+                           # school selection
+                           uiOutput("schoolMenu"),
+                           # map with school buffer output
+                           leafletOutput("map") %>% 
+                             withSpinner(color="#0dc5c1")),
+                    # END SELECT CITY, DISTRICT, AND SCHOOL COLUMN
+                    
+                    # START HAZARD SUMMARY PLOT COLUMN
+                    column(width = 8,
+                           # output plot title
+                           div(style = "text-align:center;",
+                               h3(tags$strong("Hazard Summary"))),
+                           # output summary score
+                           div(style = "text-align:center;",
+                               uiOutput("summary_score_home")),
+                           # output summary plot
+                           plotOutput("summary_home") %>% 
+                             withSpinner(color="#0dc5c1"))
+                    # END HAZARD SUMMARY PLOT COLUMN
+                    
+                    )
                   
               ))),
     
@@ -82,9 +90,9 @@ body <- dashboardBody(
                     column(6,
                            selectInput(
                              inputId = "school_summary",
-                             label = "Select another school in the same district:",
+                             label = "Select or type another school in the same district:",
                              choices = unique(hazards_test$SchoolName),
-                             multiple = FALSE
+                             selected = NULL
                              
                            )#END Picker
                     )#END Picker column
@@ -93,8 +101,12 @@ body <- dashboardBody(
                   ),#END FLUID ROW
                   
                   box(
-                    width = NULL,
-                    plotOutput(outputId = "summary_sumtab") %>% 
+                    width = NULL, 
+                    # output summary score
+                    div(style = "text-align:center;",
+                        uiOutput("summary_score_tab")),
+                    # output summmary plot
+                    plotOutput(outputId = "summary_tab") %>% 
                       withSpinner(color="#0dc5c1")
                   )
               )
@@ -119,16 +131,16 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(
                            inputId = "school_heat",
-                           label = "Select another school in the same district:",
+                           label = "Select or type another school in the same district:",
                            choices = unique(extreme_heat$SchoolName),
-                           multiple = FALSE
+                           selected = NULL
                          )
                   ),
 
                 ),
                 box(
                   width = NULL,
-                  plotlyOutput(outputId = "extreme_heat_plotly") %>% 
+                  plotlyOutput(outputId = "heat_plot") %>% 
                     withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/heat.md")
                   
@@ -152,21 +164,12 @@ body <- dashboardBody(
                   # school dropdown
                   column(6, 
                          selectInput(inputId = "school_wildfire",
-                                     label = "Select another school in the same district:",
+                                     label = "Select or type another school in the same district:",
                                      choices = unique(schools_buffers$SchoolName),
-                                     multiple = FALSE)
+                                     selected = NULL)
                   )
                   
-                  
                 ),
-                # box(
-                #   width = NULL,
-                #   leafletOutput(outputId = "wildfire_map2012") %>% 
-                #     withSpinner(color="#0dc5c1"),
-                #   leafletOutput(outputId = "wildfire_map2023") %>% 
-                #     withSpinner(color="#0dc5c1"),
-                #   includeMarkdown("text/wildfire.md")
-                # )
                 box(
                   width = NULL,
                   column(
@@ -211,17 +214,16 @@ body <- dashboardBody(
                   # school dropdown
                   column(6, 
                          selectInput(inputId = "school_precip", 
-                                     label = "Select another school in the same district:", 
+                                     label = "Select or type another school in the same district:", 
                                      choices = unique(names_precip_merge$SchoolName), 
-                                     selected = unique(names_precip_merge$SchoolName)[1],
-                                     multiple = FALSE)
+                                     selected = NULL)
                   ),
                   
                 ),
                 
                 box(
                   width = NULL,
-                  plotlyOutput(outputId = 'extreme_precipitation_plotly') %>% 
+                  plotlyOutput(outputId = 'precip_plot') %>% 
                     withSpinner(color="#0dc5c1"),
                   includeMarkdown("text/heat.md")
                   
@@ -246,9 +248,9 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(
                            inputId = "school_flooding",
-                           label = "Select another school in the same district:",
+                           label = "Select or type another school in the same district:",
                            choices = unique(hazards_test$SchoolName),
-                           multiple = FALSE
+                           selected = NULL
                          )
                   ),
                   
@@ -281,9 +283,9 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(
                            inputId = "school_slr",
-                           label = "Select another school in the same district:",
+                           label = "Select or type another school in the same district:",
                            choices = unique(hazards_test$SchoolName),
-                           multiple = FALSE
+                           selected = NULL
                          )
                   ),
                   
