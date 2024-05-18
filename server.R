@@ -66,20 +66,26 @@ server <- function(input, output, session){
   #-------------------Hazards plots---------------------------------------------
   
   # output hazard summary plot for the homepage
-  output$summary_homepage <- summary_plot_homepage(input)
+  output$summary_home <- summary_home(input)
   
+  # output summary score as the header on the homepage
+  output$summary_score_home <- summary_score_home(input)
+    
   # output hazard summary plot for the summary tab
-  output$summary_sumtab <- summary_plot_tab(input)
+  output$summary_tab <- summary_tab(input)
+  
+  # output hazard summary score as the header on the summary tab
+  output$summary_score_tab <- summary_score_tab(input)
 
   #--------------------Extreme Heat ---------------------------------------------
   
   # output extreme heat plot
-  output$extreme_heat_plotly <- extreme_heat_plot_test(input)
+  output$heat_plot <- heat_plot(input)
 
   #--------------------Extreme Precipitation-------------------------------------
   
   # output extreme precipitation plot
-  output$extreme_precipitation_plotly <- extreme_precip_plot(input)
+  output$precip_plot <- precip_plot(input)
   
   #---------------------Wildfire--------------------------------------------------
   
@@ -109,7 +115,7 @@ server <- function(input, output, session){
   # test version with no default value
   output$cityMenu <- renderUI({
     selectInput(inputId = "city", 
-                label = "Please type a city", 
+                label = "Select or type a city", 
                 choices = unique(hazards_buffer$City), 
                 selected = NULL)
   })
@@ -119,7 +125,7 @@ server <- function(input, output, session){
     req(input$city)  # requires city input
     valid_districts <- unique(hazards_buffer$DistrictNa[hazards_buffer$City == input$city])
     selectInput(inputId = "district", 
-                label = "Choose a district", 
+                label = "Select or type a school district", 
                 choices = valid_districts,
                 selected = NULL)
   })
@@ -129,7 +135,7 @@ server <- function(input, output, session){
     req(input$district)  #requires district input
     valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district & hazards_buffer$City == input$city])
     selectInput(inputId = "school", 
-                label = "Choose a school", 
+                label = "Select or type a school", 
                 choices = valid_schools,
                 selected = NULL)
   })
@@ -205,9 +211,6 @@ server <- function(input, output, session){
   observeEvent(input$school_slr, {
     selected_school(input$school_slr)
   })
-  
-  # store selected school as a reactive value
-  selected_school <- reactiveVal()
   
   # Update all select inputs based on the reactive value of selected school
   observe({

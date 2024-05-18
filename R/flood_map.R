@@ -18,7 +18,7 @@ flood_map <- function(input) {
       st_centroid()
     
     # grab the flooding polgons that intersect with that school area
-   # selected_flood <- FEMA_reclass[selected_school, ]
+    #selected_flood <- FEMA_reclass[selected_school, ]
     
     #intersect flooding polygons so only the extent within school area is shown
     #selected_flood_intersected <- st_intersection(selected_school, selected_flood)
