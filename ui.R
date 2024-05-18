@@ -91,7 +91,7 @@ body <- dashboardBody(
                            selectInput(
                              inputId = "school_summary",
                              label = "Select or type another school in the same district:",
-                             choices = unique(hazards_test$SchoolName),
+                             choices = sort(unique(hazards_test$SchoolName)),
                              selected = NULL
                              
                            )#END Picker
@@ -132,7 +132,7 @@ body <- dashboardBody(
                          selectInput(
                            inputId = "school_heat",
                            label = "Select or type another school in the same district:",
-                           choices = unique(extreme_heat$SchoolName),
+                           choices = sort(unique(extreme_heat$SchoolName)),
                            selected = NULL
                          )
                   ),
@@ -165,7 +165,7 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(inputId = "school_wildfire",
                                      label = "Select or type another school in the same district:",
-                                     choices = unique(schools_buffers$SchoolName),
+                                     choices = sort(unique(schools_buffers$SchoolName)),
                                      selected = NULL)
                   )
                   
@@ -215,7 +215,7 @@ body <- dashboardBody(
                   column(6, 
                          selectInput(inputId = "school_precip", 
                                      label = "Select or type another school in the same district:", 
-                                     choices = unique(names_precip_merge$SchoolName), 
+                                     choices = sort(unique(names_precip_merge$SchoolName)), 
                                      selected = NULL)
                   ),
                   
@@ -249,7 +249,7 @@ body <- dashboardBody(
                          selectInput(
                            inputId = "school_flooding",
                            label = "Select or type another school in the same district:",
-                           choices = unique(hazards_test$SchoolName),
+                           choices = sort(unique(hazards_test$SchoolName)),
                            selected = NULL
                          )
                   ),
@@ -284,7 +284,7 @@ body <- dashboardBody(
                          selectInput(
                            inputId = "school_slr",
                            label = "Select or type another school in the same district:",
-                           choices = unique(hazards_test$SchoolName),
+                           choices = sort(unique(hazards_test$SchoolName)),
                            selected = NULL
                          )
                   ),

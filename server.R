@@ -116,7 +116,7 @@ server <- function(input, output, session){
   output$cityMenu <- renderUI({
     selectInput(inputId = "city", 
                 label = "Select or type a city", 
-                choices = unique(hazards_buffer$City), 
+                choices = sort(unique(hazards_buffer$City)), 
                 selected = NULL)
   })
   
@@ -126,7 +126,7 @@ server <- function(input, output, session){
     valid_districts <- unique(hazards_buffer$DistrictNa[hazards_buffer$City == input$city])
     selectInput(inputId = "district", 
                 label = "Select or type a school district", 
-                choices = valid_districts,
+                choices = sort(valid_districts),
                 selected = NULL)
   })
   
@@ -136,7 +136,7 @@ server <- function(input, output, session){
     valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district & hazards_buffer$City == input$city])
     selectInput(inputId = "school", 
                 label = "Select or type a school", 
-                choices = valid_schools,
+                choices = sort(valid_schools),
                 selected = NULL)
   })
   
