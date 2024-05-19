@@ -12,21 +12,25 @@ selected_school_point <- selected_school %>%
 selected_flood <- FEMA_reclass[selected_school, ]
 
 #intersect flooding polygons so only the extent within school area is shown
-selected_flood_intersected <- st_intersection(selected_school, selected_flood)
+#selected_flood_intersected <- st_intersection(selected_school, selected_flood)
+
+#clip school buffers to flood intersections
+FEMA_schools <- st_intersection(schools, FEMA_reclass)
 
 # overlay the school buffer and school point on the FEMA flood risk shapefile
 # plot it
-selected_flood_intersected <- st_transform(selected_flood_intersected, crs = 4326)
+#selected_flood_intersected <- st_transform(selected_flood_intersected, crs = 4326)
 selected_flood <- st_transform(selected_flood, crs = 4326)
 selected_school <- st_transform(selected_school, crs = 4326)
 selected_school_point <- st_transform(selected_school_point, crs = 4326)
+FEMA_schools <- st_transform(FEMA_schools, crs = 4326)
 
 
 # define color palette and labels for FEMA flood zone classification
 labels <- c("High", "Moderate to Low", "Undetermined")
-flood_colors <- colorFactor(c("#0C46EE", "#AEDBEA", "#8DB6CD"), levels = c("High", "Moderate to Low", "Undetermined"))
+flood_colors <- colorFactor(c("#0C46EE", "#deebf7", "#8DB6CD"), levels = c("High", "Moderate to Low", "Undetermined"))
 flood_palette <- colorFactor(palette = flood_colors,
-                             domain = selected_flood_intersected$flood_risk)
+                             domain = FEMA_schools$flood_risk)
 
 # leaflet map of flood risk potential
 leaflet() %>% 
@@ -35,7 +39,7 @@ leaflet() %>%
   addProviderTiles(providers$Esri.WorldTopoMap) %>% 
   
   # add cropped flood risk
-  addPolygons(data = selected_flood_intersected, fillColor = c("#0C46EE", "#AEDBEA", "#8DB6CD"),  fillOpacity = .7, group = "Flood Risk") %>% 
+  addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#deebf7", "#8DB6CD"),  fillOpacity = .7, group = "Flood Risk") %>% 
   
   # add school buffer polygon
   addPolygons(data = selected_school, color = "darkgrey", fill = FALSE, 
@@ -47,5 +51,5 @@ leaflet() %>%
                    group = "School Point") %>% 
   
   # add legend for flood risk with custom labels
-  addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#8DB6CD"), labels = labels,
-            title = "Flood Risk", opacity = 0.7)
+  addLegend("bottomright", colors = c("#0C46EE", "#deebf7", "#8DB6CD"), labels = labels,
+            title = "Flood Risk", opacity = 0.8)
