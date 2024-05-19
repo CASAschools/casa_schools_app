@@ -16,7 +16,9 @@ heat_plot <- function(input) {
            y = "Number of Days",
            title = "Number of Extreme Heat Days") +
       theme(legend.position = "top",
-            legend.title = element_blank())
+            legend.title = element_blank()) +
+      scale_fill_manual(values = c("High greenhouse gas emissions"= "#ff0000", 
+                                   "Reduced greenhouse gas emissions"= "#ffc100"))
     
     plotly::ggplotly(heat) %>%
       layout(legend = list(orientation = "h", y = 1.1,
