@@ -11,11 +11,14 @@ flood_map <- function(input) {
     selected_school <- buffers_filtered()
     
     # crop to selected school
-    #flooding_school <- crop(FEMA_reclass, selected_school)
+    ##flooding_school <- crop(FEMA_reclass, selected_school)
     
     # create school point based on centroid of buffer
     selected_school_point <- selected_school %>% 
       st_centroid()
+    
+    #clip school buffers to flood intersections
+    FEMA_schools <- st_intersection(selected_school, FEMA_reclass)
     
     # grab the flooding polgons that intersect with that school area
     #selected_flood <- FEMA_reclass[selected_school, ]
@@ -26,10 +29,11 @@ flood_map <- function(input) {
     
     # overlay the school buffer and school point on the FEMA flood risk shapefile
     # plot it
-    selected_flood_intersected <- st_transform(selected_flood_intersected, crs = 4326)
+    # selected_flood_intersected <- st_transform(selected_flood_intersected, crs = 4326)
    # selected_flood <- st_transform(selected_flood, crs = 4326)
     selected_school <- st_transform(selected_school, crs = 4326)
     selected_school_point <- st_transform(selected_school_point, crs = 4326)
+    FEMA_schools <- st_transform(FEMA_schools, crs = 4326)
     
     
     # define color palette and labels for FEMA flood zone classification
@@ -45,7 +49,7 @@ flood_map <- function(input) {
       addProviderTiles(providers$Esri.WorldTopoMap) %>% 
       
       # add cropped flood risk
-      addPolygons(data = selected_flood_intersected, fillColor = c("#0C46EE", "#AEDBEA", "#8DB6CD"),  fillOpacity = .7, group = "Flood Risk") %>% 
+      addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#AEDBEA", "#8DB6CD"),  fillOpacity = .7, group = "Flood Risk") %>% 
       
       # add school buffer polygon
       addPolygons(data = selected_school, color = "darkgrey", fill = FALSE, 

@@ -1,15 +1,15 @@
 # filter school buffers for school name
-selected_school <- buffers_filtered_flood
+selected_school <- buffers_filtered
 
 # crop to selected school
-flooding_school <- crop(FEMA_reclass, selected_school)
+#flooding_school <- crop(FEMA_reclass, selected_school)
 
 # create school point based on centroid of buffer
 selected_school_point <- selected_school %>% 
   st_centroid()
 
 # grab the flooding polgons that intersect with that school area
-selected_flood <- FEMA_reclass[selected_school, ]
+#selected_flood <- FEMA_reclass[selected_school, ]
 
 #intersect flooding polygons so only the extent within school area is shown
 #selected_flood_intersected <- st_intersection(selected_school, selected_flood)
@@ -20,7 +20,7 @@ FEMA_schools <- st_intersection(schools, FEMA_reclass)
 # overlay the school buffer and school point on the FEMA flood risk shapefile
 # plot it
 #selected_flood_intersected <- st_transform(selected_flood_intersected, crs = 4326)
-selected_flood <- st_transform(selected_flood, crs = 4326)
+#selected_flood <- st_transform(selected_flood, crs = 4326)
 selected_school <- st_transform(selected_school, crs = 4326)
 selected_school_point <- st_transform(selected_school_point, crs = 4326)
 FEMA_schools <- st_transform(FEMA_schools, crs = 4326)

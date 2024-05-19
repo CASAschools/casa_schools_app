@@ -124,6 +124,9 @@ FEMA_reclass <- st_read("/capstone/casaschools/flooding/intermediate_layers/fema
 # make sure the crs are the same (WGS 84)
 FEMA_reclass <- st_transform(FEMA_reclass, st_crs(schools_buffers))
 
+#clip school buffers to flood intersections
+#FEMA_schools <- st_intersection(school_buffers, FEMA_reclass)
+
 # ----------------------------------------------------------------
 
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
