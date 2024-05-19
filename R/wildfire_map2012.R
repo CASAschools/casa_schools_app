@@ -29,7 +29,7 @@ wildfire_map2012 <- function(input) {
                                na.color = "transparent")
     
     # create wildfire map
-    leaflet() %>%
+    leaflet(options = leafletOptions(attributionControl = FALSE)) %>%
       # add topo basemap
       addProviderTiles(providers$Esri.WorldTopoMap, group = "topographic map") %>%
       # add imagery basemap
@@ -43,9 +43,11 @@ wildfire_map2012 <- function(input) {
       # add school point
       addCircleMarkers(data = school_point, color = "blue", stroke = FALSE,
                        weight = 3, radius = 5, fillOpacity = 1, group = "school point") %>%
-      # # add legend for wildfire hazard potential with custom labels
-      # addLegend("bottomright", colors = rev(whp_colors), labels = rev(labels),
-      #           title = "wildfire hazard potential", opacity = 1) %>% 
+      # add a scale bar
+      addScaleBar(position =  "bottomleft",
+                  options = scaleBarOptions(imperial = TRUE,
+                                            metric = FALSE,
+                                            maxWidth = 200)) %>% 
       # add option to toggle data on and off
       addLayersControl(
         overlayGroups = c("wildfire hazard", "school community area", "school point"),

@@ -3,65 +3,22 @@ server <- function(input, output, session){
   #-------------------Reactive tab titles--------------------------------
 
   # update hazard summary tab title based on the selected school
-  output$school_name_summary <- renderUI({
-    # make sure there's a selection, outputting a message if there is none
-    if (!is.null(input$school_summary) && input$school_summary != "") {
-      h3(tags$strong(input$school_summary), style = "font-size: 20px")
-    } else {
-      h3(tags$strong("Select a school", style = "font-size: 20px"))
-    }
-  })
+  output$school_name_summary <- update_school_name(input$school_summary)
 
   # update wildfire tab title based on the selected school
-  output$school_name_wildfire <- renderUI({
-    # make sure there's a selection, outputting a message if there is none
-    if (!is.null(input$school_wildfire) && input$school_wildfire != "") {
-      h3(tags$strong(input$school_wildfire), style = "font-size: 20px")
-    } else {
-      h3(tags$strong("Select a school", style = "font-size: 20px"))
-    }
-  })
+  output$school_name_wildfire <- update_school_name(input$school_wildfire)
 
   # update heat tab title based on the selected school
-  output$school_name_heat <- renderUI({
-    # make sure there's a selection, outputting a message if there is none
-    if (!is.null(input$school_heat) && input$school_heat != "") {
-      h3(tags$strong(input$school_heat), style = "font-size: 20px")
-    } else {
-      h3(tags$strong("Select a school", style = "font-size: 20px"))
-    }
-  })
+  output$school_name_heat <- update_school_name(input$school_heat)
 
   # update precip tab title based on the selected school
-  output$school_name_precip <- renderUI({
-    # make sure there's a selection, outputting a message if there is none
-    if (!is.null(input$school_precip) && input$school_precip != "") {
-      h3(tags$strong(input$school_precip), style = "font-size: 20px")
-    } else {
-      h3(tags$strong("Select a school", style = "font-size: 20px"))
-    }
-  })
+  output$school_name_precip <- update_school_name(input$school_precip)
 
   # update flood tab title based on the selected school
-  output$school_name_flood <- renderUI({
-    # make sure there's a selection, outputting a message if there is none
-    if (!is.null(input$school_flooding) && input$school_flooding != "") {
-      h3(tags$strong(input$school_flooding), style = "font-size: 20px")
-    } else {
-      h3(tags$strong("Select a school", style = "font-size: 20px"))
-    }
-  })
-
+  output$school_name_flood <- update_school_name(input$school_flooding)
+  
   # update sea level rise tab title based on the selected school
-  output$school_name_slr <- renderUI({
-    # make sure there's a selection, outputting a message if there is none
-    if (!is.null(input$school_slr) && input$school_slr != "") {
-      h3(tags$strong(input$school_slr), style = "font-size: 20px")
-    } else {
-      h3(tags$strong("Select a school", style = "font-size: 20px"))
-    }
-  })
-
+  output$school_name_slr <- update_school_name(input$school_slr)
   
   #-------------------Hazards plots---------------------------------------------
   

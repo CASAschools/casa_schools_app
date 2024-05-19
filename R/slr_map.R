@@ -57,8 +57,6 @@ slr_map <- function(input) {
                           "school community area", "school point"),
         baseGroups = c("topographic map", "satellite imagery"),
         options = layersControlOptions(collapsed = FALSE)) %>% 
-      # # hide the "area sea level rise extent" group by default
-      # hideGroup("area sea level rise extent") %>% 
       # set zoom to be the center of the school
       setView(lng = school_point$Longitude, lat = school_point$Latitude, zoom = 12)
     
