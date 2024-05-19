@@ -1,10 +1,6 @@
-extreme_heat_plot_test <- function(input) {
+heat_plot <- function(input) {
   
-  # filter for school
-  # heat_filtered <- reactive({
-  #   filter(extreme_heat, SchoolName == input$school_heat)
-  # })
-  
+  # filter for extreme heat days by school based on homepage district input and heat tab school input
   heat_filtered <- reactive({
     school_filtered(extreme_heat, input$district, input$school_heat)
   })
@@ -20,7 +16,9 @@ extreme_heat_plot_test <- function(input) {
            y = "Number of Days",
            title = "Number of Extreme Heat Days") +
       theme(legend.position = "top",
-            legend.title = element_blank())
+            legend.title = element_blank()) +
+      scale_fill_manual(values = c("High greenhouse gas emissions"= "#ff0000", 
+                                   "Reduced greenhouse gas emissions"= "#ffc100"))
     
     plotly::ggplotly(heat) %>%
       layout(legend = list(orientation = "h", y = 1.1,

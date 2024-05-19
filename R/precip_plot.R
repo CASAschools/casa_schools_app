@@ -1,4 +1,4 @@
-extreme_precip_plot <- function(input,output) {
+precip_plot <- function(input,output) {
   
   # filter data based on school
   precip_filtered <- reactive({

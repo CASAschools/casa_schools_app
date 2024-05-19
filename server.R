@@ -11,7 +11,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update wildfire tab title based on the selected school
   output$school_name_wildfire <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -21,7 +21,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update heat tab title based on the selected school
   output$school_name_heat <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -31,7 +31,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update precip tab title based on the selected school
   output$school_name_precip <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -41,7 +41,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update flood tab title based on the selected school
   output$school_name_flood <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -51,7 +51,7 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   # update sea level rise tab title based on the selected school
   output$school_name_slr <- renderUI({
     # make sure there's a selection, outputting a message if there is none
@@ -61,25 +61,31 @@ server <- function(input, output, session){
       h3(tags$strong("Select a school", style = "font-size: 20px"))
     }
   })
-  
+
   
   #-------------------Hazards plots---------------------------------------------
   
   # output hazard summary plot for the homepage
-  output$summary_homepage <- summary_plot_homepage(input)
+  output$summary_home <- summary_home(input)
   
+  # output summary score as the header on the homepage
+  output$summary_score_home <- summary_score_home(input)
+    
   # output hazard summary plot for the summary tab
-  output$summary_sumtab <- summary_plot_tab(input)
+  output$summary_tab <- summary_tab(input)
+  
+  # output hazard summary score as the header on the summary tab
+  output$summary_score_tab <- summary_score_tab(input)
 
   #--------------------Extreme Heat ---------------------------------------------
   
   # output extreme heat plot
-  output$extreme_heat_plotly <- extreme_heat_plot_test(input)
+  output$heat_plot <- heat_plot(input)
 
   #--------------------Extreme Precipitation-------------------------------------
   
   # output extreme precipitation plot
-  output$extreme_precipitation_plotly <- extreme_precip_plot(input)
+  output$precip_plot <- precip_plot(input)
   
   #---------------------Wildfire--------------------------------------------------
   
@@ -91,11 +97,8 @@ server <- function(input, output, session){
   
   #---------------------Flooding--------------------------------------------------
   
-  output$flooding <- renderPlot({
-    source("servers_hazards_plotting/flooding.R",
-           local = TRUE,
-           echo = FALSE, 
-           print.eval = FALSE)[1]})  
+  # output flood map
+  output$flood_map <- flood_map(input)
   
   #---------------------Sea Level Rise----------------------------------------
   
@@ -104,23 +107,37 @@ server <- function(input, output, session){
   
   #---------------------Homepage leaflet map------------------------------------
 
-  # City selection UI
+  # # City selection UI
+  # output$cityMenu <- renderUI({
+  #   selectInput("city", "Choose a city:", choices = unique(hazards_buffer$City))
+  # })
+  
+  # test version with no default value
   output$cityMenu <- renderUI({
-    selectInput("city", "Choose a city:", choices = unique(hazards_buffer$City))
+    selectInput(inputId = "city", 
+                label = "Select or type a city", 
+                choices = sort(unique(hazards_buffer$City)), 
+                selected = NULL)
   })
   
   # District selection UI based on selected city
   output$districtMenu <- renderUI({
     req(input$city)  # requires city input
     valid_districts <- unique(hazards_buffer$DistrictNa[hazards_buffer$City == input$city])
-    selectInput("district", "Choose a district:", choices = valid_districts)
+    selectInput(inputId = "district", 
+                label = "Select or type a school district", 
+                choices = sort(valid_districts),
+                selected = NULL)
   })
   
   # School selection UI based on selected district
   output$schoolMenu <- renderUI({
     req(input$district)  #requires district input
     valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district & hazards_buffer$City == input$city])
-    selectInput("school", "Choose a school:", choices = valid_schools)
+    selectInput(inputId = "school", 
+                label = "Select or type a school", 
+                choices = sort(valid_schools),
+                selected = NULL)
   })
   
   # Render Leaflet map for the selected school
@@ -149,19 +166,66 @@ server <- function(input, output, session){
   })
   
   # --------- update inputs of buttons based on each other -----------------------
-
-  # update the welcome page school selection based on the hazards tab school selection
-  observeEvent(input$school, {
-    updateSelectInput(session, "school_wildfire", selected = input$school)
-    #updateSelectInput(session, "school_slr", selected = input$school_wildfire)
+ 
+   # limit the schools selection in buttons based on the selected district
+  valid_schools <- reactive({
+    unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
   })
+  
+  # update hazard summary pages and hazard pages buttons based on initial school selection
+  observeEvent(input$school, {
+    updateSelectInput(session, "school_summary",
+                      choices = valid_schools(), selected = input$school)
+    updateSelectInput(session, "school_heat",
+                      choices = valid_schools(), selected = input$school)
+    updateSelectInput(session, "school_wildfire",
+                      choices = valid_schools(), selected = input$school)
+    updateSelectInput(session, "school_precip",
+                      choices = valid_schools(), selected = input$school)
+    updateSelectInput(session, "school_flooding",
+                      choices = valid_schools(), selected = input$school)
+    updateSelectInput(session, "school_slr",
+                      choices = valid_schools(), selected = input$school)
 
-  # limit the wildfire tab school selection dropdown to only be the schools in the district chosen on the welcome page
-  observeEvent(input$district, {
-    # subsets the schools where the district name matches the district input on the welcome page
-    valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
-    updateSelectInput(session, "school_wildfire", choices = valid_schools, selected = NULL)
-    #updateSelectInput(session, "school_slr", choices = valid_schools, selected = NULL)
+  })
+  
+  # store selected school as a reactive value
+  selected_school <- reactiveVal()
+  
+  # update selected_school based on any changes to the hazard summary or hazard pages selections
+  observeEvent(input$school_summary, {
+    selected_school(input$school_summary)
+  })
+  observeEvent(input$school_heat, {
+    selected_school(input$school_heat)
+  })
+  observeEvent(input$school_wildfire, {
+    selected_school(input$school_wildfire)
+  })
+  observeEvent(input$school_precip, {
+    selected_school(input$school_precip)
+  })
+  observeEvent(input$school_flooding, {
+    selected_school(input$school_flooding)
+  })
+  observeEvent(input$school_slr, {
+    selected_school(input$school_slr)
+  })
+  
+  # Update all select inputs based on the reactive value of selected school
+  observe({
+    updateSelectInput(session, "school_summary",
+                      choices = valid_schools(), selected = selected_school())
+    updateSelectInput(session, "school_heat",
+                      choices = valid_schools(), selected = selected_school())
+    updateSelectInput(session, "school_wildfire",
+                      choices = valid_schools(), selected = selected_school())
+    updateSelectInput(session, "school_precip",
+                      choices = valid_schools(), selected = selected_school())
+    updateSelectInput(session, "school_flooding",
+                      choices = valid_schools(), selected = selected_school())
+    updateSelectInput(session, "school_slr",
+                      choices = valid_schools(), selected = selected_school())
   })
 
 } 

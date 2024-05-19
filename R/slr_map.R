@@ -8,8 +8,6 @@ slr_map <- function(input) {
   # render map
   renderLeaflet({
     
-    print(head(buffers_filtered()))
-    
     # grab school buffer
     school_buffer <- buffers_filtered()
     
@@ -21,10 +19,11 @@ slr_map <- function(input) {
     school_point <- st_transform(school_point, crs = 4326)
     
     # select the sea level rise polygons that overlap with the school buffer
-    slr_overlap <- ca_slr[school_buffer, ]
+    #slr_overlap <- ca_slr[school_buffer, ]
     
     # select sea level rise polygons that intersect with the school buffer
-    slr_intersect <- st_intersection(school_buffer, slr_overlap)
+    #slr_intersect <- st_intersection(school_buffer, slr_overlap)
+    slr_intersect <- st_intersection(school_buffer, ca_slr)
     
     # plot the extent of sea level rise
     leaflet() %>% 
@@ -61,7 +60,7 @@ slr_map <- function(input) {
       # # hide the "area sea level rise extent" group by default
       # hideGroup("area sea level rise extent") %>% 
       # set zoom to be the center of the school
-      setView(lng = school_point$Longitude, lat = school_point$Latitude, zoom = 13)
+      setView(lng = school_point$Longitude, lat = school_point$Latitude, zoom = 12)
     
   })
   
