@@ -144,22 +144,17 @@ pal <- colorNumeric(c("#5A5E9E", "#6B9EB8", "#8FD2E3", "#F2EAAB", "#FFCF73"), ha
 hazards_buffer <- hazards_buffer %>% mutate(
   HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
 
-# markers <- awesomeIconList(
-#   `1` = makeAwesomeIcon(
-#     icon="empty",
-#     markerColor = "white",
-#     library="fa"
-#   ))
-# 
-# icons <- iconList(
-#   `1` = makeIcon(
-#     iconUrl = "https://www.svgrepo.com/svg/533533/school-flag.svg",
-#     iconWidth = 31*215/230,
-#     iconHeight = 20, 
-#     iconAnchorY = 33,
-#     iconAnchorX = 31*215/230/2
-#   ))
-# 
-# 
-# addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
-#   addMarkers(~Longitude, ~Latitude, icon = ~icons)
+ markers <- makeAwesomeIcon(
+    icon="empty",
+     markerColor = "lightblue",
+     library="fa"
+   )
+ 
+ icons <- makeIcon(
+     iconUrl = "https://www.svgrepo.com/download/533533/school-flag.svg",
+     iconWidth = 31*215/230,
+     iconHeight = 20, 
+     iconAnchorY = 33,
+     iconAnchorX = 31*215/230/2
+   )
+ 
