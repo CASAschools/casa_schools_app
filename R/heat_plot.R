@@ -36,7 +36,7 @@ heat_plot <- function(input, output) {
         theme_classic() +
         labs(x = "Year",
              y = "Number of Days",
-             title = "Number of Extreme Heat Days") +
+             title = "Trend of Extreme Heat Days") +
         theme(legend.position = "top",
               legend.title = element_blank()) +
         scale_color_manual(values = c("High greenhouse gas emissions"= "#ff0000", 
