@@ -124,11 +124,17 @@ body <- dashboardBody(
                 width = NULL,
                 fluidRow(
                   column(4,
-                         # output school name as tab title
-                         uiOutput("school_name_heat"),
+                    # output school name as tab title
+                    uiOutput("school_name_heat"),
+                    tags$div(style = "margin-top: 50px;"),
+                      radioGroupButtons(
+                        inputId = "change_heat_plot",
+                        label = "View data in different format",
+                        choices = c("Bar plot", "Line graph")
+                      )
                   ),
                   # school dropdown
-                  column(6, 
+                  column(6,
                          selectInput(
                            inputId = "school_heat",
                            label = "Select or type another school in the same district:",
@@ -208,14 +214,19 @@ body <- dashboardBody(
                 fluidRow(
                   column(4,
                          # output school name as tab title
-                         uiOutput("school_name_precip")
+                         uiOutput("school_name_precip"),
+                         radioGroupButtons(
+                           inputId = "change_precip_plot",
+                           label = "View data in different format",
+                           choices = c("Bar plot", "Line graph")
+                         )
                   ),
                   
                   # school dropdown
                   column(6, 
                          selectInput(inputId = "school_precip", 
                                      label = "Select or type another school in the same district:", 
-                                     choices = sort(unique(names_precip_merge$SchoolName)), 
+                                     choices = sort(unique(extreme_precip$SchoolName)), 
                                      selected = NULL)
                   ),
                   
