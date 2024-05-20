@@ -6,9 +6,9 @@ heat_plot <- function(input, output) {
   })
   
   renderPlotly({
-    if(input$change_plot[[1]] %in% "Bar plot"){
+    if(input$change_heat_plot[[1]] %in% "Bar plot"){
     # Output plot
-    bar_graph <- ggplot(data = heat_filtered(),
+    heat_bar <- ggplot(data = heat_filtered(),
                    aes(x = year, y = total, fill = scenario)) +
       geom_bar(stat = "identity", position = "dodge") +
       theme_classic() +
@@ -20,7 +20,7 @@ heat_plot <- function(input, output) {
       scale_fill_manual(values = c("High greenhouse gas emissions"= "#ff0000", 
                                    "Reduced greenhouse gas emissions"= "#ffc100"))
     
-    bar_graph_plt <- plotly::ggplotly(bar_graph) %>% 
+    heat_bar_plt <- plotly::ggplotly(heat_bar) %>% 
       layout(legend = list(orientation = "h", y = 1.1,
                            title = list(text = 'Scenarios')),
              margin = list(t = 60),
@@ -28,21 +28,21 @@ heat_plot <- function(input, output) {
     
     
     }
-    else if(input$change_plot[[1]] %in% "Line graph") {
+    else if(input$change_heat_plot[[1]] %in% "Line graph") {
       
-      line_graph <- ggplot(data = heat_filtered(),
+      heat_line <- ggplot(data = heat_filtered(),
                            aes(x = year, y = total, color = scenario)) +
         geom_smooth(method = "lm", se = FALSE) +
         theme_classic() +
         labs(x = "Year",
              y = "Number of Days",
-             title = "Trend of Extreme Heat Days") +
+             title = "Number of Extreme Heat Days") +
         theme(legend.position = "top",
               legend.title = element_blank()) +
         scale_color_manual(values = c("High greenhouse gas emissions"= "#ff0000", 
                                       "Reduced greenhouse gas emissions"= "#ffc100"))
     
-      line_graph_plt <- plotly::ggplotly(line_graph) %>% 
+      heat_line_plt <- plotly::ggplotly(heat_line) %>% 
         style(hoverinfo = 'none') %>% 
         layout(legend = list(orientation = "h", y = 1.1,
                              title = list(text="Scenarios")),
