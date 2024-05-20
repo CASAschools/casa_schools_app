@@ -139,27 +139,7 @@ hazards_buffer <- schools_buffers %>% left_join(hazards_test)
 #buffer color
 binpal <- colorBin("RdYlGn", hazards_buffer$hazard_score, bins = 5, reverse = TRUE)
 
-#Add marker string to hazards data framr
+#Add marker string to hazards data framework
 
 hazards_buffer <- hazards_buffer %>% mutate(
   HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
-
-# markers <- awesomeIconList(
-#   `1` = makeAwesomeIcon(
-#     icon="empty",
-#     markerColor = "white",
-#     library="fa"
-#   ))
-# 
-# icons <- iconList(
-#   `1` = makeIcon(
-#     iconUrl = "https://www.svgrepo.com/svg/533533/school-flag.svg",
-#     iconWidth = 31*215/230,
-#     iconHeight = 20, 
-#     iconAnchorY = 33,
-#     iconAnchorX = 31*215/230/2
-#   ))
-# 
-# 
-# addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
-#   addMarkers(~Longitude, ~Latitude, icon = ~icons)
