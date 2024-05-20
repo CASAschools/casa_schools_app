@@ -95,7 +95,7 @@ names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 # ----------------------- Hazard summary -------------------------------
 
 # load in data
-hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/hazards_test.csv")
+hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/schools_hazards_intervals.csv")
 
 ## hazard summary plot set up -----
 # labels for each climate hazard
@@ -137,7 +137,7 @@ names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 hazards_buffer <- schools_buffers %>% left_join(hazards_test)
 
 #buffer color
-binpal <- colorBin("RdYlGn", hazards_buffer$hazard_score, bins = 5, reverse = TRUE)
+pal <- colorNumeric(c("#5A5E9E", "#6B9EB8", "#8FD2E3", "#F2EAAB", "#FFCF73"), hazards_buffer$hazard_score, reverse = TRUE)
 
 #Add marker string to hazards data framr
 

@@ -113,7 +113,7 @@ server <- function(input, output, session){
         setView(lng = selectedSchool$Longitude[1], lat = selectedSchool$Latitude[1], zoom = 11) %>% 
         # Add a circle marker with buffer around the school
         addCircles(~Longitude, ~Latitude, radius = 4828.03, #Adjust the radius as needed
-                   color = ~binpal(hazard_score)) %>% 
+                   color = ~pal(hazard_score)) %>% 
         addMarkers(~Longitude, ~Latitude, popup = ~HazardString)
     } else {
       leaflet() %>%  #empty map return
