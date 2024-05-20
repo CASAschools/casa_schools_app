@@ -139,8 +139,7 @@ pal <- colorNumeric(c("#5A5E9E", "#6B9EB8", "#8FD2E3", "#F2EAAB", "#FFCF73"), ha
 
 #Add marker string to hazards data framework
 
-hazards_buffer <- hazards_buffer %>% mutate(
-  HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
+hazards_buffer <- hazards_buffer %>% mutate(HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
 
  markers <- makeAwesomeIcon(
     icon="empty",
