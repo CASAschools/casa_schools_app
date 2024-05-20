@@ -155,53 +155,76 @@ body <- dashboardBody(
             )),#END EXTREME HEAT
     
         # --------- Wildfire Tab -----------------------------------------------
-    
+    # BEGIN WILDFIRE TAB
     tabItem(tabName = "wildfire",
+            
+            # BEGIN FLUID PAGE
             fluidPage(
-              box(
-                title = h2(tags$strong("Wildfire")),
-                width = NULL,
-                fluidRow(
-                  column(4,
-                         # output school name as tab title
-                         uiOutput("school_name_wildfire"),
-                  ),
+              
+              # BEGIN BOX FOR ENTIRE PAGE
+              box(width = NULL,
                   
-                  # school dropdown
-                  column(6, 
-                         selectInput(inputId = "school_wildfire",
-                                     label = "Select or type another school in the same district:",
-                                     choices = sort(unique(schools_buffers$SchoolName)),
-                                     selected = NULL)
-                  )
+                  # BEGIN FLUID ROW FOR TITLE AND TUTORIAL BUTTON
+                  fluidRow(
+                    # title column
+                    column(width = 9, 
+                           h2(tags$strong("Wildfire"))
+                    ),
+                    # tutorial button column
+                    column(width = 3,
+                           actionButton(inputId = "tutorial_wildfire",
+                                        label = "Click to highlight interactivity")
+                    )
+                  ), # END FLUID ROW FOR TITLE AND TUTORIAL BUTTON
                   
-                ),
-                box(
-                  width = NULL,
-                  column(
-                    width = 6,
-                    # column title
-                    div(
-                      style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                      "2012 wildfire hazard"
+                  # BEGIN FLUID ROW FOR SCHOOL NAME AND SCHOOL DROPDOWN
+                  fluidRow(
+                    # school name output
+                    column(width = 4,
+                           # output school name as tab title
+                           uiOutput("school_name_wildfire"),
                     ),
-                    leafletOutput(outputId = "wildfire_map2012") %>%
-                      withSpinner(color="#0dc5c1")
-                  ),
-                  column(
-                    width = 6,
-                    # column title
-                    div(
-                      style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                      "2023 wildfire hazard"
+                    # school dropdown
+                    column(width = 6, 
+                           selectInput(inputId = "school_wildfire",
+                                       label = "Select or type another school in the same district:",
+                                       choices = sort(unique(schools_buffers$SchoolName)),
+                                       selected = NULL)
+                    )
+                  ), # END FLUID ROW FOR SCHOOL NAME AND SCHOOL DROPDOWN
+                  
+                  # BEGIN BOX FOR MAPS AND DESCRIPTION
+                  box(
+                    width = NULL,
+                    # 2012 wildfire hazard map
+                    column(
+                      width = 6,
+                      # map title
+                      div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                          "2012 wildfire hazard" ),
+                      # map output
+                      leafletOutput(outputId = "wildfire_map2012") %>%
+                        withSpinner(color="#0dc5c1")
                     ),
-                    leafletOutput(outputId = "wildfire_map2023") %>%
-                      withSpinner(color="#0dc5c1")
-                  ),
-                  includeMarkdown("text/wildfire.md")
-                )
-              )
-            )),#END Wildfire 
+                    # 2023 wildfire hazard map
+                    column(
+                      width = 6,
+                      # map title
+                      div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                          "2023 wildfire hazard"),
+                      # map output
+                      leafletOutput(outputId = "wildfire_map2023") %>%
+                        withSpinner(color="#0dc5c1")
+                    ),
+                    # description text
+                    includeMarkdown("text/wildfire.md")
+                  ) # END BOX FOR MAPS AND DESCRIPTION
+                  
+              ) # END BOX FOR ENTIRE PAGE
+              
+            ) # END FLUID PAGE
+            
+    ), # END WILDFIRE TAB
     
 
     # --------- Precipitation Tab ------------------------------------------
