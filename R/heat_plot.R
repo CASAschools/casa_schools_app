@@ -6,7 +6,7 @@ heat_plot <- function(input, output) {
   })
   
   renderPlotly({
-    if(input$change_heat_plot[[1]] %in% "Bar plot"){
+    if(input$change_heat_plot %in% "Bar plot"){
     # Output plot
     heat_bar <- ggplot(data = heat_filtered(),
                    aes(x = year, y = total, fill = scenario)) +
@@ -28,7 +28,7 @@ heat_plot <- function(input, output) {
     
     
     }
-    else if(input$change_heat_plot[[1]] %in% "Line graph") {
+    else if(input$change_heat_plot %in% "Line graph") {
       
       heat_line <- ggplot(data = heat_filtered(),
                            aes(x = year, y = total, color = scenario)) +

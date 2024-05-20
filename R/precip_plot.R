@@ -6,7 +6,7 @@ precip_plot <- function(input,output) {
   })
   
   renderPlotly({
-    if(input$change_precip_plot[[1]] %in% "Bar plot"){
+    if(input$change_precip_plot %in% "Bar plot"){
       # Output plot
       precip_bar <- ggplot(data = precip_filtered(),
                          aes(x = year, y = total, fill = scenario)) +
@@ -17,8 +17,8 @@ precip_plot <- function(input,output) {
              title = "Number of Extreme Precipitation Days") +
         theme(legend.position = "top",
               legend.title = element_blank()) +
-        scale_fill_manual(values = c("High greenhouse gas emissions"= "#ff0000", 
-                                     "Reduced greenhouse gas emissions"= "#ffc100"))
+        scale_fill_manual(values = c("High greenhouse gas emissions"= "cornflowerblue", 
+                                     "Reduced greenhouse gas emissions"= "#B8E3FF"))
       
       precip_bar_plt <- plotly::ggplotly(precip_bar) %>% 
         layout(legend = list(orientation = "h", y = 1.1,
@@ -28,7 +28,7 @@ precip_plot <- function(input,output) {
       
       
     }
-    else if(input$change_precip_plot[[1]] %in% "Line graph") {
+    else if(input$change_precip_plot %in% "Line graph") {
       
       precip_line <- ggplot(data = precip_filtered(),
                           aes(x = year, y = total, color = scenario)) +
@@ -39,8 +39,8 @@ precip_plot <- function(input,output) {
              title = "Trend of Extreme Precipitation Days") +
         theme(legend.position = "top",
               legend.title = element_blank()) +
-        scale_color_manual(values = c("High greenhouse gas emissions"= "#ff0000", 
-                                      "Reduced greenhouse gas emissions"= "#ffc100"))
+        scale_color_manual(values = c("High greenhouse gas emissions"= "cornflowerblue", 
+                                     "Reduced greenhouse gas emissions"= "#90E0EF"))
       
       precip_line_plt <- plotly::ggplotly(precip_line) %>% 
         style(hoverinfo = 'none') %>% 
