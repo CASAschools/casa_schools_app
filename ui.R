@@ -124,11 +124,17 @@ body <- dashboardBody(
                 width = NULL,
                 fluidRow(
                   column(4,
-                         # output school name as tab title
-                         uiOutput("school_name_heat"),
+                    # output school name as tab title
+                    uiOutput("school_name_heat"),
+                    tags$div(style = "margin-top: 50px;"),
+                      radioGroupButtons(
+                        inputId = "change_plot",
+                        label = "View data in different format",
+                        choices = c("Bar plot", "Line graph")
+                      )
                   ),
                   # school dropdown
-                  column(6, 
+                  column(6,
                          selectInput(
                            inputId = "school_heat",
                            label = "Select or type another school in the same district:",
