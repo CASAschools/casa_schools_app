@@ -61,7 +61,7 @@ summary_home <- function(input) {
            x = NULL)
     
     ## bar chart of total hazard summary score -----
-    total_score <- ggplot(hazards_filtered(), aes(y = as.factor(1))) +
+    total_score <- ggplot(hazards_filtered()) +
       # compose the bar of 5 rectangles corresponding to the color scheme (lower to higher risk)
       geom_rect(aes(xmin = 0, xmax = 5, ymin = 0.5, ymax = 1.2), 
                 fill = "#FFCF73", alpha = .7) +
@@ -94,7 +94,7 @@ summary_home <- function(input) {
             panel.grid.minor.y = element_blank(),
             axis.text.y = element_blank(),
             # increase plot margins
-            theme(plot.margin = unit(c(0.1, 0, 0.1, 0), "cm")))
+            plot.margin = unit(c(0.1, 0, 0.1, 0), "cm"))
     
     ## create label plot -----
     risk_label <- ggplot() + 

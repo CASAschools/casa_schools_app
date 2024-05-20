@@ -88,9 +88,7 @@ calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/di
 extreme_heat <- read.csv("/capstone/casaschools/shiny_dashboard/data/extreme_heat/extreme_heat.csv") 
 
 #---------------------------- Precipitation ----------------------------
-extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/years_all_zeros.csv") 
-
-names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
+extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/extreme_precipitation.csv") 
 
 # ----------------------- Hazard summary -------------------------------
 
@@ -128,7 +126,7 @@ FEMA_reclass <- st_transform(FEMA_reclass, st_crs(schools_buffers))
 
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
 
-names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
+# names_precip_merge <- merge(extreme_precip, school_names, by = "CDSCode")
 
 # add cities to hazards test
 hazards_buffer <- schools_buffers %>% left_join(hazards_test)
