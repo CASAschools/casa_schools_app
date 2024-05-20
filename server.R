@@ -114,7 +114,8 @@ server <- function(input, output, session){
         # Add a circle marker with buffer around the school
         addCircles(~Longitude, ~Latitude, radius = 4828.03, #Adjust the radius as needed
                    color = ~pal(hazard_score)) %>% 
-        addMarkers(~Longitude, ~Latitude, popup = ~HazardString)
+        addMarkers(~Longitude, ~Latitude, popup = ~HazardString) %>% 
+        addScaleBar(position = c("bottomright"))
     } else {
       leaflet() %>%  #empty map return
         addTiles() %>%
