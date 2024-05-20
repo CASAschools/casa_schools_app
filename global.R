@@ -93,7 +93,7 @@ extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipita
 # ----------------------- Hazard summary -------------------------------
 
 # load in data
-hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/hazards_test.csv")
+hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/schools_hazards_intervals.csv")
 
 ## hazard summary plot set up -----
 # labels for each climate hazard
@@ -135,9 +135,25 @@ school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName"
 hazards_buffer <- schools_buffers %>% left_join(hazards_test)
 
 #buffer color
-binpal <- colorBin("RdYlGn", hazards_buffer$hazard_score, bins = 5, reverse = TRUE)
+pal <- colorNumeric(c("#5A5E9E", "#6B9EB8", "#8FD2E3", "#F2EAAB", "#FFCF73"), hazards_buffer$hazard_score, reverse = TRUE)
 
 #Add marker string to hazards data framework
 
 hazards_buffer <- hazards_buffer %>% mutate(
+  HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))
+
+ markers <- makeAwesomeIcon(
+    icon="empty",
+     markerColor = "lightblue",
+     library="fa"
+   )
+ 
+ icons <- makeIcon(
+     iconUrl = "https://www.svgrepo.com/download/533533/school-flag.svg",
+     iconWidth = 31*215/230,
+     iconHeight = 20, 
+     iconAnchorY = 33,
+     iconAnchorX = 31*215/230/2
+   )
+ 
   HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score))

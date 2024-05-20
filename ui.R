@@ -333,6 +333,7 @@ body <- dashboardBody(
               box(
                 title = h2(tags$strong("Glossary")),
                 width = NULL,
+                includeMarkdown("text/glossary.md")
 
               )# END Box
               
