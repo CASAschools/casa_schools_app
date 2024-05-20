@@ -155,4 +155,3 @@ hazards_buffer <- hazards_buffer %>% mutate(HazardString = paste(SchoolName, "ha
      iconAnchorX = 31*215/230/2
    )
  
-  HazardString = paste(SchoolName, "has a Hazard Score of: ", hazard_score)
