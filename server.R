@@ -114,8 +114,8 @@ server <- function(input, output, session){
         addCircles(~Longitude, ~Latitude, radius = 4828.03, #Adjust the radius as needed
                    color = ~pal(hazard_score)) %>% 
         addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
-        addMarkers(~Longitude, ~Latitude, icon = ~icons) %>% 
-        addScaleBar(position = c("bottomright"))
+        addMarkers(~Longitude, ~Latitude, icon = ~icons, popup = ~HazardString) %>% 
+        addScaleBar(position =  "bottomleft")
     } else {
       leaflet() %>%  #empty map return
         addTiles() %>%
