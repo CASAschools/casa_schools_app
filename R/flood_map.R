@@ -42,6 +42,8 @@ flood_map <- function(input) {
     flood_palette <- colorFactor(palette = flood_colors,
                                  domain = selected_flood_intersected$flood_risk)
     
+    #fct_relevel, femaschools %>% mutate column name = fct_relevel(column name, c(list in order). column name also needs to be a factor first. 
+    
     # leaflet map of flood risk potential
     leaflet() %>% 
       
@@ -49,6 +51,7 @@ flood_map <- function(input) {
       addProviderTiles(providers$Esri.WorldTopoMap) %>% 
       
       # add cropped flood risk
+
       addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#AEDBEA", "#808080"),  fillOpacity = .9, group = "flood risk", stroke = FALSE) %>% 
       
       # add school buffer polygon
@@ -61,6 +64,7 @@ flood_map <- function(input) {
                        group = "school point") %>% 
       
       # add legend for flood risk with custom labels
+
       addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#808080"), labels = labels,
                 title = "Flood Risk", opacity = 0.9)
     

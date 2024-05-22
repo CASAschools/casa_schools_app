@@ -3,22 +3,22 @@ server <- function(input, output, session){
   #-------------------Reactive tab titles--------------------------------
 
   # update hazard summary tab title based on the selected school
-  output$school_name_summary <- update_school_name(input$school_summary)
+  #output$school_name_summary <- update_school_name(input$school_summary)
 
   # update wildfire tab title based on the selected school
-  output$school_name_wildfire <- update_school_name(input$school_wildfire)
+  #output$school_name_wildfire <- update_school_name(input$school_wildfire)
 
   # update heat tab title based on the selected school
-  output$school_name_heat <- update_school_name(input$school_heat)
+  #output$school_name_heat <- update_school_name(input$school_heat)
 
   # update precip tab title based on the selected school
-  output$school_name_precip <- update_school_name(input$school_precip)
+  #output$school_name_precip <- update_school_name(input$school_precip)
 
   # update flood tab title based on the selected school
-  output$school_name_flood <- update_school_name(input$school_flooding)
+  #output$school_name_flood <- update_school_name(input$school_flooding)
   
   # update sea level rise tab title based on the selected school
-  output$school_name_slr <- update_school_name(input$school_slr)
+  #output$school_name_slr <- update_school_name(input$school_slr)
   
   #-------------------Hazards plots---------------------------------------------
   
@@ -26,7 +26,7 @@ server <- function(input, output, session){
   output$summary_home <- summary_home(input)
   
   # output summary score as the header on the homepage
-  output$summary_score_home <- summary_score_home(input)
+  output$summary_title_home <- summary_title_home(input)
     
   # output hazard summary plot for the summary tab
   output$summary_tab <- summary_tab(input)
@@ -90,7 +90,7 @@ server <- function(input, output, session){
   # School selection UI based on selected district
   output$schoolMenu <- renderUI({
     req(input$district)  #requires district input
-    valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district & hazards_buffer$City == input$city])
+    valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
     selectInput(inputId = "school", 
                 label = "Select or type a school", 
                 choices = sort(valid_schools),
@@ -99,22 +99,23 @@ server <- function(input, output, session){
   
   # Render Leaflet map for the selected school
   output$map <- renderLeaflet({
-    req(input$school, input$city, input$district)  #require all selections
-    # Filter schools based on both district and city
+    req(input$school, input$district)  # require school and district inputs
+    # Filter schools based on both district
     selectedSchool <- hazards_buffer[
       hazards_buffer$SchoolName == input$school &
-        hazards_buffer$DistrictNa == input$district &
-        hazards_buffer$City == input$city, 
+        hazards_buffer$DistrictNa == input$district,
     ]
     
     if (nrow(selectedSchool) == 1) {  #match to only one school or return empty map
       leaflet(data = selectedSchool) %>%
-        addTiles() %>% 
+        addProviderTiles(providers$Esri.WorldTopoMap, group = "topographic map") %>% 
         setView(lng = selectedSchool$Longitude[1], lat = selectedSchool$Latitude[1], zoom = 11) %>% 
         # Add a circle marker with buffer around the school
         addCircles(~Longitude, ~Latitude, radius = 4828.03, #Adjust the radius as needed
-                   color = ~binpal(hazard_score)) %>% 
-        addMarkers(~Longitude, ~Latitude, popup = ~HazardString)
+                   color = ~pal(hazard_score)) %>% 
+        addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
+        addMarkers(~Longitude, ~Latitude, icon = ~icons) %>% 
+        addScaleBar(position = c("bottomright"))
     } else {
       leaflet() %>%  #empty map return
         addTiles() %>%
@@ -149,24 +150,47 @@ server <- function(input, output, session){
   # store selected school as a reactive value
   selected_school <- reactiveVal()
   
-  # update selected_school based on any changes to the hazard summary or hazard pages selections
+  # update selected_school based on inputs, and output school name based on school dropdown selection
   observeEvent(input$school_summary, {
+    # update selected school
     selected_school(input$school_summary)
+    # update school name output for the hazard summary tab
+    output$school_name_summary <- update_school_name(selected_school())
   })
+  
   observeEvent(input$school_heat, {
+    # update selected school
     selected_school(input$school_heat)
+    # update school name output for the extreme heat tab
+    output$school_name_heat <- update_school_name(selected_school())
   })
+  
   observeEvent(input$school_wildfire, {
+    # update selected school
     selected_school(input$school_wildfire)
+    # update school name output for the wildfire tab
+    output$school_name_wildfire <- update_school_name(selected_school())
   })
+  
   observeEvent(input$school_precip, {
+    # update selected school
     selected_school(input$school_precip)
+    # update school name output for the precipitation tab
+    output$school_name_precip <- update_school_name(selected_school())
   })
+  
   observeEvent(input$school_flooding, {
+    # update selected school
     selected_school(input$school_flooding)
+    # update school name output for the flooding tab
+    output$school_name_flood <- update_school_name(selected_school())
   })
+  
   observeEvent(input$school_slr, {
+    # update selected school
     selected_school(input$school_slr)
+    # update school name output for the sea level rise tab
+    output$school_name_slr <- update_school_name(selected_school())
   })
   
   # Update all select inputs based on the reactive value of selected school
@@ -183,6 +207,19 @@ server <- function(input, output, session){
                       choices = valid_schools(), selected = selected_school())
     updateSelectInput(session, "school_slr",
                       choices = valid_schools(), selected = selected_school())
+  })
+  
+  # output tutorial image when the user clicks on the button in the wildfire tab
+  observeEvent(input$tutorial_wildfire, {
+    showModal(modalDialog(
+      title = NULL,
+      img(src = "wildfire_interactivity.jpg", 
+          style = "width: 100%; height: auto;"),
+      footer = modalButton("Close"),
+      easyClose = TRUE,
+      fade = TRUE,
+      size = "l"
+    ))
   })
 
 } 

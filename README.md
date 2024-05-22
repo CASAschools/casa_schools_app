@@ -49,3 +49,41 @@ The authors of this dashboard are [Liane Chen](https://github.com/lchenhub), [Ch
 ### License
 This work is licensed under a [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
 
+## File Structure
+```bash
+├── global.R
+├── LICENSE
+├── R
+│   ├── flood_map.R
+│   ├── heat_plot.R
+│   ├── precip_plot.R
+│   ├── school_filtered.R
+│   ├── slr_map.R
+│   ├── summary_home.R
+│   ├── summary_score_home.R
+│   ├── summary_score_tab.R
+│   ├── summary_tab.R
+│   ├── update_school_name.R
+│   ├── wildfire_map2012.R
+│   └── wildfire_map2023.R
+├── README.md
+├── server.R
+├── shiny_dashboard.Rproj
+├── text
+│   ├── about_text.html
+│   ├── about_text.md
+│   ├── coastal_inundation.md
+│   ├── flooding.md
+│   ├── glossary.md
+│   ├── heat.md
+│   ├── precipitation.md
+│   ├── socio.html
+│   ├── socio.md
+│   ├── summary.md
+│   └── wildfire.md
+└── ui.R
+```
+
+
+
+
