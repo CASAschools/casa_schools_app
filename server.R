@@ -26,7 +26,7 @@ server <- function(input, output, session){
   output$summary_home <- summary_home(input)
   
   # output summary score as the header on the homepage
-  output$summary_score_home <- summary_score_home(input)
+  output$summary_title_home <- summary_title_home(input)
     
   # output hazard summary plot for the summary tab
   output$summary_tab <- summary_tab(input)
