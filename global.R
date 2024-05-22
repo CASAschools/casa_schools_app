@@ -112,8 +112,7 @@ whp_reclass2012 <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_
 # --------------------Sea Level Rise-----------------------------
 
 # load in data
-ca_slr <- st_read("/capstone/casaschools/sea_level_rise/intermediate_layers/ca_slr.shp")
-
+ca_slr <- st_read("/capstone/casaschools/sea_level_rise/intermediate_layers/ca_slr_simple.shp")
 
 # ----------------------- Flooding -------------------------------
 # load in data

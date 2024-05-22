@@ -58,12 +58,9 @@ body <- dashboardBody(
                     
                     # START HAZARD SUMMARY PLOT COLUMN
                     column(width = 8,
-                           # output plot title
+                           # output plot title with school name
                            div(style = "text-align:center;",
-                               h3(tags$strong("Hazard Summary"))),
-                           # output summary score
-                           div(style = "text-align:center;",
-                               uiOutput("summary_score_home")),
+                               uiOutput("summary_title_home")),
                            # output summary plot
                            plotOutput("summary_home") %>% 
                              withSpinner(color="#0dc5c1"))
@@ -158,35 +155,28 @@ body <- dashboardBody(
               
               # BEGIN BOX FOR ENTIRE PAGE
               box(width = NULL,
+                  h2(tags$strong("Wildfire"), style = "font-size: 30px"),
+                  uiOutput("school_name_wildfire"),
                   
-                  # BEGIN FLUID ROW FOR TITLE AND TUTORIAL BUTTON
-                  fluidRow(
-                    # title column
-                    column(width = 9, 
-                           h2(tags$strong("Wildfire"))
-                    ),
-                    # tutorial button column
-                    column(width = 3,
-                           actionButton(inputId = "tutorial_wildfire",
-                                        label = "Click to highlight interactivity")
-                    )
-                  ), # END FLUID ROW FOR TITLE AND TUTORIAL BUTTON
-                  
-                  # BEGIN FLUID ROW FOR SCHOOL NAME AND SCHOOL DROPDOWN
+                  # BEGIN FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                   fluidRow(
                     # school name output
-                    column(width = 4,
+                    column(width = 3,
+                           h2(tags$strong("")),
                            # output school name as tab title
-                           uiOutput("school_name_wildfire"),
+                           actionButton(inputId = "tutorial_wildfire",
+                                        label = "highlight interactive elements")
                     ),
+                    # empty column for space in between 
+                    column(width = 5),
                     # school dropdown
-                    column(width = 6, 
+                    column(width = 4, 
                            selectInput(inputId = "school_wildfire",
                                        label = "Select or type another school in the same district:",
                                        choices = sort(unique(schools_buffers$SchoolName)),
                                        selected = NULL)
-                    )
-                  ), # END FLUID ROW FOR SCHOOL NAME AND SCHOOL DROPDOWN
+                    )),
+                  # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                   
                   # BEGIN BOX FOR MAPS AND DESCRIPTION
                   box(
