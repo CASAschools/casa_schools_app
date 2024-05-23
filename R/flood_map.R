@@ -18,14 +18,14 @@ flood_map <- function(input) {
       st_centroid()
     
     #clip school buffers to flood intersections
-    FEMA_schools <- st_intersection(selected_school, FEMA_reclass)
+    FEMA_schools <- st_intersection(selected_school, FEMA_reclass_simple)
     
     # grab the flooding polgons that intersect with that school area
     #selected_flood <- FEMA_reclass[selected_school, ]
     
     #intersect flooding polygons so only the extent within school area is shown
     #selected_flood_intersected <- st_intersection(selected_school, selected_flood)
-    selected_flood_intersected <- st_intersection(selected_school, FEMA_reclass)
+    selected_flood_intersected <- st_intersection(selected_school, FEMA_reclass_simple)
     
     # overlay the school buffer and school point on the FEMA flood risk shapefile
     # plot it
@@ -38,7 +38,7 @@ flood_map <- function(input) {
     
     # define color palette and labels for FEMA flood zone classification
     labels <- c("High", "Moderate to Low", "Undetermined")
-    flood_colors <- colorFactor(c("#0C46EE", "#AEDBEA", "#8DB6CD"), levels = c("High", "Moderate to Low", "Undetermined"))
+    flood_colors <- colorFactor(c("#0C46EE", "#AEDBEA", "#808080"), levels = c("high", "moderate to low", "undetermined"))
     flood_palette <- colorFactor(palette = flood_colors,
                                  domain = selected_flood_intersected$flood_risk)
     
@@ -51,11 +51,12 @@ flood_map <- function(input) {
       addProviderTiles(providers$Esri.WorldTopoMap) %>% 
       
       # add cropped flood risk
-      addPolygons(data = FEMA_schools, color = NA, fillColor = flood_colors,  fillOpacity = .8, group = "flood risk", stroke = FALSE) %>% 
+
+      addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#AEDBEA", "#808080"),  fillOpacity = .9, group = "flood risk", stroke = FALSE) %>% 
       
       # add school buffer polygon
       addPolygons(data = selected_school, color = "darkgrey", fill = FALSE, 
-                  weight = 2, group = "school community area") %>% 
+                  weight = 1, group = "school community area") %>% 
       
       # add school point
       addCircleMarkers(data = selected_school_point, color = "black", stroke = FALSE, 
@@ -63,8 +64,9 @@ flood_map <- function(input) {
                        group = "school point") %>% 
       
       # add legend for flood risk with custom labels
-      addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#8DB6CD"), labels = labels,
-                title = "Flood Risk", opacity = 0.8)
+
+      addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#808080"), labels = labels,
+                title = "Flood Risk", opacity = 0.9)
     
   })
   
