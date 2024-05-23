@@ -452,9 +452,26 @@ body <- dashboardBody(
                 # BEGIN BOX FOR MAPS AND DESCRIPTION
                 box(
                   width = NULL,
-                  # output slr map
-                  leafletOutput(outputId = "slr_map") %>% 
-                    withSpinner(color="#0dc5c1"),
+                  # 2000 sea level rise map
+                  column(
+                    width = 6,
+                    # map title
+                    div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                        "2000 sea levels" ),
+                    # map output
+                    leafletOutput(outputId = "slr_map_2000") %>%
+                      withSpinner(color="#0dc5c1")
+                  ),
+                  # 2050
+                  column(
+                    width = 6,
+                    # map title
+                    div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                        "projected 2050 sea levels"),
+                    # map output
+                    leafletOutput(outputId = "slr_map") %>%
+                      withSpinner(color="#0dc5c1")
+                  ),
                   # output slr text
                   includeMarkdown("text/coastal_inundation.md")
                 )
