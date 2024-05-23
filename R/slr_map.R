@@ -22,7 +22,7 @@ slr_map <- function(input) {
     slr_intersect <- st_intersection(school_buffer, ca_slr)
     
     # plot the extent of sea level rise
-    leaflet() %>% 
+    leaflet(options = leafletOptions(attributionControl = FALSE)) %>% 
       # add topo basemap
       addProviderTiles(providers$Esri.WorldTopoMap, group = "topographic map") %>%
       # add imagery basemap
@@ -39,12 +39,17 @@ slr_map <- function(input) {
       # add legend for sea level rise
       addLegend("bottomright", colors = "cornflowerblue", labels = "sea level rise extent",
                 title = "", opacity = 1) %>%
+      # add a scale bar
+      addScaleBar(position =  "bottomleft",
+                  options = scaleBarOptions(imperial = TRUE,
+                                            metric = FALSE,
+                                            maxWidth = 200)) %>% 
       # add option to toggle data on and off
       addLayersControl(
         overlayGroups = c("school sea level rise extent", 
                           "school community area", "school point"),
         baseGroups = c("topographic map", "satellite imagery"),
-        options = layersControlOptions(collapsed = FALSE)) %>% 
+        options = layersControlOptions(collapsed = TRUE)) %>% 
       # set zoom to be the center of the school
       setView(lng = school_point$Longitude, lat = school_point$Latitude, zoom = 12)
     

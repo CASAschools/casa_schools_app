@@ -62,6 +62,9 @@ server <- function(input, output, session){
   # output sea level rise map
   output$slr_map <- slr_map(input)
   
+  # output sea level rise 2000 map
+  output$slr_map_2000 <- slr_map_2000(input)
+  
   #---------------------Homepage leaflet map------------------------------------
 
   # # City selection UI
