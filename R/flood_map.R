@@ -17,17 +17,6 @@ flood_map <- function(input) {
     #clip school buffers to flood intersections
     FEMA_schools <- st_intersection(selected_school, FEMA_reclass_simple)
     
-<<<<<<< HEAD
-    #intersect the school buffer with flood risk
-=======
-    # grab the flooding polgons that intersect with that school area
-    #selected_flood <- FEMA_reclass[selected_school, ]
-    
-    #intersect flooding polygons so only the extent within school area is shown
-    #selected_flood_intersected <- st_intersection(selected_school, selected_flood)
->>>>>>> 60c3fde64c5f7c68a1a4ba12556bda71d5cf9924
-    selected_flood_intersected <- st_intersection(selected_school, FEMA_reclass_simple)
-    
     # overlay the school buffer and school point on the FEMA flood risk shapefile
     # plot it
     selected_school <- st_transform(selected_school, crs = 4326)
@@ -39,7 +28,7 @@ flood_map <- function(input) {
     labels <- c("High", "Moderate to Low", "Undetermined")
     flood_colors <- colorFactor(c("#0C46EE", "#AEDBEA", "#808080"), levels = c("high", "moderate to low", "undetermined"))
     flood_palette <- colorFactor(palette = flood_colors,
-                                 domain = selected_flood_intersected$flood_risk)
+                                 domain = FEMA_schools$flood_risk)
     
   
     # leaflet map of flood risk potential
@@ -52,12 +41,7 @@ flood_map <- function(input) {
       addProviderTiles(providers$Esri.WorldImagery, group = "satellite imagery") %>% 
       
       # add cropped flood risk
-<<<<<<< HEAD
       addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#AEDBEA", "#808080"),  fillOpacity = .8, group = "flood risk", stroke = FALSE) %>% 
-=======
-
-      addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#AEDBEA", "#808080"),  fillOpacity = .9, group = "flood risk", stroke = FALSE) %>% 
->>>>>>> 60c3fde64c5f7c68a1a4ba12556bda71d5cf9924
       
       # add school buffer polygon
       addPolygons(data = selected_school, color = "darkgrey", fill = FALSE, 
@@ -69,7 +53,6 @@ flood_map <- function(input) {
                        group = "school point") %>% 
       
       # add legend for flood risk with custom labels
-<<<<<<< HEAD
       addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#808080"), labels = labels,
                 title = "Flood Risk", opacity = 0.8) %>% 
       
@@ -84,11 +67,6 @@ flood_map <- function(input) {
         overlayGroups = c("flood risk", "school community area", "school point"),
         baseGroups = c("topographic map", "satellite imagery"),
         options = layersControlOptions(collapsed = TRUE))
-=======
-
-      addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#808080"), labels = labels,
-                title = "Flood Risk", opacity = 0.9)
->>>>>>> 60c3fde64c5f7c68a1a4ba12556bda71d5cf9924
     
   })
 
