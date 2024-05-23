@@ -122,7 +122,8 @@ FEMA_reclass_simple <- st_read("/capstone/casaschools/flooding/intermediate_laye
 FEMA_reclass_simple <- st_transform(FEMA_reclass_simple, st_crs(schools_buffers))
 
 #clip school buffers to flood intersections
-#FEMA_schools <- st_intersection(school_buffers, FEMA_reclass)
+#FEMA_schools <- st_intersection(school_buffer, FEMA_reclass)
+
 
 # ----------------------------------------------------------------
 
