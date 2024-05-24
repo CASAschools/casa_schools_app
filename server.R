@@ -1,25 +1,5 @@
 server <- function(input, output, session){
   
-  #-------------------Reactive tab titles--------------------------------
-
-  # update hazard summary tab title based on the selected school
-  #output$school_name_summary <- update_school_name(input$school_summary)
-
-  # update wildfire tab title based on the selected school
-  #output$school_name_wildfire <- update_school_name(input$school_wildfire)
-
-  # update heat tab title based on the selected school
-  #output$school_name_heat <- update_school_name(input$school_heat)
-
-  # update precip tab title based on the selected school
-  #output$school_name_precip <- update_school_name(input$school_precip)
-
-  # update flood tab title based on the selected school
-  #output$school_name_flood <- update_school_name(input$school_flooding)
-  
-  # update sea level rise tab title based on the selected school
-  #output$school_name_slr <- update_school_name(input$school_slr)
-  
   #-------------------Hazards plots---------------------------------------------
   
   # output hazard summary plot for the homepage
@@ -211,12 +191,79 @@ server <- function(input, output, session){
     updateSelectInput(session, "school_slr",
                       choices = valid_schools(), selected = selected_school())
   })
+
+# ---------------output tutorial images on each page---------------------
+  
+  # output tutorial image when the user clicks on the button in the hazard summary tab
+  observeEvent(input$tutorial_summary, {
+    showModal(modalDialog(
+      title = NULL,
+      img(src = "wildfire_interactivity.jpg",
+          style = "width: 100%; height: auto;"),
+      footer = modalButton("Close"),
+      easyClose = TRUE,
+      fade = TRUE,
+      size = "l"
+    ))
+  })
+  
+  # output tutorial image when the user clicks on the button in the extreme heat tab
+  observeEvent(input$tutorial_heat, {
+    showModal(modalDialog(
+      title = NULL,
+      img(src = "wildfire_interactivity.jpg",
+          style = "width: 100%; height: auto;"),
+      footer = modalButton("Close"),
+      easyClose = TRUE,
+      fade = TRUE,
+      size = "l"
+    ))
+  })
   
   # output tutorial image when the user clicks on the button in the wildfire tab
   observeEvent(input$tutorial_wildfire, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg", 
+      img(src = "wildfire_interactivity.jpg",
+          style = "width: 100%; height: auto;"),
+      footer = modalButton("Close"),
+      easyClose = TRUE,
+      fade = TRUE,
+      size = "l"
+    ))
+  })
+  
+  # output tutorial image when the user clicks on the button in the precipitation tab
+  observeEvent(input$tutorial_precip, {
+    showModal(modalDialog(
+      title = NULL,
+      img(src = "wildfire_interactivity.jpg",
+          style = "width: 100%; height: auto;"),
+      footer = modalButton("Close"),
+      easyClose = TRUE,
+      fade = TRUE,
+      size = "l"
+    ))
+  })
+  
+  # output tutorial image when the user clicks on the button in the flooding tab
+  observeEvent(input$tutorial_flooding, {
+    showModal(modalDialog(
+      title = NULL,
+      img(src = "wildfire_interactivity.jpg",
+          style = "width: 100%; height: auto;"),
+      footer = modalButton("Close"),
+      easyClose = TRUE,
+      fade = TRUE,
+      size = "l"
+    ))
+  })
+  
+  # output tutorial image when the user clicks on the button in the sea level rise tab
+  observeEvent(input$tutorial_slr, {
+    showModal(modalDialog(
+      title = NULL,
+      img(src = "wildfire_interactivity.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
