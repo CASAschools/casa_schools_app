@@ -67,7 +67,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Welcome to the CASAschools Climate Hazards Dashboard!"), style = "font-size: 30px"),
+                h2(tags$strong("Welcome to the California Schools Climate Hazards Dashboard!"), style = "font-size: 30px"),
                 # text description
                 includeMarkdown("text/about_text.md"),
                 

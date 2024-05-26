@@ -1,14 +1,22 @@
-<span style="font-size:18px;">Effective climate adaptation has to be grounded in an understanding of local vulnerabilities to climate hazards. To serve as community hubs for climate adaptation planning and activities, schools need information about the intersecting threats that climate change poses.</span>
 
-<span style="font-size:18px;">This dashboard aims to be a resource for schools and their communities by providing localized climate hazard data for the 10,008 public schools across California. Data for the following climate hazards can be viewed:</span>
-
+<span style="font-size:19px;">This dashboard provides localized climate hazard data for the 10,008 public schools across California. The following climate hazards can be viewed:
+</span>
 
 <ul>
-   <li style="color:black;font-size:18px">Projected Extreme Heat Days</li>
-   <li style="color:black;font-size:18px">Projected Extreme Precipitation</li>
-   <li style="color:black;font-size:18px">Wildfire Risk</li>
-   <li style="color:black;font-size:18px">Flooding Risk</li>
-   <li style="color:black;font-size:18px">Sea Level Rise</li>
+   <li style="color:black;font-size:19px">Extreme Heat</li>
+   <li style="color:black;font-size:19px">Wildfire</li>
+   <li style="color:black;font-size:19px">Extreme Precipitation</li>
+   <li style="color:black;font-size:19px">Flooding</li>
+   <li style="color:black;font-size:19px">Sea Level Rise</li>
   </ul>
 
-<span style="font-size:18px;">This dashboard also provides a Hazard Summary Metric to allow users to view a combined score for the five hazards relevant to their school community.</span>
+<span style="font-size:22px;"><b>How to get started!</b></span>
+
+<span style="color:black;font-size:19px">
+1. <u>Find Your School:</u> Search or type your City, School District, and School Name in the drop downs below.
+   <br><br>
+2. <u>View your school's Hazard Summary Score:</u> Next to the dropdowns is your schools overall hazard risk on a scale of 0 to 25. 
+   <br><br>
+3. <u>Explore more:</u> Head on over to the "Explore Your Hazards" and learn more about the hazards your school has a high risk for. 
+</span>
+   
