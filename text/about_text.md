@@ -1,5 +1,5 @@
-
-<span style="font-size:19px;">This dashboard provides localized climate hazard data for the 10,008 public schools across California. The following climate hazards can be viewed:
+<br>
+<span style="font-size:19px;">This dashboard provides localized climate hazard data for the nearly 10,000 public schools across California. The following climate hazards can be viewed:
 </span>
 
 <ul>
@@ -9,14 +9,13 @@
    <li style="color:black;font-size:19px">Flooding</li>
    <li style="color:black;font-size:19px">Sea Level Rise</li>
   </ul>
-
+<br>
 <span style="font-size:22px;"><b>How to get started!</b></span>
-
-<span style="color:black;font-size:19px">
-1. <u>Find Your School:</u> Search or type your City, School District, and School Name in the drop downs below.
-   <br><br>
-2. <u>View your school's Hazard Summary Score:</u> Next to the dropdowns is your schools overall hazard risk on a scale of 0 to 25. 
-   <br><br>
-3. <u>Explore more:</u> Head on over to the "Explore Your Hazards" and learn more about the hazards your school has a high risk for. 
+<span style="color:black;font-size:19px">  
+1. <u>Find Your School:</u> Search or type your City, School District, and School Name in the drop down menus below.    
+2. <u>View your school's Hazard Summary Score:</u> Your school's overall hazard risk is shown on a scale of 0 to 25.   
+3. <u>Explore more:</u> Head on over to "Explore Your Hazards" and learn more about the hazards your school may be at risk for.   
 </span>
-   
+<br>
+
+
