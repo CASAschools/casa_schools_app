@@ -51,7 +51,7 @@ school_points <-  st_read("/capstone/casaschools/schools_data/California_Schools
 schools_buffers <- st_read("/capstone/casaschools/schools_data/schools_buffer/schools_points_buffer.shp",
                            quiet = TRUE)
 
-schools_buffers <- rbind(schools_buffers, rep("", ncol(schools_buffers)))
+#schools_buffers <- rbind(schools_buffers, rep(" ", ncol(schools_buffers)))
 
 # Transform CRS
 school_points <- st_transform(school_points, crs = "EPSG:4326" )
