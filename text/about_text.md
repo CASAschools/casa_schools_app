@@ -15,7 +15,7 @@
 <span style="color:black;font-size:19px">
 1. <u>Find Your School:</u> Search or type your City, School District, and School Name in the drop downs below.
    <br><br>
-2. <u>View your school's Hazard Summary Score:</u> Next to the dropdowns is your schools overall hazard risk on a scale of 0 to 25. 
+2. <u>View your school's Hazard Summary Score:</u> Next to the dropdowns is your schools five hazard risks on a scale of 1 to 5. 
    <br><br>
 3. <u>Explore more:</u> Head on over to the "Explore Your Hazards" and learn more about the hazards your school has a high risk for. 
 </span>
