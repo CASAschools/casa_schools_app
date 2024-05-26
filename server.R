@@ -57,7 +57,7 @@ server <- function(input, output, session){
     selectInput(inputId = "city", 
                 label = "Select or type a city", 
                 choices = sort(unique(hazards_buffer$City)), 
-                selected = NULL)
+                selected = "")
   })
   
   # District selection UI based on selected city
@@ -67,7 +67,7 @@ server <- function(input, output, session){
     selectInput(inputId = "district", 
                 label = "Select or type a school district", 
                 choices = sort(valid_districts),
-                selected = NULL)
+                selected = "")
   })
   
   # School selection UI based on selected district
@@ -77,7 +77,7 @@ server <- function(input, output, session){
     selectInput(inputId = "school", 
                 label = "Select or type a school", 
                 choices = sort(valid_schools),
-                selected = NULL)
+                selected = "")
   })
   
   # Render Leaflet map for the selected school
