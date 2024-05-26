@@ -11,9 +11,9 @@
   </ul>
 <br>
 <span style="font-size:22px;"><b>How to get started!</b></span>
-<span style="color:black;font-size:19px">  
-1. <u>Find Your School:</u> Search or type your City, School District, and School Name in the drop down menus below.    
-2. <u>View your school's Hazard Summary Score:</u> Your school's overall hazard risk is shown on a scale of 0 to 25.   
+<span style="color:black;font-size:19px"><br>
+1. <u>Find Your School:</u> Search or type your City, School District, and School Name in the drop down menus below.<br>
+2. <u>View your school's Hazard Summary Score:</u> Your school's overall hazard risk is shown on a scale of 0 to 25.<br>
 3. <u>Explore more:</u> Head on over to "Explore Your Hazards" and learn more about the hazards your school may be at risk for.   
 </span>
 <br>
