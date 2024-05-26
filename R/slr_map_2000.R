@@ -1,4 +1,4 @@
-slr_map <- function(input) {
+slr_map_2000 <- function(input) {
   
   # filter school buffers based on welcome page district input and sea level rise tab school input
   buffers_filtered <- reactive({
@@ -19,7 +19,7 @@ slr_map <- function(input) {
     school_point <- st_transform(school_point, crs = 4326)
     
     # select sea level rise polygons that intersect with the school buffer
-    slr_intersect <- st_intersection(school_buffer, ca_slr)
+    slr_intersect <- st_intersection(school_buffer, ca_slr_2000)
     
     # plot the extent of sea level rise
     leaflet(options = leafletOptions(attributionControl = FALSE)) %>% 
@@ -36,15 +36,12 @@ slr_map <- function(input) {
       # add school point
       addCircleMarkers(data = school_point, color = "orange", stroke = FALSE,
                        weight = 2, radius = 5, fillOpacity = 1, group = "school point") %>% 
-      # add legend for sea level rise
-      addLegend("bottomright", colors = "cornflowerblue", labels = "sea level rise extent",
-                title = "", opacity = 1) %>%
       # add a scale bar
       addScaleBar(position =  "bottomleft",
                   options = scaleBarOptions(imperial = TRUE,
                                             metric = FALSE,
                                             maxWidth = 200)) %>% 
-      # add option to toggle data on and off
+      # toggle option to turn layers on and off
       addLayersControl(
         overlayGroups = c("school sea level rise extent", 
                           "school community area", "school point"),

@@ -93,7 +93,7 @@ extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipita
 # ----------------------- Hazard summary -------------------------------
 
 # load in data
-hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/schools_hazards_intervals.csv")
+hazards_test <- read_csv("/capstone/casaschools/hazard_summary/schools_hazards_intervals.csv")
 
 ## hazard summary plot set up -----
 # labels for each climate hazard
@@ -113,6 +113,9 @@ whp_reclass2012 <- rast("/capstone/casaschools/wildfire/intermediate_layers/whp_
 
 # load in data
 ca_slr <- st_read("/capstone/casaschools/sea_level_rise/intermediate_layers/ca_slr_simple.shp")
+
+# load in data
+ca_slr_2000 <- st_read("/capstone/casaschools/sea_level_rise/intermediate_layers/ca_slr_2000_simple.shp")
 
 # ----------------------- Flooding -------------------------------
 # load in data

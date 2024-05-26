@@ -4,9 +4,9 @@
 header <- dashboardHeader(
   
   # dashboard title
-  title = "CASA Schools",
+  title = tags$strong("CA Schools Climate Hazards", style = "font-size: 16.5px;"),
   # title width
-  titleWidth = 188
+  titleWidth = 258
 ) 
 # END DASHBOARD HEADER
 
@@ -67,7 +67,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Welcome to the CASAschools Climate Hazards Dashboard!"), style = "font-size: 30px"),
+                h2(tags$strong("Welcome to the California Schools Climate Hazards Dashboard!"), style = "font-size: 30px"),
                 # text description
                 includeMarkdown("text/about_text.md"),
                 
@@ -77,7 +77,7 @@ body <- dashboardBody(
                   # START SELECT CITY, DISTRICT, AND SCHOOL COLUMN
                   column(width = 4,
                          # label
-                         h3(tags$strong("Select a school to get started")),
+                         h3(tags$strong("Select your school:")),
                          # city selection
                          uiOutput("cityMenu"),
                          # district selection
@@ -126,6 +126,16 @@ body <- dashboardBody(
                 
                 # BEGIN FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                 fluidRow(
+                  # school dropdown
+                  column(
+                    width = 4, 
+                    selectInput(inputId = "school_summary",
+                                label = "Select or type another school in the same district:",
+                                choices = sort(unique(schools_buffers$SchoolName)),
+                                selected = NULL)
+                  ),
+                  # empty column for space in between 
+                  column(width = 5),
                   # interactivity
                   column(
                     width = 3,
@@ -134,16 +144,6 @@ body <- dashboardBody(
                     # highlight interactive elements button
                     actionButton(inputId = "tutorial_summary",
                                  label = "highlight interactive elements")
-                  ),
-                  # empty column for space in between 
-                  column(width = 5),
-                  # school dropdown
-                  column(
-                    width = 4, 
-                    selectInput(inputId = "school_summary",
-                                label = "Select or type another school in the same district:",
-                                choices = sort(unique(schools_buffers$SchoolName)),
-                                selected = NULL)
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -186,17 +186,6 @@ body <- dashboardBody(
                 
                 # BEGIN FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                 fluidRow(
-                  # interactivity
-                  column(
-                    width = 3,
-                    # empty title to add space
-                    h2(tags$strong("")),
-                    # highlight interactive elements button
-                    actionButton(inputId = "tutorial_heat",
-                                 label = "highlight interactive elements")
-                  ),
-                  # empty column for space in between 
-                  column(width = 5),
                   # school dropdown
                   column(
                     width = 4, 
@@ -204,6 +193,17 @@ body <- dashboardBody(
                                 label = "Select or type another school in the same district:",
                                 choices = sort(unique(schools_buffers$SchoolName)),
                                 selected = NULL)
+                  ),
+                  # empty column for space in between 
+                  column(width = 5),
+                  # highlight interactive elements
+                  column(
+                    width = 3,
+                    # empty title to add space
+                    h2(tags$strong("")),
+                    # highlight interactive elements button
+                    actionButton(inputId = "tutorial_heat",
+                                 label = "highlight interactive elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -243,21 +243,23 @@ body <- dashboardBody(
                 
                 # BEGIN FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                 fluidRow(
-                  # school name output
-                  column(width = 3,
-                         h2(tags$strong("")),
-                         # output school name as tab title
-                         actionButton(inputId = "tutorial_wildfire",
-                                      label = "highlight interactive elements")
+                  # school dropdown
+                  column(
+                    width = 4, 
+                    selectInput(inputId = "school_wildfire",
+                                label = "Select or type another school in the same district:",
+                                choices = sort(unique(schools_buffers$SchoolName)),
+                                selected = NULL)
                   ),
                   # empty column for space in between 
                   column(width = 5),
-                  # school dropdown
-                  column(width = 4, 
-                         selectInput(inputId = "school_wildfire",
-                                     label = "Select or type another school in the same district:",
-                                     choices = sort(unique(schools_buffers$SchoolName)),
-                                     selected = NULL)
+                  # highlight interactive elements
+                  column(
+                    width = 3,
+                    h2(tags$strong("")),
+                    # action button
+                    actionButton(inputId = "tutorial_wildfire",
+                                 label = "highlight interactive elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -314,21 +316,23 @@ body <- dashboardBody(
                 
                 # BEGIN FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                 fluidRow(
-                  # school name output
-                  column(width = 3,
-                         h2(tags$strong("")),
-                         # output school name as tab title
-                         actionButton(inputId = "tutorial_precip",
-                                      label = "highlight interactive elements")
+                  # school dropdown
+                  column(
+                    width = 4, 
+                    selectInput(inputId = "school_precip",
+                                label = "Select or type another school in the same district:",
+                                choices = sort(unique(schools_buffers$SchoolName)),
+                                selected = NULL)
                   ),
                   # empty column for space in between 
                   column(width = 5),
-                  # school dropdown
-                  column(width = 4, 
-                         selectInput(inputId = "school_precip",
-                                     label = "Select or type another school in the same district:",
-                                     choices = sort(unique(schools_buffers$SchoolName)),
-                                     selected = NULL)
+                  # highlight interactive elements
+                  column(
+                    width = 3,
+                    h2(tags$strong("")),
+                    # action button
+                    actionButton(inputId = "tutorial_precip",
+                                 label = "highlight interactive elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -368,21 +372,23 @@ body <- dashboardBody(
                 
                 # BEGIN FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                 fluidRow(
-                  # school name output
-                  column(width = 3,
-                         h2(tags$strong("")),
-                         # output school name as tab title
-                         actionButton(inputId = "tutorial_flooding",
-                                      label = "highlight interactive elements")
+                  # school dropdown
+                  column(
+                    width = 4, 
+                    selectInput(inputId = "school_flooding",
+                                label = "Select or type another school in the same district:",
+                                choices = sort(unique(schools_buffers$SchoolName)),
+                                selected = NULL)
                   ),
                   # empty column for space in between 
                   column(width = 5),
-                  # school dropdown
-                  column(width = 4, 
-                         selectInput(inputId = "school_flooding",
-                                     label = "Select or type another school in the same district:",
-                                     choices = sort(unique(schools_buffers$SchoolName)),
-                                     selected = NULL)
+                  # highlight interactive elements
+                  column(
+                    width = 3,
+                    h2(tags$strong("")),
+                    # action button
+                    actionButton(inputId = "tutorial_flooding",
+                                 label = "highlight interactive elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -422,21 +428,23 @@ body <- dashboardBody(
                 
                 # BEGIN FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
                 fluidRow(
-                  # school name output
-                  column(width = 3,
-                         h2(tags$strong("")),
-                         # output school name as tab title
-                         actionButton(inputId = "tutorial_slr",
-                                      label = "highlight interactive elements")
+                  # school dropdown
+                  column(
+                    width = 4, 
+                    selectInput(inputId = "school_slr",
+                                label = "Select or type another school in the same district:",
+                                choices = sort(unique(schools_buffers$SchoolName)),
+                                selected = NULL)
                   ),
                   # empty column for space in between 
                   column(width = 5),
-                  # school dropdown
-                  column(width = 4, 
-                         selectInput(inputId = "school_slr",
-                                     label = "Select or type another school in the same district:",
-                                     choices = sort(unique(schools_buffers$SchoolName)),
-                                     selected = NULL)
+                  # highlight interactive elements
+                  column(
+                    width = 3,
+                    h2(tags$strong("")),
+                    # action button
+                    actionButton(inputId = "tutorial_slr",
+                                 label = "highlight interactive elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -444,9 +452,26 @@ body <- dashboardBody(
                 # BEGIN BOX FOR MAPS AND DESCRIPTION
                 box(
                   width = NULL,
-                  # output slr map
-                  leafletOutput(outputId = "slr_map") %>% 
-                    withSpinner(color="#0dc5c1"),
+                  # 2000 sea level rise map
+                  column(
+                    width = 6,
+                    # map title
+                    div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                        "2000 sea levels" ),
+                    # map output
+                    leafletOutput(outputId = "slr_map_2000") %>%
+                      withSpinner(color="#0dc5c1")
+                  ),
+                  # 2050
+                  column(
+                    width = 6,
+                    # map title
+                    div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
+                        "projected 2050 sea levels"),
+                    # map output
+                    leafletOutput(outputId = "slr_map") %>%
+                      withSpinner(color="#0dc5c1")
+                  ),
                   # output slr text
                   includeMarkdown("text/coastal_inundation.md")
                 )
