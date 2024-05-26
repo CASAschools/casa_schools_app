@@ -4,9 +4,9 @@
 header <- dashboardHeader(
   
   # dashboard title
-  title = "CASA Schools",
+  title = tags$strong("CA Schools Climate Hazards", style = "font-size: 16.5px;"),
   # title width
-  titleWidth = 188
+  titleWidth = 258
 ) 
 # END DASHBOARD HEADER
 
@@ -77,7 +77,7 @@ body <- dashboardBody(
                   # START SELECT CITY, DISTRICT, AND SCHOOL COLUMN
                   column(width = 4,
                          # label
-                         h3(tags$strong("Select a school to get started")),
+                         h3(tags$strong("Select your school:")),
                          # city selection
                          uiOutput("cityMenu"),
                          # district selection

@@ -41,7 +41,7 @@ flood_map <- function(input) {
       addProviderTiles(providers$Esri.WorldImagery, group = "satellite imagery") %>% 
       
       # add cropped flood risk
-      addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#AEDBEA", "#808080"),  fillOpacity = .8, group = "flood risk", stroke = FALSE) %>% 
+      addPolygons(data = FEMA_schools, fillColor = c("#0C46EE", "#AEDBEA", "#808080"),  fillOpacity = .7, group = "flood risk", stroke = FALSE) %>% 
       
       # add school buffer polygon
       addPolygons(data = selected_school, color = "darkgrey", fill = FALSE, 
@@ -54,7 +54,7 @@ flood_map <- function(input) {
       
       # add legend for flood risk with custom labels
       addLegend("bottomright", colors = c("#0C46EE", "#AEDBEA", "#808080"), labels = labels,
-                title = "Flood Risk", opacity = 0.8) %>% 
+                title = "Flood Risk", opacity = 0.7) %>% 
       
       # add a scale bar
       addScaleBar(position = "bottomleft",

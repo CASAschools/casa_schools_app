@@ -93,7 +93,7 @@ extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipita
 # ----------------------- Hazard summary -------------------------------
 
 # load in data
-hazards_test <- read_csv("/capstone/casaschools/hazard_summary/testing/schools_hazards_intervals.csv")
+hazards_test <- read_csv("/capstone/casaschools/hazard_summary/schools_hazards_intervals.csv")
 
 ## hazard summary plot set up -----
 # labels for each climate hazard
