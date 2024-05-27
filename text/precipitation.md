@@ -9,7 +9,7 @@ span style="font-size:18px;">Schools will see an overall increase in extreme pre
 
 <span style="font-size:18px;">Precipitation events are measured under two different scenarios: High Greenhouse Gas Emission and Reduced Greenhouse Gas Emissions. These scenarios represent two different climate adaptation methods such as continuing to burn fossil fuels or using renewable energy sources.</span>-->
 
-This product uses Cal-Adapts extreme precipitation data, but is not endorsed by Cal-Adapt
+This data was obtained from Cal-Adapt LOCA Downscaled CMIP5 Climate Projections, but is not endorsed by Cal-Adapt</span>
 Source: Cal-Adapt 2024. https://ucanr-igis.github.io/caladaptr/
 
 
