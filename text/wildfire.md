@@ -1,5 +1,5 @@
 ### What does this map tell us?
-<span style="font-size:18px;">The 2023 map shows which green areas in your community are susceptible to wildfire, and the 2012 map provides a comparison to see how conditions have changed over time. Note that while the maps show data from different times, the basemap and satellite imagery are current.</span>
+<span style="font-size:18px;"> The map on the right shows which green areas in your community are susceptible to wildfire, and the map on the left shows the same data from 2012. Note that while the maps show data from different times, the basemap and satellite imagery are current.</span>
 
 ### How is wildfire hazard potential measured?
 <span style="font-size:18px;">Wildfire hazard potential describes the likelihood of wildfire based on past fire occurrences, weather conditions and patterns, and the types of vegetation present. Each square measures 270 meters by 270 meters and falls into the categories of very low, low, moderate, high, and very high.
