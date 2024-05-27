@@ -16,9 +16,9 @@ summary_tab <- function(input) {
                    names_to = "variable", values_to = "value")
     
     lollipop_chart <- ggplot(lollipop_df, 
-                             aes(y = reorder(variable, value), x = value)) +
+                             aes(y = variable, x = value)) +
       # create a segment, the length of which corresponds to the hazard score
-      geom_segment(aes(y = variable, yend = variable, x = 0, xend = value),
+      geom_segment(aes(y = variable, yend = variable, x = -.4, xend = value),
                    color = "skyblue",
                    size = 3) +
       # add a point at the end of the segment
@@ -30,12 +30,11 @@ summary_tab <- function(input) {
       # add hazard score as a label to the point
       geom_text(aes(label = value), vjust = 0.5, hjust = 0.5, 
                 color = "black", size = 6, fontface = "bold", family = "sans") +
-      # make sure x-axis draws to 5
-      scale_x_continuous(limits = c(0,5)) +
+      # make sure x-axis draws from -0.4 to 5
+      scale_x_continuous(limits = c(-0.4, 5)) +
       # map a gradient fill from green to red for the hazard summary points
       scale_fill_gradientn(colors = custom_pal,
-                           limits = c(1,5),
-                           breaks = c(1:5)) +
+                           limits = c(0,5)) +
       theme_light(base_family = "sans") +
       # add custom labels to change the lollipop labels from the shorthand column names
       scale_y_discrete(labels = hazard_labels,
@@ -57,44 +56,37 @@ summary_tab <- function(input) {
             axis.ticks.y = element_blank(),
             # increase plot margins
             plot.margin = unit(c(0.1, 0, 0.1, 0), "cm")) +
-    labs(y = NULL,
-         x = NULL)
+      labs(y = NULL,
+           x = NULL)
     
-    ## bar chart of total hazard summary score -----
-    total_score <- ggplot(hazards_filtered()) +
-      # compose the bar of 5 rectangles corresponding to the color scheme (lower to higher risk)
-      geom_rect(aes(xmin = 0, xmax = 5, ymin = 0.5, ymax = 1.2), 
-                fill = "#FFCF73", alpha = .7) +
-      geom_rect(aes(xmin = 5, xmax = 10, ymin = 0.5, ymax = 1.2), 
-                fill = "#F2EAAB", alpha = .7) +
-      geom_rect(aes(xmin = 10, xmax = 15, ymin = 0.5, ymax = 1.2), 
-                fill = "#8FD2E3", alpha = .7) +
-      geom_rect(aes(xmin = 15, xmax = 20, ymin = 0.5, ymax = 1.2), 
-                fill = "#6B9EB8", alpha = .7) +
-      geom_rect(aes(xmin = 20, xmax = 25, ymin = 0.5, ymax = 1.2), 
-                fill = "#5A5E9E", alpha = .7) +
-      # plot a red line on the bar corresponding to the overall hazard score
-      geom_segment(aes(y = 0.2, yend = 1.5, x = hazard_score, xend = hazard_score),
-                   color = "red",
+    ## gradient fill bar of total hazard summary score -----
+    total_score <- ggplot(hazards_filtered(), 
+                          aes(y = as.factor(1))) +  # need to create a dummy y-axis
+      geom_tile(data = df, aes(x = x, y = 1, fill = color),
+                color = "transparent",
+                height = 0.75,
+                width = 1.14) +
+      scale_fill_identity() +  # Use the fill color directly
+      # plot a red line at the value of the hazard score
+      geom_segment(aes(y = 0.5, yend = 1.5, x = hazard_score * 20, xend = hazard_score * 20),
+                   color = "black",
                    linewidth = 1.5) +
-      # set the x-axis limits
-      xlim(0, 25) +
-      # remove axis labels
+      # label the hazard score
+      geom_text(aes(x = hazard_score * 20, y = 1, label = hazard_score),
+                hjust = -.2, color = "black", size = 8) +
       labs(y = NULL,
            x = NULL) +
       theme_minimal() +
-      theme(aspect.ratio = 1/10, # adjust the aspect ratio
-            # increase size of x-axis numbers
-            axis.text.x = element_text(size = 12),
-            # remove x-axis grid lines
+      theme(aspect.ratio = 1/10, # adjust aspect ratio to move the plot title and x-axis labels closer
+            plot.title = element_text(face = "bold", size = 20),
             panel.grid.major.x = element_blank(),
             panel.grid.minor.x = element_blank(),
-            # remove y-axis grid lines
             panel.grid.major.y = element_blank(),
             panel.grid.minor.y = element_blank(),
             axis.text.y = element_blank(),
-            # increase plot margins
-            plot.margin = unit(c(0.1, 0, 0.1, 0), "cm"))
+            axis.text.x = element_text(size = 14)) +
+      scale_x_continuous(breaks = c(0, 100, 200, 300, 400, 500), # set the break positions
+                         labels = c("0", "5", "10", "15", "20", "25")) # set the custom labels
     
     ## create label plot -----
     risk_label <- ggplot() + 
