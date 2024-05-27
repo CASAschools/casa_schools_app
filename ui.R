@@ -272,7 +272,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2012 wildfire hazard" ),
+                        "2012 Wildfire Hazard" ),
                     # map output
                     leafletOutput(outputId = "wildfire_map2012") %>%
                       withSpinner(color="#0dc5c1")
@@ -282,7 +282,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2023 wildfire hazard"),
+                        "2023 Wildfire Hazard"),
                     # map output
                     leafletOutput(outputId = "wildfire_map2023") %>%
                       withSpinner(color="#0dc5c1")
@@ -457,7 +457,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2000 sea levels" ),
+                        "2000 Sea Levels" ),
                     # map output
                     leafletOutput(outputId = "slr_map_2000") %>%
                       withSpinner(color="#0dc5c1")
@@ -467,7 +467,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "projected 2050 sea levels"),
+                        "Projected 2050 Sea Levels"),
                     # map output
                     leafletOutput(outputId = "slr_map") %>%
                       withSpinner(color="#0dc5c1")

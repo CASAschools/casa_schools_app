@@ -37,7 +37,7 @@ slr_map <- function(input) {
       addCircleMarkers(data = school_point, color = "orange", stroke = FALSE,
                        weight = 2, radius = 5, fillOpacity = 1, group = "school point") %>% 
       # add legend for sea level rise
-      addLegend("bottomright", colors = "cornflowerblue", labels = "sea level rise extent",
+      addLegend("bottomright", colors = "cornflowerblue", labels = "Sea level rise extent",
                 title = "", opacity = 1) %>%
       # add a scale bar
       addScaleBar(position =  "bottomleft",
