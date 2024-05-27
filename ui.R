@@ -35,8 +35,8 @@ sidebar <- dashboardSidebar(
              # sea level rise sub tab
              menuSubItem(text = h4("Sea Level Rise"), tabName = "sea_rise", icon = icon("house-tsunami"))
     ),
-    # climate information tab
-    menuItem(text = h4("Climate Information"), tabName = "info", icon = icon("circle-info")),
+    # Information tab
+    menuItem(text = h4("Information"), tabName = "info", icon = icon("circle-info")),
     # glossary tab
     menuItem(text = h4("Glossary"), tabName = "glossary", icon = icon("book-open")),
     # user guide tab
@@ -483,9 +483,9 @@ body <- dashboardBody(
             
     ), # END SEA LEVEL RISE TAB
     
-    # ------- Climate Information tab -----------------------------------
+    # ------- Information tab -----------------------------------
     
-    # BEGIN CLIMATE INFORMATION TAB
+    # BEGIN INFORMATION TAB
     tabItem(tabName = "info",
             
             # BEGIN FLUID PAGE
@@ -503,7 +503,7 @@ body <- dashboardBody(
               
             )# END FLUID PAGE
             
-    ), # END CLIMATE INFORMATION TAB
+    ), # END INFORMATION TAB
     
     # ------- Glossary tab ---------------------------------------------
     
