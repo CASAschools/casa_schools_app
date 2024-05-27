@@ -344,7 +344,7 @@ body <- dashboardBody(
                   plotlyOutput(outputId = 'precip_plot') %>% 
                     withSpinner(color="#0dc5c1"),
                   # output precip text
-                  includeMarkdown("text/heat.md")
+                  includeMarkdown("text/precipitation.md")
                 )
                 # END BOX FOR PLOT
                 
