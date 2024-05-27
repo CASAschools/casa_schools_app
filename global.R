@@ -4,7 +4,8 @@
 required_packages <- c(
   "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "tidyverse",
   "leaflet", "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
-  "plotly", "terra", "colorspace", "RColorBrewer", "gridExtra", "fontawesome"
+  "plotly", "terra", "colorspace", "RColorBrewer", "gridExtra", "fontawesome",
+  "dichromat"
 )
 
 # install missing packages
@@ -36,6 +37,7 @@ library(colorspace)
 library(RColorBrewer)
 library(gridExtra)
 library(fontawesome)
+library(dichromat)
 
 
 # make sure the full cdscode can be seen
@@ -102,7 +104,17 @@ hazards_test <- read_csv("/capstone/casaschools/hazard_summary/schools_hazards_i
 hazard_labels <- c("flooding", "extreme heat", "extreme\nprecipitation", "sea level rise", "wildfire")
 
 # custom color palette
-custom_pal <- c("#FFCF73", "#F2EAAB", "#8FD2E3", "#6B9EB8", "#5A5E9E")
+custom_pal <- c("white", "#FFCF73", "#F2EAAB", "#8FD2E3", "#6B9EB8", "#5A5E9E")
+
+# create gradient dataframe for geom_tile in the total summary score plot
+create_gradient_df <- function(n = 500) {
+  data.frame(
+    x = seq(0, 500, length.out = n),
+    color = colorRampPalette(c("white", "#FFCF73", "#F2EAAB", "#8FD2E3", "#6B9EB8", "#5A5E9E"))(500)
+  )
+}
+
+df <- create_gradient_df()
 
 # ----------------------- Wildfire -------------------------------
 
