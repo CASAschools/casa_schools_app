@@ -9,7 +9,6 @@
    <li style="color:black;font-size:19px">Flooding</li>
    <li style="color:black;font-size:19px">Sea Level Rise</li>
   </ul>
-<br>
 
 <p><br> <span style="font-size:22px;"><b>How to get started!</b></span>
 <br>
