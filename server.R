@@ -94,8 +94,7 @@ server <- function(input, output, session){
         addProviderTiles(providers$Esri.WorldTopoMap, group = "topographic map") %>% 
         setView(lng = selectedSchool$Longitude[1], lat = selectedSchool$Latitude[1], zoom = 11) %>% 
         # Add a circle marker with buffer around the school
-        addCircles(~Longitude, ~Latitude, radius = 4828.03, #Adjust the radius as needed
-                   color = ~pal(hazard_score)) %>% 
+        addCircles(~Longitude, ~Latitude, radius = 4828.03, color = "black", fill = FALSE, weight = 2) %>%  #Adjust the radius as needed
         addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
         addMarkers(~Longitude, ~Latitude, icon = ~icons, popup = ~HazardString) %>% 
         addScaleBar(position =  "bottomleft")
