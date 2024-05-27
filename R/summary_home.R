@@ -16,9 +16,9 @@ summary_home <- function(input) {
                    names_to = "variable", values_to = "value")
     
     lollipop_chart <- ggplot(lollipop_df, 
-                             aes(y = reorder(variable, value), x = value)) +
+                             aes(y = variable, x = value)) +
       # create a segment, the length of which corresponds to the hazard score
-      geom_segment(aes(y = variable, yend = variable, x = 0, xend = value),
+      geom_segment(aes(y = variable, yend = variable, x = -.4, xend = value),
                    color = "skyblue",
                    size = 3) +
       # add a point at the end of the segment
@@ -30,12 +30,11 @@ summary_home <- function(input) {
       # add hazard score as a label to the point
       geom_text(aes(label = value), vjust = 0.5, hjust = 0.5, 
                 color = "black", size = 6, fontface = "bold", family = "sans") +
-      # make sure x-axis draws to 5
-      scale_x_continuous(limits = c(0,5)) +
+      # make sure x-axis draws from -0.4 to 5
+      scale_x_continuous(limits = c(-0.4, 5)) +
       # map a gradient fill from green to red for the hazard summary points
       scale_fill_gradientn(colors = custom_pal,
-                           limits = c(1,5),
-                           breaks = c(1:5)) +
+                           limits = c(0,5)) +
       theme_light(base_family = "sans") +
       # add custom labels to change the lollipop labels from the shorthand column names
       scale_y_discrete(labels = hazard_labels,
