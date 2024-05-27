@@ -23,7 +23,7 @@ wildfire_map2023 <- function(input) {
     school_point <- st_transform(school_point, crs = 4326)
     
     # Define color palette and labels for wildfire hazard potential
-    labels <- c("Developed or open water", "Very low", "Low", "Moderate", "High", "Very high", "")
+    labels <- c("Developed or<br>open water", "Very low", "Low", "Moderate", "High", "Very high", "")
     whp_colors <- c("grey", "#fee391", "#fec44f", "#fe9929", "#d95f0e", "#993404", "transparent")
     whp_palette <- colorFactor(palette = whp_colors,
                                domain = values(whp_school2023),

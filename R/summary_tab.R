@@ -64,7 +64,7 @@ summary_tab <- function(input) {
     total_score <- ggplot(hazards_filtered(), 
                           aes(y = as.factor(1))) +  # need to create a dummy y-axis
       geom_tile(data = df, aes(x = x, y = 1, fill = color),
-                color = "transparent",
+                color = NA,
                 height = 0.75,
                 width = 1.14) +
       scale_fill_identity() +  # Use the fill color directly
