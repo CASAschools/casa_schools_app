@@ -2,11 +2,13 @@ wildfire_map2012 <- function(input) {
   
   # filter school buffers based on welcome page district input and wildfire tab school input
   buffers_filtered <- reactive({
+    req(input$district, input$school_wildfire)
     school_filtered(hazards_buffer, input$district, input$school_wildfire)
   })
   
   # render wildfire map based on the chosen school
   renderLeaflet({
+    
     
     # grab school buffer
     school_buffer <- buffers_filtered()
@@ -54,6 +56,11 @@ wildfire_map2012 <- function(input) {
         baseGroups = c("topographic map", "satellite imagery"),
         options = layersControlOptions(collapsed = TRUE))
     
+    
+    
+    
+    
   })
+  
   
 }

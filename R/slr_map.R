@@ -2,6 +2,7 @@ slr_map <- function(input) {
   
   # filter school buffers based on welcome page district input and sea level rise tab school input
   buffers_filtered <- reactive({
+    req(input$district, input$school_slr)
     school_filtered(hazards_buffer, input$district, input$school_slr)
   })
   

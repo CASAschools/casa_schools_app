@@ -135,7 +135,7 @@ body <- dashboardBody(
                                 selected = NULL)
                   ),
                   # empty column for space in between 
-                  column(width = 5),
+                  column(width = 4),
                   # interactivity
                   column(
                     width = 3,
@@ -143,7 +143,7 @@ body <- dashboardBody(
                     h2(tags$strong("")),
                     # highlight interactive elements button
                     actionButton(inputId = "tutorial_summary",
-                                 label = "highlight interactive elements")
+                                 label = "Highlight Interactive Elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -195,7 +195,7 @@ body <- dashboardBody(
                                 selected = NULL)
                   ),
                   # empty column for space in between 
-                  column(width = 5),
+                  column(width = 4),
                   # highlight interactive elements
                   column(
                     width = 3,
@@ -203,7 +203,7 @@ body <- dashboardBody(
                     h2(tags$strong("")),
                     # highlight interactive elements button
                     actionButton(inputId = "tutorial_heat",
-                                 label = "highlight interactive elements")
+                                 label = "Highlight Interactive Elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -252,14 +252,14 @@ body <- dashboardBody(
                                 selected = NULL)
                   ),
                   # empty column for space in between 
-                  column(width = 5),
+                  column(width = 4),
                   # highlight interactive elements
                   column(
                     width = 3,
                     h2(tags$strong("")),
                     # action button
                     actionButton(inputId = "tutorial_wildfire",
-                                 label = "highlight interactive elements")
+                                 label = "Highlight Interactive Elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -325,14 +325,14 @@ body <- dashboardBody(
                                 selected = NULL)
                   ),
                   # empty column for space in between 
-                  column(width = 5),
+                  column(width = 4),
                   # highlight interactive elements
                   column(
                     width = 3,
                     h2(tags$strong("")),
                     # action button
                     actionButton(inputId = "tutorial_precip",
-                                 label = "highlight interactive elements")
+                                 label = "Highlight Interactive Elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -344,7 +344,7 @@ body <- dashboardBody(
                   plotlyOutput(outputId = 'precip_plot') %>% 
                     withSpinner(color="#0dc5c1"),
                   # output precip text
-                  includeMarkdown("text/heat.md")
+                  includeMarkdown("text/precipitation.md")
                 )
                 # END BOX FOR PLOT
                 
@@ -381,14 +381,14 @@ body <- dashboardBody(
                                 selected = NULL)
                   ),
                   # empty column for space in between 
-                  column(width = 5),
+                  column(width = 4),
                   # highlight interactive elements
                   column(
                     width = 3,
                     h2(tags$strong("")),
                     # action button
                     actionButton(inputId = "tutorial_flooding",
-                                 label = "highlight interactive elements")
+                                 label = "Highlight Interactive Elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -437,14 +437,14 @@ body <- dashboardBody(
                                 selected = NULL)
                   ),
                   # empty column for space in between 
-                  column(width = 5),
+                  column(width = 4),
                   # highlight interactive elements
                   column(
                     width = 3,
                     h2(tags$strong("")),
                     # action button
                     actionButton(inputId = "tutorial_slr",
-                                 label = "highlight interactive elements")
+                                 label = "Highlight Interactive Elements")
                   )
                 ),
                 # END FLUID ROW FOR INTERACTIVITY AND SCHOOL DROPDOWN BUTTONS
@@ -457,7 +457,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2000 sea levels" ),
+                        "2000 Sea Levels" ),
                     # map output
                     leafletOutput(outputId = "slr_map_2000") %>%
                       withSpinner(color="#0dc5c1")
@@ -467,7 +467,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "projected 2050 sea levels"),
+                        "Projected 2050 Sea Levels"),
                     # map output
                     leafletOutput(outputId = "slr_map") %>%
                       withSpinner(color="#0dc5c1")

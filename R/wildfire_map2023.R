@@ -2,6 +2,7 @@ wildfire_map2023 <- function(input) {
   
   # filter school buffers based on welcome page district input and wildfire tab school input
   buffers_filtered <- reactive({
+    req(input$district, input$school_wildfire)
     school_filtered(hazards_buffer, input$district, input$school_wildfire)
   })
   
@@ -56,6 +57,8 @@ wildfire_map2023 <- function(input) {
         overlayGroups = c("wildfire hazard", "school community area", "school point"),
         baseGroups = c("topographic map", "satellite imagery"),
         options = layersControlOptions(collapsed = TRUE))
+
+    
     
   })
   

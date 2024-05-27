@@ -53,7 +53,9 @@ school_points <-  st_read("/capstone/casaschools/schools_data/California_Schools
 schools_buffers <- st_read("/capstone/casaschools/schools_data/schools_buffer/schools_points_buffer.shp",
                            quiet = TRUE)
 
-#schools_buffers <- rbind(schools_buffers, rep(" ", ncol(schools_buffers)))
+# Add an empty row
+# schools_buffers <- schools_buffers %>% add_row()
+
 
 # Transform CRS
 school_points <- st_transform(school_points, crs = "EPSG:4326" )
@@ -101,7 +103,7 @@ hazards_test <- read_csv("/capstone/casaschools/hazard_summary/schools_hazards_i
 
 ## hazard summary plot set up -----
 # labels for each climate hazard
-hazard_labels <- c("flooding", "extreme heat", "extreme\nprecipitation", "sea level rise", "wildfire")
+hazard_labels <- c("Flooding", "Extreme Heat", "Extreme\nPrecipitation", "Sea Level Rise", "Wildfire")
 
 # custom color palette
 custom_pal <- c("white", "#FFCF73", "#F2EAAB", "#8FD2E3", "#6B9EB8", "#5A5E9E")

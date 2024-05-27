@@ -2,6 +2,7 @@ flood_map <- function(input) {
   
   # filter buffers based on school
   buffers_filtered <- reactive({
+    req(input$district, input$school_flooding)
     school_filtered(hazards_buffer, input$district, input$school_flooding)
   })
   

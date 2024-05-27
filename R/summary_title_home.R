@@ -8,7 +8,7 @@ summary_title_home <- function(input) {
   # update summary score based on the input
   renderUI({
     # make sure there's a selection, outputting a message if there is none
-    h3(tags$strong(paste(filtered_data()$SchoolName, "hazard summary")))
+    h3(tags$strong(paste(filtered_data()$SchoolName, "Hazard Summary Metric")))
   })
   
 }

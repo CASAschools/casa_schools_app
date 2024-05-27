@@ -3,6 +3,7 @@ summary_tab <- function(input) {
   
   # filter school as input for summary tab plot
   hazards_filtered <- reactive({
+    req(input$district, input$school)
     school_filtered(hazards_test, input$district, input$school_summary)
   })
 

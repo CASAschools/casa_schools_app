@@ -56,33 +56,33 @@ server <- function(input, output, session){
   output$cityMenu <- renderUI({
     selectInput(inputId = "city", 
                 label = "Select or type a city", 
-                choices = sort(unique(hazards_buffer$City)), 
+                choices = c("",sort(unique(hazards_buffer$City))), 
                 selected = NULL)
   })
   
   # District selection UI based on selected city
   output$districtMenu <- renderUI({
-    req(input$city)  # requires city input
+    req(input$city != "")  # requires city input
     valid_districts <- unique(hazards_buffer$DistrictNa[hazards_buffer$City == input$city])
     selectInput(inputId = "district", 
                 label = "Select or type a school district", 
-                choices = sort(valid_districts),
+                choices = c("",sort(valid_districts)),
                 selected = NULL)
   })
   
   # School selection UI based on selected district
   output$schoolMenu <- renderUI({
-    req(input$district)  #requires district input
+    req(input$district != "")  #requires district input
     valid_schools <- unique(hazards_buffer$SchoolName[hazards_buffer$DistrictNa == input$district])
     selectInput(inputId = "school", 
                 label = "Select or type a school", 
-                choices = sort(valid_schools),
+                choices = c("",sort(valid_schools)),
                 selected = NULL)
   })
   
   # Render Leaflet map for the selected school
   output$map <- renderLeaflet({
-    req(input$school, input$district)  # require school and district inputs
+    req(input$school != "", input$district != "")  # require school and district inputs
     # Filter schools based on both district
     selectedSchool <- hazards_buffer[
       hazards_buffer$SchoolName == input$school &
