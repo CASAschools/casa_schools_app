@@ -1,6 +1,6 @@
 ### What does this graph tell us?
+<br>
 span style="font-size:18px;">Schools will see an overall increase in extreme precipitation days in a reduced emissions and high emissions scenario.</span>
-
 
 ### How is extreme precipitation measured?
 <span style="font-size:18px;">An extreme precipitation event is a day where precipitation totals measure over 0.7 cumulative inches. This threshold was obtained by taking the 98th percentile of all historic precipitation events from 1961-1990.</span>

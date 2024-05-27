@@ -236,7 +236,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_precip, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_tutorial.jpg",
+      img(src = "precip_tutorial.png",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
