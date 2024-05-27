@@ -473,7 +473,7 @@ body <- dashboardBody(
                       withSpinner(color="#0dc5c1")
                   ),
                   # output slr text
-                  includeMarkdown("text/coastal_inundation.md")
+                  includeMarkdown("text/slr.md")
                 )
                 # END BOX FOR MAPS AND DESCRIPTION
                 

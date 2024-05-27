@@ -198,7 +198,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_summary, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -211,7 +211,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_heat, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -224,7 +224,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_wildfire, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -237,7 +237,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_precip, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -250,7 +250,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_flooding, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -263,7 +263,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_slr, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
