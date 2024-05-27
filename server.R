@@ -94,11 +94,10 @@ server <- function(input, output, session){
         addProviderTiles(providers$Esri.WorldTopoMap, group = "topographic map") %>% 
         setView(lng = selectedSchool$Longitude[1], lat = selectedSchool$Latitude[1], zoom = 11) %>% 
         # Add a circle marker with buffer around the school
-        addCircles(~Longitude, ~Latitude, radius = 4828.03, #Adjust the radius as needed
-                   color = ~pal(hazard_score)) %>% 
+        addCircles(~Longitude, ~Latitude, radius = 4828.03, color = "black", fill = FALSE, weight = 2) %>%  #Adjust the radius as needed
         addAwesomeMarkers(~Longitude, ~Latitude, popup = ~HazardString, icon = ~markers) %>% 
-        addMarkers(~Longitude, ~Latitude, icon = ~icons) %>% 
-        addScaleBar(position = c("bottomright"))
+        addMarkers(~Longitude, ~Latitude, icon = ~icons, popup = ~HazardString) %>% 
+        addScaleBar(position =  "bottomleft")
     } else {
       leaflet() %>%  #empty map return
         addTiles() %>%
@@ -198,7 +197,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_summary, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -211,7 +210,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_heat, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -224,7 +223,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_wildfire, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -237,7 +236,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_precip, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -250,7 +249,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_flooding, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -263,7 +262,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_slr, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_interactivity.jpg",
+      img(src = "wildfire_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,

@@ -272,7 +272,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2012 wildfire hazard" ),
+                        "2012 Wildfire Hazard" ),
                     # map output
                     leafletOutput(outputId = "wildfire_map2012") %>%
                       withSpinner(color="#0dc5c1")
@@ -282,7 +282,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2023 wildfire hazard"),
+                        "2023 Wildfire Hazard"),
                     # map output
                     leafletOutput(outputId = "wildfire_map2023") %>%
                       withSpinner(color="#0dc5c1")
@@ -473,7 +473,7 @@ body <- dashboardBody(
                       withSpinner(color="#0dc5c1")
                   ),
                   # output slr text
-                  includeMarkdown("text/coastal_inundation.md")
+                  includeMarkdown("text/slr.md")
                 )
                 # END BOX FOR MAPS AND DESCRIPTION
                 
