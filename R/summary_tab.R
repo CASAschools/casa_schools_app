@@ -14,7 +14,8 @@ summary_tab <- function(input) {
     # pivot longer to create dataframe for the lollipop plot
     lollipop_df <- hazards_filtered() %>%
       pivot_longer(cols = c(whp, heat_score, precip_score, flood_score, slr_score),
-                   names_to = "variable", values_to = "value")
+                   names_to = "variable", values_to = "value") %>% 
+      mutate(variable = factor(variable, levels = c("slr_score", "flood_score", "precip_score", "whp", "heat_score")))
     
     lollipop_chart <- ggplot(lollipop_df, 
                              aes(y = variable, x = value)) +

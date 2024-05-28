@@ -13,8 +13,9 @@ summary_home <- function(input) {
     ## lollipop chart of individual hazards -----
     # pivot longer to create dataframe for the lollipop plot
     lollipop_df <- hazards_filtered() %>%
-      pivot_longer(cols = c(whp, heat_score, precip_score, flood_score, slr_score),
-                   names_to = "variable", values_to = "value")
+      pivot_longer(cols = c(heat_score, whp, precip_score, flood_score, slr_score),
+                   names_to = "variable", values_to = "value") %>% 
+      mutate(variable = factor(variable, levels = c("slr_score", "flood_score", "precip_score", "whp", "heat_score")))
     
     lollipop_chart <- ggplot(lollipop_df, 
                              aes(y = variable, x = value)) +
@@ -59,42 +60,6 @@ summary_home <- function(input) {
             plot.margin = unit(c(0.1, 0, 0.1, 0), "cm")) +
       labs(y = NULL,
            x = NULL)
-    
-    # ## bar chart of total hazard summary score -----
-    # total_score <- ggplot(hazards_filtered()) +
-    #   # compose the bar of 5 rectangles corresponding to the color scheme (lower to higher risk)
-    #   geom_rect(aes(xmin = 0, xmax = 5, ymin = 0.5, ymax = 1.2), 
-    #             fill = "#FFCF73", alpha = .7) +
-    #   geom_rect(aes(xmin = 5, xmax = 10, ymin = 0.5, ymax = 1.2), 
-    #             fill = "#F2EAAB", alpha = .7) +
-    #   geom_rect(aes(xmin = 10, xmax = 15, ymin = 0.5, ymax = 1.2), 
-    #             fill = "#8FD2E3", alpha = .7) +
-    #   geom_rect(aes(xmin = 15, xmax = 20, ymin = 0.5, ymax = 1.2), 
-    #             fill = "#6B9EB8", alpha = .7) +
-    #   geom_rect(aes(xmin = 20, xmax = 25, ymin = 0.5, ymax = 1.2), 
-    #             fill = "#5A5E9E", alpha = .7) +
-    #   # plot a red line on the bar corresponding to the overall hazard score
-    #   geom_segment(aes(y = 0.2, yend = 1.5, x = hazard_score, xend = hazard_score),
-    #                color = "red",
-    #                linewidth = 1.5) +
-    #   # set the x-axis limits
-    #   xlim(0, 25) +
-    #   # remove axis labels
-    #   labs(y = NULL,
-    #        x = NULL) +
-    #   theme_minimal() +
-    #   theme(aspect.ratio = 1/10, # adjust the aspect ratio
-    #         # increase size of x-axis numbers
-    #         axis.text.x = element_text(size = 12),
-    #         # remove x-axis grid lines
-    #         panel.grid.major.x = element_blank(),
-    #         panel.grid.minor.x = element_blank(),
-    #         # remove y-axis grid lines
-    #         panel.grid.major.y = element_blank(),
-    #         panel.grid.minor.y = element_blank(),
-    #         axis.text.y = element_blank(),
-    #         # increase plot margins
-    #         plot.margin = unit(c(0.1, 0, 0.1, 0), "cm"))
     
     ## create label plot -----
     risk_label <- ggplot() + 

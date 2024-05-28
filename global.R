@@ -103,7 +103,7 @@ hazards_test <- read_csv("/capstone/casaschools/hazard_summary/schools_hazards_i
 
 ## hazard summary plot set up -----
 # labels for each climate hazard
-hazard_labels <- c("Flooding", "Extreme Heat", "Extreme\nPrecipitation", "Sea Level Rise", "Wildfire")
+hazard_labels <- c("Sea Level Rise", "Flooding", "Extreme\nPrecipitation", "Wildfire", "Extreme Heat")
 
 # custom color palette
 custom_pal <- c("white", "#FFCF73", "#F2EAAB", "#8FD2E3", "#6B9EB8", "#5A5E9E")
