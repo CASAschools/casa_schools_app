@@ -21,7 +21,7 @@ sidebar <- dashboardSidebar(
     # welcome tab
     menuItem(text = h4("Welcome"), tabName = "welcome", icon = icon("star")),
     # hazard summary tab
-    menuItem(text = h4("Hazard Summary Metric"), tabName = "index", icon = icon("square-poll-horizontal")),
+    menuItem(text = h4("Hazard Summary"), tabName = "index", icon = icon("square-poll-horizontal")),
     # explore your hazards tab
     menuItem(text = h4("Explore Your Hazards"), tabName = "hazards", icon = icon("earth-americas"),
              # extreme heat sub tab
@@ -67,7 +67,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Welcome to the California Schools Climate Hazards Dashboard!"), style = "font-size: 30px"),
+                h2(tags$strong("Welcome to the California Schools Climate Hazards Dashboard!"), style = "font-size: 35px"),
                 # text description
                 includeMarkdown("text/about_text.md"),
                 
@@ -120,7 +120,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Hazard Summary Metric"), style = "font-size: 30px"),
+                h2(tags$strong("Hazard Summary Metric"), style = "font-size: 35px"),
                 # school name
                 uiOutput("school_name_summary"),
                 
@@ -180,7 +180,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Extreme Heat"), style = "font-size: 30px"),
+                h2(tags$strong("Extreme Heat"), style = "font-size: 35px"),
                 # school name
                 uiOutput("school_name_heat"),
                 
@@ -237,7 +237,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Wildfire"), style = "font-size: 30px"),
+                h2(tags$strong("Wildfire"), style = "font-size: 35px"),
                 # school name
                 uiOutput("school_name_wildfire"),
                 
@@ -310,7 +310,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Extreme Precipitation"), style = "font-size: 30px"),
+                h2(tags$strong("Extreme Precipitation"), style = "font-size: 35px"),
                 # school name
                 uiOutput("school_name_precip"),
                 
@@ -366,7 +366,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Flooding"), style = "font-size: 30px"),
+                h2(tags$strong("Flooding"), style = "font-size: 35px"),
                 # school name
                 uiOutput("school_name_flood"),
                 
@@ -422,7 +422,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Sea Level Rise"), style = "font-size: 30px"),
+                h2(tags$strong("Sea Level Rise"), style = "font-size: 35px"),
                 # school name
                 uiOutput("school_name_slr"),
                 
@@ -495,7 +495,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Information"), style = "font-size: 30px"),
+                h2(tags$strong("Information"), style = "font-size: 35px"),
                 # text
                 includeMarkdown("text/socio.md"),
               )
@@ -517,7 +517,7 @@ body <- dashboardBody(
               box(
                 width = NULL, 
                 # title 
-                h2(tags$strong("Glossary"), style = "font-size: 30px"),
+                h2(tags$strong("Glossary"), style = "font-size: 35px"),
                 # text
                 includeMarkdown("text/glossary.md")
               ) # END BOX FOR ENTIRE PAGE
@@ -538,7 +538,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("User Guide"), style = "font-size: 30px"),
+                h2(tags$strong("User Guide"), style = "font-size: 35px"),
                 # text
                 includeMarkdown("text/glossary.md")
               ) # END BOX FOR ENTIRE PAGE
