@@ -197,7 +197,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_summary, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_tutorial.jpg",
+      img(src = "hazard_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -210,7 +210,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_heat, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_tutorial.jpg",
+      img(src = "heat_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
@@ -249,7 +249,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_flooding, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_tutorial.jpg",
+      img(src = "flooding_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,
