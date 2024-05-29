@@ -21,7 +21,7 @@ sidebar <- dashboardSidebar(
     # welcome tab
     menuItem(text = h4("Welcome"), tabName = "welcome", icon = icon("star")),
     # hazard summary tab
-    menuItem(text = h4("Hazard Summary"), tabName = "index", icon = icon("square-poll-horizontal")),
+    menuItem(text = h4("Hazards Summary"), tabName = "index", icon = icon("square-poll-horizontal")),
     # explore your hazards tab
     menuItem(text = h4("Explore Your Hazards"), tabName = "hazards", icon = icon("earth-americas"),
              # extreme heat sub tab
