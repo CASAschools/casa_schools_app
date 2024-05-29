@@ -457,7 +457,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2000 Sea Levels" ),
+                        HTML("2000 Sea Levels<br>with a Coastal Storm")),
                     # map output
                     leafletOutput(outputId = "slr_map_2000") %>%
                       withSpinner(color="#0dc5c1")
@@ -467,7 +467,7 @@ body <- dashboardBody(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "Projected 2050 Sea Levels"),
+                        HTML("Projected 2050 Sea Levels<br>with a Coastal Storm")),
                     # map output
                     leafletOutput(outputId = "slr_map") %>%
                       withSpinner(color="#0dc5c1")
