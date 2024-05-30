@@ -1,4 +1,16 @@
 <span style="font-size:18px;">
+  <b>100 Year Flood</b> - An area with a 1% annual chance of flooding.
+  <b>Source</b>: <a href="https://efotg.sc.egov.usda.gov/references/public/NM/FEMA_FLD_HAZ_guide.pdf">US Geological Survey</a>
+</span>
+<br>
+<br>
+<span style="font-size:18px;">
+  <b>500 Year Flood</b> - An area with a 0.2% annual chance of flooding.
+  <b>Source</b>: <a href="https://efotg.sc.egov.usda.gov/references/public/NM/FEMA_FLD_HAZ_guide.pdf">US Geological Survey</a>
+</span>
+<br>
+<br>
+<span style="font-size:18px;">
   <b>100 Year Storm</b> - A large rainfall event that has a 1% chance of occurring in a given year. 
   <b>Source</b>: <a href="https://www.usgs.gov/special-topics/water-science-school/science/100-year-flood">US Geological Survey</a>
 </span>
