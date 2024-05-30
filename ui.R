@@ -120,7 +120,7 @@ body <- dashboardBody(
               box(
                 width = NULL,
                 # title
-                h2(tags$strong("Hazard Summary Metric"), style = "font-size: 35px"),
+                h2(tags$strong("Hazards Summary"), style = "font-size: 35px"),
                 # school name
                 uiOutput("school_name_summary"),
                 
