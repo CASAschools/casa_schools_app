@@ -19,7 +19,7 @@ Science Foundation, the Climate Adaptation Solutions Accelerator (CASA).
 A GitHub repository for this dashboard can be found at the following
 link: <https://github.com/CASAschools>
 
-![CASAschools team](images/CASAschools2.JPG){width="25%"}
+<img src="CASAschools2.JPG" alt="CASAschools team" width="45%">
 
 <br>
 
@@ -35,18 +35,22 @@ and physical options, (2) social options, and (3) institutional options.
 and air filtration systems; increasing shade and drought-resistant
 landscaping in schoolyards
 
-![Example of school with shade features and drought-resistant
-landscaping](images/Schoolyard.jpg){width="25%"}
+<img src="Schoolyard.jpg" alt="Example of school with shade features and drought-resistant
+landscaping" width="45%">
+
 
 <span style="font-size:18px;"> *•* Updating school curricula to help
 students and their communities understand what they can do to build a
 more resilient future and provide resources to take climate action
 
-![Climate education in action in the
-classroom](images/climate_ed.jpeg){width="25%"}
+<img src="climate_ed.jpeg" alt="Climate education in action in the
+classroom" width="45%">
+
 
 <span style="font-size:18px;"> *•* Working with educational institutions
 to commit to sustainable frameworks
+
+<img src="school_change.png" alt="Cycle of educational commitments, climate, and change" width="45%">
 
 <br>
 

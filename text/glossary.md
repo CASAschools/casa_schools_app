@@ -65,6 +65,12 @@
 <br>
 <br>
 <span style="font-size:18px;">
+  <b>Percentile</b> - A value that falls within a range of 0% - 100%, where the value is equal to or below that percentage 
+  <b>Source</b>: <a href="https://www.merriam-webster.com/dictionary/percentile">Cal-Adapt</a>
+</span>
+<br>
+<br>
+<span style="font-size:18px;">
   <b>Reduced Emissions Scenario (RCP 4.5)</b> - A scenario where greenhouse gas emissions peak around 2040 and decline through the rest of the 21st century. 
   <b>Source</b>: <a href="https://cal-adapt.org/help/faqs/which-rcp-scenarios-should-i-use-in-my-analysis/">Cal-Adapt</a>
 </span>
@@ -83,7 +89,14 @@
 <br>
 <br>
 <span style="font-size:18px;">
+  <b>Threshold</b> - The lowest boundary for climate events that, when past, results in extreme climate conditions. 
+  <b>Source</b>: <a href="https://www.coolscience.net/thresholds">US Geological Survey</a>
+</span>
+<br>
+<br>
+<span style="font-size:18px;">
   <b>Wildfire</b> - An unplanned burning of vegetation and wildland. 
   <b>Source</b>: <a href="https://www.firelab.org/project/wildfire-hazard-potential">Missoula Fire Sciences Laboratory</a>
 </span>
+
 

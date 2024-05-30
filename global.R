@@ -94,7 +94,7 @@ calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/di
 extreme_heat <- read.csv("/capstone/casaschools/shiny_dashboard/data/extreme_heat/extreme_heat.csv") 
 
 #---------------------------- Precipitation ----------------------------
-extreme_precip <- read_csv("/capstone/casaschools/shiny_dashboard/data/precipitation/extreme_precipitation.csv") 
+extreme_precip <- read.csv("/capstone/casaschools/shiny_dashboard/data/precipitation/extreme_precipitation.csv") 
 
 # ----------------------- Hazard summary -------------------------------
 
