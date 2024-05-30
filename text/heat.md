@@ -3,7 +3,7 @@
 ### What does this graph tell us?
 
 
-<span style="font-size:18px;"> This plot shows the estimated number of extreme heat days from 2005 to 2064 for a reduced emissions and high emissions scenario. </span>
+<span style="font-size:18px;"> This plot shows the estimated number of extreme heat days from 2006 to 2064 for a reduced emissions and high emissions scenario. </span>
 
 
 ### How is extreme heat measured?
