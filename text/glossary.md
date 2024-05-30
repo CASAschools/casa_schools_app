@@ -1,12 +1,12 @@
 <span style="font-size:18px;">
   <b>100 Year Flood</b> - An area with a 1% annual chance of flooding.
-  <b>Source</b>: <a href="https://efotg.sc.egov.usda.gov/references/public/NM/FEMA_FLD_HAZ_guide.pdf">US Geological Survey</a>
+  <b>Source</b>: <a href="https://efotg.sc.egov.usda.gov/references/public/NM/FEMA_FLD_HAZ_guide.pdf">Federal Emergency Management Agency</a>
 </span>
 <br>
 <br>
 <span style="font-size:18px;">
   <b>500 Year Flood</b> - An area with a 0.2% annual chance of flooding.
-  <b>Source</b>: <a href="https://efotg.sc.egov.usda.gov/references/public/NM/FEMA_FLD_HAZ_guide.pdf">US Geological Survey</a>
+  <b>Source</b>: <a href="https://efotg.sc.egov.usda.gov/references/public/NM/FEMA_FLD_HAZ_guide.pdf">Federal Emergency Management Agency</a>
 </span>
 <br>
 <br>
@@ -66,7 +66,7 @@
 <br>
 <span style="font-size:18px;">
   <b>Percentile</b> - A value that falls within a range of 0% - 100%, where the value is equal to or below that percentage 
-  <b>Source</b>: <a href="https://www.merriam-webster.com/dictionary/percentile">Cal-Adapt</a>
+  <b>Source</b>: <a href="https://www.merriam-webster.com/dictionary/percentile">Merriam Webster</a>
 </span>
 <br>
 <br>
@@ -90,7 +90,7 @@
 <br>
 <span style="font-size:18px;">
   <b>Threshold</b> - The lowest boundary for climate events that, when past, results in extreme climate conditions. 
-  <b>Source</b>: <a href="https://www.coolscience.net/thresholds">US Geological Survey</a>
+  <b>Source</b>: <a href="https://www.coolscience.net/thresholds">Cool Science</a>
 </span>
 <br>
 <br>
