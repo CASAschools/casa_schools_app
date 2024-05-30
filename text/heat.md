@@ -1,8 +1,11 @@
 ### What does this graph tell us?
-<span style="font-size:18px;"> This plot shows the estimated number of extreme heat days from 2005 to 2064 for a reduced emissions and high emissions scenario. </span>
+<span style="font-size:18px;"> The graph shows the estimated number of extreme heat days from 2005 to 2064 in a reduced emissions and high emissions scenario. </span>
 
 ### How is extreme heat measured?
-<span style="font-size:18px;"> Extreme heat days are measured as maximum daily temperature above 98°F. High greenhouse gas emission is a projection of future climate impacts assuming no efforts to reduce greenhouse gas emission is taken and continues to increase. Reduced greenhouse gas emission is a projection of future climate impacts assuming mitigation if there is a reduction and limit of emitted greenhouse concentration. 
+<span style="font-size:18px;"> Extreme heat days are measured as maximum daily temperature above 98°F.
+This threshold was obtained by taking the 98th percentile of all historic precipitation events from 1961-1990.</span>
 
-This data was obtained from Cal-Adapt LOCA Downscaled CMIP5 Climate Projections.</span>
+<span style="font-size:18px;"> High greenhouse gas emission is a projection of future climate impacts assuming no efforts to reduce greenhouse gas emission is taken and continues to increase. Reduced greenhouse gas emission is a projection of future climate impacts assuming mitigation if there is a reduction and limit of emitted greenhouse concentration.
+
+This data was obtained from Cal-Adapt LOCA Downscaled CMIP5 Climate Projections, but is not endorsed by Cal-Adapt</span>
 Source: https://ucanr-igis.github.io/caladaptr/index.html 
