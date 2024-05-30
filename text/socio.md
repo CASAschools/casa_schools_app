@@ -48,9 +48,6 @@ classroom](images/climate_ed.jpeg){width="25%"}
 <span style="font-size:18px;"> *•* Working with educational institutions
 to commit to sustainable frameworks
 
-![Cycle of educational commitments, climate, and
-change](images/school_change-01.png){width="25%"}
-
 <br>
 
 ### Why schools and climate adaptation?
