@@ -290,6 +290,7 @@ body <- dashboardBody(
                       withSpinner(color="#0dc5c1")
                   ),
                   # description text
+                  box(width = 12),
                   includeMarkdown("text/wildfire.md")
                 ) 
                 # END BOX FOR MAPS AND DESCRIPTION
@@ -401,6 +402,7 @@ body <- dashboardBody(
                   # output flooding map
                   leafletOutput(outputId = "flood_map") %>% 
                     withSpinner(color="#0dc5c1"),
+                  box(width = 12),
                   # output text
                   includeMarkdown("text/flooding.md")
                 ) 
@@ -474,6 +476,7 @@ body <- dashboardBody(
                     leafletOutput(outputId = "slr_map") %>%
                       withSpinner(color="#0dc5c1")
                   ),
+                  box(width = 12),
                   # output slr text
                   includeMarkdown("text/slr.md")
                 )
