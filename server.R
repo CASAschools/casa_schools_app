@@ -262,7 +262,7 @@ server <- function(input, output, session){
   observeEvent(input$tutorial_slr, {
     showModal(modalDialog(
       title = NULL,
-      img(src = "wildfire_tutorial.jpg",
+      img(src = "slr_tutorial.jpg",
           style = "width: 100%; height: auto;"),
       footer = modalButton("Close"),
       easyClose = TRUE,

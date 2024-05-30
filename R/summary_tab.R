@@ -68,8 +68,8 @@ summary_tab <- function(input) {
                 color = NA,
                 height = 0.75,
                 width = 1.14) +
-      scale_fill_identity() +  # Use the fill color directly
-      # plot a red line at the value of the hazard score
+      scale_fill_identity() +  # use the fill color directly
+      # plot a black line at the value of the hazard score
       geom_segment(aes(y = 0.5, yend = 1.5, x = hazard_score * 20, xend = hazard_score * 20),
                    color = "black",
                    linewidth = 1.5) +
@@ -107,8 +107,9 @@ summary_tab <- function(input) {
       theme(plot.margin = unit(c(0.3, 0, 0.3, 0), "cm"))
     
     ## stitch them all together -----
-    grid.arrange(total_score, lollipop_chart, risk_label, ncol = 1,
-                 heights = c(.8, 1.8, .5))
+    grid.arrange(lollipop_chart, risk_label, total_score, 
+                 ncol = 1,
+                 heights = c(1.8, .5, .8))
     
   })
   
