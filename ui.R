@@ -156,7 +156,9 @@ body <- dashboardBody(
                       uiOutput("summary_score_tab")),
                   # output summmary plot
                   plotOutput(outputId = "summary_tab") %>% 
-                    withSpinner(color="#0dc5c1")
+                    withSpinner(color="#0dc5c1"),
+                  # description
+                  includeMarkdown("text/summary.md")
                 )
                 # END BOX FOR PLOT
                 
