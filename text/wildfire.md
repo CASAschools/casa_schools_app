@@ -11,6 +11,7 @@
 
 <span style="font-size:18px;">Wildfire hazard potential describes the likelihood of wildfire based on past fire occurrences, weather conditions and patterns, and the types of vegetation present. Each square measures 270 meters by 270 meters and falls into the categories of very low, low, moderate, high, and very high. </span>
 
+
 <span style="font-size:18px;">A wildfire is an uncontrolled fire that burns in wildland vegetation, often in rural areas. While wildfires can affect developed areas as well, they are treated as a separate category in the data. </span>
 
 
