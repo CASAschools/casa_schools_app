@@ -10,12 +10,12 @@ To help schools and communities understand their climate risks, we will create a
 - [Authors](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#authors)
 - [License](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#license)
 
-### Usage
-## Hazard Summary Metric
+## Dashboard Tabs
+### Hazard Summary Metric
 
-This tab features our hazard summary metric which displays a summarized risk score for all five climate hazards. The hazard summary score for each school buffer area is measured on a scale from 5-25, with lower values representing lower climate hazard risk and higher values representing higher climate hazard risk. The composite score is the sum of individual scores for each climate hazard.
+This tab features our hazard summary metric which displays a summarized risk score for all five climate hazards. The hazard summary score for each school buffer area is measured on a scale from 0-25, with lower values representing lower climate hazard risk and higher values representing higher climate hazard risk. The composite score is the sum of individual scores for each climate hazard.
 
-## Explore Your Hazards
+### Explore Your Hazards
 
 This tab features our five interactive climate hazard visualizations:
 - **Extreme Heat**
@@ -26,11 +26,11 @@ This tab features our five interactive climate hazard visualizations:
 
 Users can click on each tab at the top of the webpage to explore the risks associated with each climate hazard relative to their location. Users will be able to input their address in a search bar to get the information most relevant to them.
 
-## Climate Information
+### Climate Information
 
 Under this tab, users will be given links to additional resources to protect themselves and their communities against climate hazards, as well as short write-ups that provide more information on how to engage their community to address climate change.
 
-## User Guide
+### User Guide
 
 This tab will include a written and video walk-through of the dashboard to inform users on how to navigate each page, and filter for their prefered school for each hazard.
 ### Libraries and Packages
@@ -50,6 +50,8 @@ The authors of this dashboard are [Liane Chen](https://github.com/lchenhub), [Ch
 This work is licensed under a [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
 
 ## File Structure
+
+
 ```bash
 ├── global.R
 ├── LICENSE
