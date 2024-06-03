@@ -11,6 +11,10 @@ To help schools and communities understand their climate risks, we will create a
 - [License](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#license)
 
 ## Dashboard Tabs
+![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/eefc6922-0032-409b-a1bc-2120f14faa90)
+![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/eefc6922-0032-409b-a1bc-2120f14faa90)
+
+
 ### Hazard Summary Metric
 
 This tab features our hazard summary metric which displays a summarized risk score for all five climate hazards. The hazard summary score for each school buffer area is measured on a scale from 0-25, with lower values representing lower climate hazard risk and higher values representing higher climate hazard risk. The composite score is the sum of individual scores for each climate hazard.
