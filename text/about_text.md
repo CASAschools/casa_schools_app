@@ -1,5 +1,5 @@
 <br>
-<span style="font-size:19px;">This dashboard provides localized climate hazard data for the nearly 10,000 public schools across California. The following climate hazards can be viewed:
+<span style="font-size:19px;">This dashboard provides localized climate hazard data for over 10,000 public schools across California. The following climate hazards can be viewed:
 </span>
 
 <ul>
