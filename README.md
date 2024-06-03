@@ -12,7 +12,6 @@ To help schools and communities understand their climate risks, we will create a
 
 ## Dashboard Tabs
 ![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/eefc6922-0032-409b-a1bc-2120f14faa90)
-![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/eefc6922-0032-409b-a1bc-2120f14faa90)
 
 
 ### Hazard Summary Metric
