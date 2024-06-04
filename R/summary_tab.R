@@ -34,7 +34,7 @@ summary_tab <- function(input) {
                 color = "black", size = 6, fontface = "bold", family = "sans") +
       # make sure x-axis draws from -0.4 to 5
       scale_x_continuous(limits = c(-0.4, 5)) +
-      # map a gradient fill from green to red for the hazard summary points
+      # map a gradient fill from yellow to purple for the hazard summary points
       scale_fill_gradientn(colors = custom_pal,
                            limits = c(0,5)) +
       theme_light(base_family = "sans") +
@@ -73,7 +73,7 @@ summary_tab <- function(input) {
       geom_segment(aes(y = 0.5, yend = 1.5, x = hazard_score * 20, xend = hazard_score * 20),
                    color = "black",
                    linewidth = 1.5) +
-      # label the hazard score
+      # label the hazard score, multiplying by 20 to account for the scale of the bar
       geom_text(aes(x = hazard_score * 20, y = 1, label = hazard_score),
                 hjust = -.2, color = "black", size = 8) +
       labs(y = NULL,
