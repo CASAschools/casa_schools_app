@@ -502,7 +502,7 @@ body <- dashboardBody(
                 # title
                 h2(tags$strong("Information"), style = "font-size: 35px"),
                 # text
-                includeMarkdown("text/socio.md"),
+                includeMarkdown("text/info.md"),
               )
               # END BOX FOR ENTIRE PAGE
               

@@ -21,7 +21,10 @@ link: <https://github.com/CASAschools>
 
 <img src="CASAschools2.JPG" alt="CASAschools team" width="45%">
 
+</span>
+
 <br>
+
 
 ### What is climate adaptation?
 
@@ -52,6 +55,8 @@ to commit to sustainable frameworks
 
 <img src="school_change.png" alt="Cycle of educational commitments, climate, and change" width="45%">
 
+</span>
+
 <br>
 
 ### Why schools and climate adaptation?
@@ -65,10 +70,10 @@ respond to climate-driven emergencies and public health issues. This
 also negatively affects student learning, school facilities, access to
 much-needed resources, and district budgets.
 
-<span style="font-size:18px;"> [Additionally, climate change
+<span style="font-size:18px;"> Additionally, climate change
 disproportionately impacts communities in California. Schools that serve
 more historically under resourced populations will likely be more
-severely impacted.]{style="font-size:18px;"}
+severely impacted.
 
 <br>
 

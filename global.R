@@ -89,7 +89,7 @@ school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName"
 # Calmatters Load In
 calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/disasterDays.csv")
 
-# -------------------- EXTREME HEAT --------------------------------------
+# -------------------- Extreme Heat --------------------------------------
 # Extreme Heat Import
 extreme_heat <- read.csv("/capstone/casaschools/shiny_dashboard/data/extreme_heat/extreme_heat.csv") 
 
@@ -144,7 +144,7 @@ FEMA_reclass_simple <- st_transform(FEMA_reclass_simple, st_crs(schools_buffers)
 #FEMA_schools <- st_intersection(school_buffer, FEMA_reclass)
 
 
-# ----------------------------------------------------------------
+# -------------------Hazard Score Output---------------------------
 
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
 
