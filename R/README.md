@@ -1,5 +1,7 @@
 This folder contains the necessary functions to running the dashboard and includes plotting the figures and interactive elements.
 
+The table below is a description of the files included in this folder.
+
 | Files      | Description|
 -------------|--------
 | flood_map.R|  Function for mapping flooding with a 3 mile clipped boundary of selected school |
