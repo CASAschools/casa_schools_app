@@ -37,6 +37,8 @@ sidebar <- dashboardSidebar(
     ),
     # Information tab
     menuItem(text = h4("Information"), tabName = "info", icon = icon("circle-info")),
+    # about tab
+    menuItem(text = h4("About"), tabName = "about", icon = icon("address-card")),
     # glossary tab
     menuItem(text = h4("Glossary"), tabName = "glossary", icon = icon("book-open")),
     # user guide tab
@@ -69,7 +71,7 @@ body <- dashboardBody(
                 # title
                 h2(tags$strong("Welcome to the California Schools Climate Hazards Dashboard!"), style = "font-size: 35px"),
                 # text description
-                includeMarkdown("text/about_text.md"),
+                includeMarkdown("text/welcome.md"),
                 
                 # BEGIN FLUID ROW FOR SCHOOL SELECTION AND HAZARD SUMMARY PLOT
                 fluidRow(
@@ -507,6 +509,28 @@ body <- dashboardBody(
               # END BOX FOR ENTIRE PAGE
               
             )# END FLUID PAGE
+            
+    ), # END INFORMATION TAB
+    
+    # ------- About tab ---------------------------------------------
+    
+    # BEGIN ABOUT TAB
+    tabItem(tabName = "about",
+            
+            # BEGIN FLUID PAGE
+            fluidPage(
+              
+              # BEGIN BOX FOR ENTIRE PAGE
+              box(
+                width = NULL,
+                # title
+                h2(tags$strong("About"), style = "font-size: 35px"),
+                # text
+                includeMarkdown("text/about.md"),
+              )
+              # END BOX FOR ENTIRE PAGE
+              
+            ) # END FLUID PAGE
             
     ), # END INFORMATION TAB
     
