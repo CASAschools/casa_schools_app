@@ -3,7 +3,7 @@ This folder contains markdowns of text icluded throughout the dashbord. As well 
 Description of files can be found in the table below.
 
 | File | Description |
------------------------
+|------------|-----------|
 | about.html | HTML rendered text file of homepage about section of dashboard|
 | about.md | Markdown text file 
 of homepage about section of dashboard |
