@@ -23,7 +23,7 @@
 <br>
 <br>
 <span style="font-size:18px;">
-  <b>Climate Hazards</b> - A climatic event with the potential to cause harm across various spaces including human, structural, environmental, and economic. 
+  <b>Climate Hazards</b> - A climatic event with the potential to cause harm across various domains including human, structural, environmental, and economic. 
   <b>Source</b>: <a href="https://archive.ipcc.ch/pdf/special-reports/srex/SREX-Annex_Glossary.pdf">Intergovernmental Panel on Climate Change</a>
 </span>
 <br>
@@ -41,7 +41,7 @@
 <br>
 <br>
 <span style="font-size:18px;">
-  <b>Flooding</b> - A situation where land that is usually dry land is overwhelmed by water from a floodplain. 
+  <b>Flooding</b> - When dry land is overwhelmed by water from a floodplain. 
   <b>Source</b>: <a href="https://www.fema.gov/glossary/flood">Federal Emergency Management Agency</a>
 </span>
 <br>
@@ -59,8 +59,8 @@
 <br>
 <br>
 <span style="font-size:18px;">
-  <b>High Emissions Scenario (RCP 8.5)</b> - A scenario where greenhouse gas emissions continue to rise throughout the 21st century. 
-  <b>Source</b>: <a href="https://cal-adapt.org/help/faqs/which-rcp-scenarios-should-i-use-in-my-analysis/">Cal-Adapt</a>
+  <b>High Emissions Scenario (RCP 8.5)</b> - A scenario where greenhouse gas emissions continue to rise throughout the 21st century. The Intergovernmental Panel on Climate Change (IPCC) defines this scenario as Representative Concentration Pathway 8.5, where the concentration of carbon in the atmosphere will cause the earth to warm at 8.5 watts per square meter.
+  <b>Source</b>: <a href="https://cal-adapt.org/help/faqs/which-rcp-scenarios-should-i-use-in-my-analysis/">Cal-Adapt</a> and <a href="https://climatenexus.org/climate-change-news/rcp-8-5-business-as-usual-or-a-worst-case-scenario//">Climate Nexus</a>
 </span>
 <br>
 <br>
@@ -71,14 +71,14 @@
 <br>
 <br>
 <span style="font-size:18px;">
-  <b>Reduced Emissions Scenario (RCP 4.5)</b> - A scenario where greenhouse gas emissions peak around 2040 and decline through the rest of the 21st century. 
-  <b>Source</b>: <a href="https://cal-adapt.org/help/faqs/which-rcp-scenarios-should-i-use-in-my-analysis/">Cal-Adapt</a>
+  <b>Reduced Emissions Scenario (RCP 4.5)</b> - A scenario where greenhouse gas emissions peak around 2040 and decline through the rest of the 21st century. The Intergovernmental Panel on Climate Change (IPCC) defines this scenario as Representative Concentration Pathway 4.5, where the concentration of carbon in the atmosphere will cause the earth to warm at 4.5 watts per square meter.
+  <b>Source</b>: <a href="https://cal-adapt.org/help/faqs/which-rcp-scenarios-should-i-use-in-my-analysis/">Cal-Adapt</a> and <a href="https://climatenexus.org/climate-change-news/rcp-8-5-business-as-usual-or-a-worst-case-scenario//">Climate Nexus</a>
 </span>
 <br>
 <br>
 <span style="font-size:18px;">
   <b>School-Community Hub</b> - A connection between K-12 schools and communities which is achieved through integrated support services and community engagement. 
-  <b>Source</b>: <a href="https://research.acer.edu.au/cgi/viewcontent.cgi?article=1038&context=tll_misc">Teo et. al</a>
+  <b>Source</b>: <a href="https://research.acer.edu.au/cgi/viewcontent.cgi?article=1038&context=tll_misc">Teo et. al 2022</a>
 </span>
 <br>
 <br>
