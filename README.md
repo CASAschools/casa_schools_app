@@ -6,10 +6,14 @@ To help schools and communities understand their climate risks, we created an R 
 
 To read more details about the creation of the dashboard, please view the "Summary of Solution Design" section of the CASAschools Technical Documentation: https://bren.ucsb.edu/projects/climate-hazards-data-integration-and-visualization-climate-adaptation-solutions
 
-## Hazard Summary
+## Dashboard 
+![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/13ea1fd0-6ee5-4579-9b44-992a7487b2df)
+
+The following sections are descriptions of the different tabs found in the dashboard.
+### Hazard Summary
 This tab features our hazard summary metric which displays a summarized risk score for all five climate hazards. Each school receives a ranking for each hazard from 0-5, representing lower to higher risk. The total hazard summary score for each school buffer area is measured on a scale from 0-25, with lower values representing lower climate hazard risk and higher values representing higher climate hazard risk. The total score is the sum of individual scores for each climate hazard.
 
-## Explore Your Hazards
+### Explore Your Hazards
 
 This tab features our five interactive climate hazard visualizations:
 - **Extreme Heat**
@@ -32,7 +36,7 @@ Definitions of terms used throughout the dashboard are explained in this tab.
 
 This tab will include a written and video walk-through of the dashboard to inform users on how to navigate each page, and filter for their prefered school for each hazard.
 
-### Packages and Software
+## Packages and Software
 
 These are the primary packages used to run the R Shiny dashboard. Please view the "session_info.txt" file for software information, package versions, and the full list of packages required. 
 
@@ -54,7 +58,7 @@ These are the primary packages used to run the R Shiny dashboard. Please view th
 - fontawesome
 - dichromat
 
-### Authors 
+## Authors 
 The authors of this dashboard are [Liane Chen](https://github.com/lchenhub), [Charlie Curtin](https://github.com/charliecurtin1), [Kristina Glass](https://github.com/kristinaglass), and [Hazel Vaquero](https://github.com/hazelvaq). For any comments or questions about this dashboard, please reach out to @cp-casaschools@bren.ucsb.edu
 
 ### License
