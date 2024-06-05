@@ -5,8 +5,7 @@ Description of files can be found in the table below.
 | File | Description |
 |------------|-----------|
 | about.html | HTML rendered text file of homepage about section of dashboard|
-| about.md | Markdown text file 
-of homepage about section of dashboard |
+| about.md | Markdown text file of homepage about section of dashboard |
 | flooding.html | HTML rendered text file on Explore Your Hazards - Flooding tab | 
 | flooding.md | Markdown text file on Explore Your Hazards - Flood tab |
 | glossary.html | HTML rendered text file on glossary tab defining terms used in the dashboard|
