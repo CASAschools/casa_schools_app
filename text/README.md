@@ -13,7 +13,7 @@ of homepage about section of dashboard |
 | glossary.md | Markdown text file on glossary tab defining terms used in the dahsboard |
 | heat.md | Markdown text file included in the Explore Your Hazards - Extreme Heat tab |
 | info.html | HTML rendered text file included in Information tab explaining climate adaptation |
-| info.md | Markdown text file included in Information tab explaining climate adaptation 
+| info.md | Markdown text file included in Information tab explaining climate adaptation |
 | precipitation.html| HTML rendered text file included in Explore Your Hazards - Extreme Precipitation tab |
 | precipitation.md| Markdown text file included in Explore Your Hazards - Extreme Precipitation tab |
 |slr. html| HTML rendered text file included in Explore Your Hazards - Sea Level Rise tab |
