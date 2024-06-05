@@ -6,20 +6,10 @@ To help schools and communities understand their climate risks, we created an R 
 
 To read more details about the creation of the dashboard, please view the "Summary of Solution Design" section of the CASAschools Technical Documentation: https://bren.ucsb.edu/projects/climate-hazards-data-integration-and-visualization-climate-adaptation-solutions
 
-## Table of Contents
-- [Usage](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#usage)
-- [Libraries and Packages](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#libraries-and-packages)
-- [Authors](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#authors)
-- [License](https://github.com/CASAschools/shiny_dashboard/blob/main/README.md#license)
-
-## Dashboard Tabs
-![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/eefc6922-0032-409b-a1bc-2120f14faa90)
-
-
-### Hazard Summary
+## Hazard Summary
 This tab features our hazard summary metric which displays a summarized risk score for all five climate hazards. Each school receives a ranking for each hazard from 0-5, representing lower to higher risk. The total hazard summary score for each school buffer area is measured on a scale from 0-25, with lower values representing lower climate hazard risk and higher values representing higher climate hazard risk. The total score is the sum of individual scores for each climate hazard.
 
-### Explore Your Hazards
+## Explore Your Hazards
 
 This tab features our five interactive climate hazard visualizations:
 - **Extreme Heat**
