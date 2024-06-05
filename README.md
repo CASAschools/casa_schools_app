@@ -22,7 +22,7 @@ This tab features our five interactive climate hazard visualizations:
 - **Flooding**
 - **Sea Level Rise**
 
-Users can click on each tab at the top of the webpage to explore the risks associated with each climate hazard relative to their location. Users will be able to input their address in a search bar to get the information most relevant to them.
+Users can click on each tab at the top of the webpage to explore the risks associated with each climate hazard relative to their location. Users will be able to select schools in their school district to view how their school compares to neighboring schools.
 
 ### Climate Information
 
