@@ -38,7 +38,7 @@ This tab will include a written and video walk-through of the dashboard to infor
 
 ## Packages and Software
 
-These are the primary packages used to run the R Shiny dashboard. Please view the "session_info.txt" file for software information, package versions, and the full list of packages required. 
+These are the primary packages used to run the R Shiny dashboard. Please view the `session_info.txt` file for software information, package versions, and the full list of packages required. 
 
 - shiny
 - shinydashboard
