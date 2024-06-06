@@ -73,6 +73,7 @@ This work is licensed under a [Creative Commons Zero v1.0 Universal](https://cre
 │   ├── flood_map.R
 │   ├── heat_plot.R
 │   ├── precip_plot.R
+│   ├── README.md
 │   ├── school_filtered.R
 │   ├── slr_map_2000.R
 │   ├── slr_map.R
@@ -85,12 +86,17 @@ This work is licensed under a [Creative Commons Zero v1.0 Universal](https://cre
 │   └── wildfire_map2023.R
 ├── README_data_archival.md
 ├── README.md
+├── rsconnect
+│   └── shinyapps.io
+│       └── hazelvaq
+│           └── shiny_dashboard.dcf
 ├── server.R
 ├── session_info.txt
 ├── shiny_dashboard.Rproj
+├── testing_stuff_hazel.qmd
 ├── text
-│   ├── about_text.html
-│   ├── about_text.md
+│   ├── about.html
+│   ├── about.md
 │   ├── flooding.html
 │   ├── flooding.md
 │   ├── glossary.html
@@ -99,15 +105,21 @@ This work is licensed under a [Creative Commons Zero v1.0 Universal](https://cre
 │   ├── images
 │   │   ├── CASAschools2.JPG
 │   │   ├── climate_ed.jpeg
+│   │   ├── hazard_tutorial.jpg
+│   │   ├── precip_tutorial.png
 │   │   ├── school_change-01.png
 │   │   ├── school_change.png
 │   │   └── Schoolyard.jpg
 │   ├── info.html
 │   ├── info.md
+│   ├── precipitation.html
 │   ├── precipitation.md
+│   ├── README.md
 │   ├── slr.html
 │   ├── slr.md
 │   ├── summary.md
+│   ├── welcome.html
+│   ├── welcome.md
 │   ├── wildfire.html
 │   └── wildfire.md
 ├── ui.R
@@ -118,6 +130,7 @@ This work is licensed under a [Creative Commons Zero v1.0 Universal](https://cre
     ├── hazard_tutorial.jpg
     ├── heat_tutorial.jpg
     ├── precip_tutorial.png
+    ├── README.md
     ├── school_change.png
     ├── Schoolyard.jpg
     ├── slr_tutorial.jpg
