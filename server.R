@@ -5,14 +5,11 @@ server <- function(input, output, session){
   # output hazard summary plot for the homepage
   output$summary_home <- summary_home(input)
   
-  # output summary score as the header on the homepage
+  # output hazards summary with school name as plot title on homepage
   output$summary_title_home <- summary_title_home(input)
     
   # output hazard summary plot for the summary tab
   output$summary_tab <- summary_tab(input)
-  
-  # output hazard summary score as the header on the summary tab
-  output$summary_score_tab <- summary_score_tab(input)
 
   #--------------------Extreme Heat ---------------------------------------------
   

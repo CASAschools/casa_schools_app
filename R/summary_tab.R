@@ -44,6 +44,8 @@ summary_tab <- function(input) {
       theme(panel.grid.major.y = element_blank(), # remove y-axis grid lines
             # remove panel border
             panel.border = element_blank(),
+            # modify plot title
+            plot.title = element_text(face = "bold", size = 18, family = "Source Sans Pro"),
             # remove y-axis grid lines
             panel.grid.minor.y = element_blank(),
             # remove minor x-axis grid lines
@@ -59,10 +61,11 @@ summary_tab <- function(input) {
             # increase plot margins
             plot.margin = unit(c(0.1, 0, 0.1, 0), "cm")) +
       labs(y = NULL,
-           x = NULL)
+           x = NULL,
+           title = "Hazards Overview")
     
     ## gradient fill bar of total hazard summary score -----
-    total_score <- ggplot(hazards_filtered(), 
+    total_score <- ggplot(hazards_filtered(),
                           aes(y = as.factor(1))) +  # need to create a dummy y-axis
       geom_tile(data = df, aes(x = x, y = 1, fill = color),
                 color = NA,
@@ -73,19 +76,32 @@ summary_tab <- function(input) {
       geom_segment(aes(y = 0.5, yend = 1.5, x = hazard_score * 20, xend = hazard_score * 20),
                    color = "black",
                    linewidth = 1.5) +
+      # add a point on top of the line for the total hazard score to sit in
+      geom_point(aes(x = hazard_score * 20, y = 1),
+                 fill = "white",
+                 color = "black",
+                 shape = 21,
+                 size = 13) +
       # label the hazard score, multiplying by 20 to account for the scale of the bar
       geom_text(aes(x = hazard_score * 20, y = 1, label = hazard_score),
-                hjust = -.2, color = "black", size = 8) +
+                color = "black", size = 8) +
       labs(y = NULL,
-           x = NULL) +
+           x = NULL,
+           title = "Total Score") +
       theme_minimal() +
       theme(aspect.ratio = 1/10, # adjust aspect ratio to move the plot title and x-axis labels closer
-            plot.title = element_text(face = "bold", size = 20),
+            # modify plot title
+            plot.title = element_text(face = "bold", size = 18, family = "Source Sans Pro"),
+            # center the plot title
+            plot.title.position = "plot",
+            # remove grid lines
             panel.grid.major.x = element_blank(),
             panel.grid.minor.x = element_blank(),
             panel.grid.major.y = element_blank(),
             panel.grid.minor.y = element_blank(),
+            # remove y-axis text
             axis.text.y = element_blank(),
+            # remove x-axis text
             axis.text.x = element_text(size = 14)) +
       scale_x_continuous(breaks = c(0, 100, 200, 300, 400, 500), # set the break positions
                          labels = c("0", "5", "10", "15", "20", "25")) # set the custom labels
@@ -93,13 +109,13 @@ summary_tab <- function(input) {
     ## create label plot -----
     risk_label <- ggplot() + 
       # add lower risk label
-      annotate("text", x = 0, y = 0.5, label = "lower risk", hjust = -1.4, 
+      annotate("text", x = 0, y = 0.5, label = "lower risk", hjust = -2.7, 
                size = 5, family = "sans") + 
       # add higher risk label
-      annotate("text", x = 1, y = 0.5, label = "higher risk", hjust = 1, 
+      annotate("text", x = 1, y = 0.5, label = "higher risk", hjust = .8, 
                size = 5, family = "sans") +
       # draw an arrow between the two labels
-      annotate("segment", x = 0.35, xend = 0.8, y = 0.5, yend = 0.5,
+      annotate("segment", x = 0.35, xend = 0.85, y = 0.5, yend = 0.5,
                arrow = arrow(length = unit(0.3, "cm"), type = "closed")) +
       # remove background axis and text elements
       theme_void() +
@@ -107,9 +123,9 @@ summary_tab <- function(input) {
       theme(plot.margin = unit(c(0.3, 0, 0.3, 0), "cm"))
     
     ## stitch them all together -----
-    grid.arrange(lollipop_chart, risk_label, total_score, 
+    grid.arrange(lollipop_chart, risk_label, total_score,
                  ncol = 1,
-                 heights = c(1.8, .5, .8))
+                 heights = c(1.8, .5, 1))
     
   })
   

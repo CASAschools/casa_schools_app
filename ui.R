@@ -153,9 +153,6 @@ body <- dashboardBody(
                 # BEGIN BOX FOR PLOT
                 box(
                   width = NULL, 
-                  # output summary score
-                  div(style = "text-align:center;",
-                      uiOutput("summary_score_tab")),
                   # output summmary plot
                   plotOutput(outputId = "summary_tab") %>% 
                     withSpinner(color="#0dc5c1"),
@@ -271,12 +268,12 @@ body <- dashboardBody(
                 # BEGIN BOX FOR MAPS AND DESCRIPTION
                 box(
                   width = NULL,
-                  # 2012 wildfire hazard map
+                  # 2015 wildfire hazard map
                   column(
                     width = 6,
                     # map title
                     div(style = "text-align: left; font-weight: bold; padding-bottom: 10px; font-size: 24px;",
-                        "2012 Wildfire Hazard" ),
+                        "2015 Wildfire Hazard" ),
                     # map output
                     leafletOutput(outputId = "wildfire_map2012") %>%
                       withSpinner(color="#0dc5c1")

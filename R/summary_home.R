@@ -64,13 +64,13 @@ summary_home <- function(input) {
     ## create label plot -----
     risk_label <- ggplot() + 
       # add lower risk label
-      annotate("text", x = 0, y = 0.5, label = "lower risk", hjust = -1.4, 
+      annotate("text", x = 0, y = 0.5, label = "lower risk", hjust = -2.7, 
                size = 5, family = "sans") + 
       # add higher risk label
-      annotate("text", x = 1, y = 0.5, label = "higher risk", hjust = 1, 
+      annotate("text", x = 1, y = 0.5, label = "higher risk", hjust = .8, 
                size = 5, family = "sans") +
       # draw an arrow between the two labels
-      annotate("segment", x = 0.35, xend = 0.8, y = 0.5, yend = 0.5,
+      annotate("segment", x = 0.5, xend = 0.85, y = 0.5, yend = 0.5,
                arrow = arrow(length = unit(0.3, "cm"), type = "closed")) +
       # remove background axis and text elements
       theme_void() +
