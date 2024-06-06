@@ -64,7 +64,15 @@ The authors of this dashboard are [Liane Chen](https://github.com/lchenhub), [Ch
 ### License
 This work is licensed under a [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
 
-## File Structure
+## Folders/File Structure
+This repository includes three folders: `R`, `text`, and `www`. Each folder includes a README.md file explaining the files in the folder. The `R` folder contains functions for plotting diagrams and the interactive elements of the dashboard. The `text` folder contains Markdown files of text included throughout the dashboard. While the `www` folder contains images used in the dashboard.
+
+|Files|Description|
+|------|------------|
+| global.R | Datasets, packages, and global options needed to run the dashboard |
+| server.R | Function of dashboard outputting plots in relation with the user inputs in dropdown values |
+| ui.R | Dashboard structure and elements such as dropdown boxes and sidebar |
+|session_info.txt| Collection of session information: R version and packages version|
 
 ```bash
 ├── global.R
@@ -136,6 +144,9 @@ This work is licensed under a [Creative Commons Zero v1.0 Universal](https://cre
     ├── slr_tutorial.jpg
     └── wildfire_tutorial.jpg
 ```
+
+## Metadata
+To find additional information of the data used in this repository head over to the metadata: https://doi.org/10.5061/dryad.1jwstqk3g 
 
 
 
