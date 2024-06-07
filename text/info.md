@@ -6,6 +6,8 @@ editor_options:
 
 ### What is climate adaptation?
 
+<span style="font-size:18px;"> Climate adaptation is a response to the effects or impacts of climate change based on ecological, social, or economic needs of communities. 
+
 <span style="font-size:18px;"> The Intergovernmental Panel on Climate
 Change (IPCC) identifies three main categories of climate adaptation
 options, which are further divided into sub-categories: (1) structural

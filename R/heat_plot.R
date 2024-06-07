@@ -13,7 +13,7 @@ heat_plot <- function(input, output) {
       theme_classic() +
       labs(x = "Year",
            y = "Number of Days",
-           title = "Number of Extreme Heat Days") +
+           title = "Estimated Number of Extreme Heat Days per Year") +
       theme(legend.position = "top",
             legend.title = element_blank()) +
       scale_x_continuous(breaks = seq(2005, 2064, by = 5)) +
