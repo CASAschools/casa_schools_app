@@ -4,8 +4,8 @@ Description of files can be found in the table below.
 
 | File | Description |
 |------------|-----------|
-| about.html | HTML rendered text file of homepage about section of dashboard|
-| about.md | Markdown text file of homepage about section of dashboard |
+| about.html | HTML rendered text file of about section of dashboard|
+| about.md | Markdown text file of  about section of dashboard |
 | flooding.html | HTML rendered text file on Explore Your Hazards - Flooding tab | 
 | flooding.md | Markdown text file on Explore Your Hazards - Flood tab |
 | glossary.html | HTML rendered text file on glossary tab defining terms used in the dashboard|
@@ -15,6 +15,10 @@ Description of files can be found in the table below.
 | info.md | Markdown text file included in Information tab explaining climate adaptation |
 | precipitation.html| HTML rendered text file included in Explore Your Hazards - Extreme Precipitation tab |
 | precipitation.md| Markdown text file included in Explore Your Hazards - Extreme Precipitation tab |
-|slr. html| HTML rendered text file included in Explore Your Hazards - Sea Level Rise tab |
-|slr. md| Markdown text file included in Explore Your Hazards - Sea Level Rise tab |
+|slr.html| HTML rendered text file included in Explore Your Hazards - Sea Level Rise tab |
+|slr.md| Markdown text file included in Explore Your Hazards - Sea Level Rise tab |
 |summary.md| Markdown text file included in Hazard Summary tab |
+|welcome.html| HTML rendered text file of the welcome page of the dashboard |
+|welcome.md| Markdown text file of the welcome page of the dashboard |
+|wildfire.html| HTML rendered text file included in Explore Your Hazards - Wildfire tab |
+|wildfire.md| Markdown text file included in Explore Your Hazards - Wildfire tab |
