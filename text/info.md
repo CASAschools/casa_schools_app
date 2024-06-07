@@ -34,7 +34,7 @@ classroom" width="45%">
 to commit to sustainable frameworks
 
 <img src="school_change.png" alt="Cycle of educational commitments, climate, and change" width="45%">
-
+Source: LPA Design Studios (2023)
 </span>
 
 <br>
