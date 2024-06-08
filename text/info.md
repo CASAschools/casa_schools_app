@@ -20,6 +20,10 @@ landscaping in schoolyards
 
 <img src="Schoolyard.jpg" alt="Example of school with shade features and drought-resistant
 landscaping" width="45%">
+<br>
+</span> 
+<a href="https://lpadesignstudios.com/catalyst/designing-the-drought-resistant-schoolyard">Source: LPA Design Studios (2023)</a>
+</span>   
 
 
 <span style="font-size:18px;"> *•* Updating school curricula to help
@@ -28,14 +32,20 @@ more resilient future and provide resources to take climate action
 
 <img src="climate_ed.jpeg" alt="Climate education in action in the
 classroom" width="45%">
+<br>
+</span> 
+<a href="https://www.npr.org/2023/08/20/1191114786/new-jersey-requires-climate-change-education-a-year-in-heres-how-its-going">Source: Seyma Bayram/NPR (2023) </a>
+</span> 
 
 
 <span style="font-size:18px;"> *•* Working with educational institutions
 to commit to sustainable frameworks
 
 <img src="school_change.png" alt="Cycle of educational commitments, climate, and change" width="45%">
-Source: LPA Design Studios (2023)
-</span>
+<br>
+</span> 
+<a href="https://mariobarosevcic.medium.com/the-future-unicorns-of-edtech-piece-3-hbs-case-studies-meet-football-manager-72ee5ffc7838">Source: Mario Barosevcic (2022)</a>
+</span> 
 
 <br>
 
