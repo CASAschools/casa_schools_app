@@ -42,9 +42,10 @@ link: <https://github.com/CASAschools></span>
 
 <br>
 
-<span style="font-size:18px;"> Github: https://github.com/lchenhub </span>
+<span style="font-size:18px;">| [Github](https://github.com/hazelvaq)|[E-mail](mailto:hazelvaquero@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/hazel-vaquero-7923741a9/)|</span>
 
-<span style="font-size:18px;"> Email: liane@bren.ucsb.edu </span> 
+
+
   </div>
 </div>
 
@@ -70,9 +71,10 @@ link: <https://github.com/CASAschools></span>
 
 <br>
 
-<span style="font-size:18px;"> Github: https://github.com/charliecurtin1 </span>
+<span style="font-size:18px;">| [Github](https://github.com/charliecurtin1)|[E-mail](mailto:charlescurtin@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/charlie-curtin-9b8a252a2/)|</span>
 
-<span style="font-size:18px;"> Email: charlescurtin@bren.ucsb.edu </span> 
+
+
   </div>
 </div>
 
@@ -99,9 +101,8 @@ link: <https://github.com/CASAschools></span>
 
 <br>
 
-<span style="font-size:18px;"> Github: https://github.com/charliecurtin1 </span>
+<span style="font-size:18px;"> |[Github](https://github.com/kristinaglass)|[E-mail](mailto:kristinaglass@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/kristina-glass-4213511bb/)|</span>
 
-<span style="font-size:18px;"> Email: charlescurtin@bren.ucsb.edu </span> 
   </div>
 </div>
 
@@ -112,26 +113,22 @@ link: <https://github.com/CASAschools></span>
 
 <span style="font-size:22px; font-weight:bold;"> Hazel Vaquero </span>
 
+<br>
+
 <div style="display: flex; align-items: flex-start;">
-  <img src="Charlie_Curtin_MEDS2023.jpg" alt="Charlie Curtin" style="margin-right: 20px; width: 250px; height: auto;">
+  <img src="hazel_vaquero.jpg" alt="Hazel Vaquero" style="margin-right: 20px; width: 250px; height: auto;">
 
   <div>
   
 <br>
 
-<span style="font-size:18px;"> Liane Chen received her Master of Environmental Data Science at Bren School in June 2024. Before Bren, she built her extensive environmental planning experience around California Environmental Quality Act (CEQA) and National Environmental Quality Act (NEPA).</span>
+<span style="font-size:18px;">
+
+Hazel is a recent graduate of the Bren School at UCSB and has obtained a Master of Environmental Data Science. Hazel is passionate about the interconnection of public health and the environment, using data science to advance this field. Her research experience at institutions like NOAA and NSF has fueled her enthusiasm for environmental data science. Hazel is particularly interested in waste management and education, recognizing their critical roles in sustainability and public health. She aims to leverage data science to analyze and mitigate the impacts of environmental pollution on human health. </span>
 
 <br>
 
-<span style="font-size:18px;"> Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
+<span style="font-size:18px;">| [Github](https://github.com/hazelvaq)|[E-mail](mailto:hazelvaquero@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/hazel-vaquero-7923741a9/)|</span>
 
-<br>
-
-<span style="font-size:18px;"> Github: https://github.com/charliecurtin1 </span>
-
-<span style="font-size:18px;"> Email: charlescurtin@bren.ucsb.edu </span> 
   </div>
 </div>
-
-<br>
-<br>
