@@ -96,14 +96,15 @@ body <- dashboardBody(
                          div(style = "text-align:center;",
                              uiOutput("summary_title_home")),
                          # output summary plot
+                         tagList(div(style = "margin-bottom: -10px;",
                          plotOutput("summary_home") %>% 
-                           withSpinner(color="#0dc5c1"),
-                         
+                           withSpinner(color="#0dc5c1")),
                          # School closure days
-                         
-                         
-                         )
-                  # END HAZARD SUMMARY PLOT COLUMN
+                         div(style = "margin-bottom: 0px;",
+                         plotOutput("school_closure") %>% 
+                           withSpinner(color = "#0dc5c1")))
+  
+                  )# END HAZARD SUMMARY PLOT COLUMN
                   
                 ) # END FLUID ROW FOR SCHOOL SELECTION AND HAZARD SUMMARY PLOT
                 

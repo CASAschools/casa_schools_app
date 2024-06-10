@@ -5,7 +5,7 @@ required_packages <- c(
   "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "tidyverse",
   "leaflet", "leaflet.extras", "leaflet.minicharts", "sf", "countrycode",
   "plotly", "terra", "colorspace", "RColorBrewer", "gridExtra", "fontawesome",
-  "dichromat"
+  "dichromat", "patchwork","gridExtra","magick"
 )
 
 # install missing packages
@@ -38,6 +38,11 @@ library(RColorBrewer)
 library(gridExtra)
 library(fontawesome)
 library(dichromat)
+library(patchwork)
+library(gridExtra)
+library(magick)
+
+
 
 
 # make sure the full cdscode can be seen
@@ -87,7 +92,7 @@ school_points_rm <- school_points %>% st_drop_geometry()
 school_names <- school_points_rm %>% select("CDSCode", "DistrictNa","SchoolName")
 
 # Calmatters Load In
-calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/disasterDays.csv")
+calmatters <- read_csv("/capstone/casaschools/shiny_dashboard/data/calmatters/school_closure.csv")
 
 # -------------------- Extreme Heat --------------------------------------
 # Extreme Heat Import

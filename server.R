@@ -11,6 +11,9 @@ server <- function(input, output, session){
   # output hazard summary plot for the summary tab
   output$summary_tab <- summary_tab(input)
 
+  #-------------------School closure---------------------------------------------
+  output$school_closure <- school_closure(input)
+  
   #--------------------Extreme Heat ---------------------------------------------
   
   # output extreme heat plot
