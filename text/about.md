@@ -41,16 +41,24 @@ link: <https://github.com/CASAschools></span>
 <span style="font-size:18px;"> Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
 
 <br>
-
-<span style="font-size:18px;">| [Github](https://github.com/hazelvaq)|[E-mail](mailto:hazelvaquero@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/hazel-vaquero-7923741a9/)|</span>
-
-
-
+    <a href="mailto:liane@bren.ucsb.edu">
+      <span style="color:black;font-size:22px">
+<i class="fa-solid fa-envelope"></i>
+      </span>
+    </a>
+    <a href="https://github.com/lchenhub">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-github"></i>
+    </span>
+    </a>
+    <a href="https://www.linkedin.com/in/lianechen/">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-linkedin"></i>
+    </a>
   </div>
 </div>
 
-<br>
-<br>
+<br><br>
 
 <!-- Charlie Curtin -->
 
@@ -70,16 +78,24 @@ link: <https://github.com/CASAschools></span>
 <span style="font-size:18px;"> Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
 
 <br>
-
-<span style="font-size:18px;">| [Github](https://github.com/charliecurtin1)|[E-mail](mailto:charlescurtin@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/charlie-curtin-9b8a252a2/)|</span>
-
-
-
+    <a href="mailto:charlescurtin@bren.ucsb.edu">
+      <span style="color:black;font-size:22px">
+<i class="fa-solid fa-envelope"></i>
+      </span>
+    </a>
+    <a href="https://github.com/charliecurtin1">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-github"></i>
+    </span>
+    </a>
+    <a href="https://www.linkedin.com/in/charlie-curtin-9b8a252a2/">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-linkedin"></i>
+    </a>
   </div>
 </div>
 
-<br>
-<br>
+<br><br>
 
 <!-- Kristina Glass -->
 
@@ -100,14 +116,23 @@ link: <https://github.com/CASAschools></span>
 <span style="font-size:18px;"> Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
 
 <br>
-
-<span style="font-size:18px;"> |[Github](https://github.com/kristinaglass)|[E-mail](mailto:kristinaglass@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/kristina-glass-4213511bb/)|</span>
-
+    <a href="mailto:kristinaglass@bren.ucsb.edu">
+      <span style="color:black;font-size:22px">
+<i class="fa-solid fa-envelope"></i>
+      </span>
+    </a>
+    <a href="https://github.com/kristinaglass">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-github"></i>
+    </span>
+    </a>
+    <a href="https://www.linkedin.com/in/kristina-glass-4213511bb/">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-linkedin"></i>
+    </a>
   </div>
 </div>
-
-<br>
-<br>
+<br><br>
 
 <!-- Hazel Vaquero -->
 
@@ -128,7 +153,21 @@ Hazel is a recent graduate of the Bren School at UCSB and has obtained a Master 
 
 <br>
 
-<span style="font-size:18px;">| [Github](https://github.com/hazelvaq)|[E-mail](mailto:hazelvaquero@bren.ucsb.edu)| [LinkedIn](https://www.linkedin.com/in/hazel-vaquero-7923741a9/)|</span>
+</span>
+    <a href="mailto:hazelvaquero@bren.ucsb.edu">
+      <span style="color:black;font-size:22px">
+<i class="fa-solid fa-envelope"></i>
+      </span>
+    </a>
+    <a href="https://github.com/hazelvaq">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-github"></i>
+    </span>
+    </a>
+    <a href="https://www.linkedin.com/in/hazel-vaquero-7923741a9/">
+    <span style="color:black;font-size:22px">
+    <i class="fa-brands fa-linkedin"></i>
+    </a>
 
   </div>
 </div>
