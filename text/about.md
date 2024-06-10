@@ -65,17 +65,13 @@ link: <https://github.com/CASAschools></span>
 <span style="font-size:22px; font-weight:bold;"> Charles (Charlie) Curtin </span>
 
 <div style="display: flex; align-items: flex-start;">
-  <img src="Charlie_Curtin_MEDS2023.jpg" alt="Charlie Curtin" style="margin-right: 20px; width: 250px; height: auto;">
+  <img src="Charlie.jpg" alt="Charlie Curtin" style="margin-right: 20px; width: 250px; height: auto;">
 
   <div>
   
 <br>
 
-<span style="font-size:18px;"> Liane Chen received her Master of Environmental Data Science at Bren School in June 2024. Before Bren, she built her extensive environmental planning experience around California Environmental Quality Act (CEQA) and National Environmental Quality Act (NEPA).</span>
-
-<br>
-
-<span style="font-size:18px;"> Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
+<span style="font-size:18px;"> Charlie Curtin received his Master of Environmental Data Science at the Bren School of Environmental Science and Management at UC Santa Barbara in June 2024, and his B.S. in GeoDesign from the University of Southern California in 2022. Before coming to Bren, he worked with communities in Eastside Los Angeles on increasing tree canopy cover to improve air quality and mitigate the effects of urban heat islands. He plans to use his technical skills gained at the Bren School to work towards creating more sustainable and healthy urban communities. </span>
 
 <br>
     <a href="mailto:charlescurtin@bren.ucsb.edu">
