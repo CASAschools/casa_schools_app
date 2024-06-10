@@ -97,7 +97,12 @@ body <- dashboardBody(
                              uiOutput("summary_title_home")),
                          # output summary plot
                          plotOutput("summary_home") %>% 
-                           withSpinner(color="#0dc5c1"))
+                           withSpinner(color="#0dc5c1"),
+                         
+                         # School closure days
+                         
+                         
+                         )
                   # END HAZARD SUMMARY PLOT COLUMN
                   
                 ) # END FLUID ROW FOR SCHOOL SELECTION AND HAZARD SUMMARY PLOT

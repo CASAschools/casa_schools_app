@@ -103,17 +103,13 @@ link: <https://github.com/CASAschools></span>
 <span style="font-size:22px; font-weight:bold;"> Kristina Glass </span>
 
 <div style="display: flex; align-items: flex-start;">
-  <img src="Charlie_Curtin_MEDS2023.jpg" alt="Charlie Curtin" style="margin-right: 20px; width: 250px; height: auto;">
+  <img src="kristina_glass.jpg" alt="Kristina Glass" style="margin-right: 20px; width: 250px; height: auto;">
 
   <div>
   
 <br>
 
-<span style="font-size:18px;"> Liane Chen received her Master of Environmental Data Science at Bren School in June 2024. Before Bren, she built her extensive environmental planning experience around California Environmental Quality Act (CEQA) and National Environmental Quality Act (NEPA).</span>
-
-<br>
-
-<span style="font-size:18px;"> Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
+<span style="font-size:18px;">Kristina Glass is a recent graduate of Environmental Data Science at the Bren School of Environmental Science & Management at UC Santa Barbara. Holding a Bachelor's degree in Environmental Studies, a Minor in Public Policy, and a Certificate in Geographic Information Systems (GIS) from Temple University, her interests are focused on the politics of the environment and how they impact global communities, explored through the lens of critical geography. Her data science interests are centered on developing accessible data visualizations to effectively communicate research with a broad audience, and in bringing clarity to data findings in scientific and academic writing and research. She hopes to use her education from Bren to increase the accessibility of science communication and to aid in her future educational pursuits, studying the socio-cultural interactions between humans and the environment.</span>
 
 <br>
     <a href="mailto:kristinaglass@bren.ucsb.edu">
