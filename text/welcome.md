@@ -1,15 +1,9 @@
 <br>
 <span style="font-size:19px;">This dashboard provides localized climate hazard data for over 10,000 public schools across California. Use this dashboard to explore your climate hazard risks. The following climate hazards can be viewed:
 </span>
-
-<ul>
-  <span style="color:black;font-size:19px"><i class="fas fa-temperature-arrow-up"></i> Extreme Heat, </span>
-   <span style="color:black;font-size:19px"><i class="fas fa-fire"></i> Wildfire, </span>
-   <span style="color:black;font-size:19px"><i class="fas fa-cloud-showers-heavy"></i> Extreme Precipitation, </span>
-   <span style="color:black;font-size:19px"><i class="fas fa-house-flood-water"></i> Flooding, and </span>
-   <span style="color:black;font-size:19px"><i class="fas fa-house-tsunami"></i> Sea Level Rise</span>
-  </ul>
-
+<p align="center">
+<img src="icons_hazards.png" alt="Hazard icons" width="70%">
+</p>
 <p><br> <span style="font-size:22px;"><b>How to get started!</b></span>
 <br>
 <span style="color:black;font-size:19px">
