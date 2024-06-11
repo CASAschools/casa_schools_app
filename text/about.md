@@ -34,11 +34,7 @@ link: <https://github.com/CASAschools></span>
   
 <br>
 
-<span style="font-size:18px;"> Liane Chen received her Master of Environmental Data Science at Bren School in June 2024. Before Bren, she built her extensive environmental planning experience around California Environmental Quality Act (CEQA) and National Environmental Quality Act (NEPA).</span>
-
-<br>
-
-<span style="font-size:18px;"> Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
+<span style="font-size:18px;"> Liane Chen received her Master of Environmental Data Science at Bren School in June 2024. Before Bren, she built her extensive environmental planning experience around California Environmental Quality Act (CEQA) and National Environmental Quality Act (NEPA). Combining her passion for climate adaptation, environmental planning, and data science, Liane hopes to help communities and ecosystems become more resilient. Liane is especially interested in presenting solutions to pressing environmental concerns in accessible and inclusive ways.</span>
 
 <br>
     <a href="mailto:liane@bren.ucsb.edu">
