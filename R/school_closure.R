@@ -24,9 +24,9 @@ school_closure <- function(input,output) {
     # Create title grob
     title_grob <- textGrob(
       label = "Number of Days Closed due to 
-  Extreme Hazard Events",
+  Extreme Hazard Events (2002 - 2019)",
   gp = gpar(fontsize = 20, fontface = "bold"),
-  y = -.4
+  y = -.3
     )
     
     # Combine the title, image, and text using arrangeGrob

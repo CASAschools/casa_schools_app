@@ -159,3 +159,15 @@ Hazel is a recent graduate of the Bren School at UCSB and has obtained a Master 
 
   </div>
 </div>
+
+
+### Additional Contacts
+<span style="font-size:18px;"> This project was in collaboration with faculty at UC Santa Barbara. The CASAschool team also includes:</span>
+
+<ul style="font-size:18px;">
+  <li><a href="https://es.ucsb.edu/simone-pulver">Dr.Simone Pulver</a></li>
+  <li><a href="https://bren.ucsb.edu/people/sarah-anderson">Dr.Sarah Anderson</a></li>
+  <li><a href="https://faculty.education.ucsb.edu/people/principal-investigator/danielle-harlow">Dr.Danielle Harlow</a></li>
+</ul>
+
+<span style="font-size:18px;">Feel free to contact them with any questions about the project!</span>
