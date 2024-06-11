@@ -48,3 +48,5 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
+#User Guide Video
+www/user_guide.mp4/
