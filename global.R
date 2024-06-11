@@ -41,6 +41,7 @@ library(dichromat)
 library(patchwork)
 library(gridExtra)
 library(magick)
+library(grid)
 
 
 
