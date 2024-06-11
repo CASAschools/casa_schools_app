@@ -15,3 +15,4 @@ The table below is a description of the files included in this folder.
 | summary_title_home.R | Function of hazard score lollipop chart on home page |
 | update_school_name.R | Function that updates the hazard summary tab text “Total Score” for each school selection |
 | school_filtered.R | Function to updated school name in home page graph to school selected |
+| school_closure.R | Function that plots image of closed school with number of days closed due to an extreme hazard event from 2002 to 2019|
