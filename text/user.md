@@ -7,8 +7,7 @@ editor_options:
 <span style="font-size:22px; font-weight:bold; display: block; text-align: center;"> Click the Video to Watch a Brief Tutorial! </span>
 
 <div style="display: flex; justify-content: center;">
-  <video src="user_guide.mp4" alt="A user guide for the California Schools Climate Hazards Dashboard" style="width: 600px; height: auto;" controls>
-  </video>
+  <iframe src="https://www.youtube.com/embed/SpcO3k2yHNc" title="A user guide for the California Schools Climate Hazards Dashboard" style="width: 600px; height: 338px;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <br>
