@@ -12,8 +12,8 @@ school_closure <- function(input,output) {
     # Create text grab for school days
     text_grob <- textGrob(
       label = paste(closure_filtered()$total_days, "Days", collapse = "\n"),
-      x = 0.1, y = 0.5, just = "left",
-      gp = gpar(fontsize = 22, fontface = "bold")
+      x = 0.3, y = 0.5, just = "left",
+      gp = gpar(fontsize = 25, fontface = "bold")
     )
     
     # Read the image
@@ -26,7 +26,7 @@ school_closure <- function(input,output) {
       label = "Number of Days Closed due to 
   Extreme Hazard Events (2002 - 2019)",
   gp = gpar(fontsize = 20, fontface = "bold"),
-  y = -.3
+  y = -.1, x = .6
     )
     
     # Combine the title, image, and text using arrangeGrob
