@@ -87,7 +87,10 @@ body <- dashboardBody(
                          uiOutput("schoolMenu"),
                          # map with school buffer output
                          leafletOutput("map") %>% 
-                           withSpinner(color="#0dc5c1")),
+                           withSpinner(color="#0dc5c1"),
+                         # Add text about 3 mile buffer
+                         "*3-mile buffer represents surrounding school community"
+                         ),
                   # END SELECT CITY, DISTRICT, AND SCHOOL COLUMN
                   
                   # START HAZARD SUMMARY PLOT COLUMN
@@ -99,7 +102,7 @@ body <- dashboardBody(
                          tagList(div(style = "margin-bottom: -10px;",
                          plotOutput("summary_home") %>% 
                            withSpinner(color="#0dc5c1")),
-                         # School closure days
+                         # School closure days ------------
                          div(style = "margin-bottom: 0px;",
                          plotOutput("school_closure") %>% 
                            withSpinner(color = "#0dc5c1")))
