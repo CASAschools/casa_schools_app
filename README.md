@@ -4,7 +4,9 @@
 
 To help schools and communities understand their climate risks, we created an R Shiny Dashboard to visualize five climate hazards at a school district level. The dashboard allows users to select/type their city, school district, and school to view the past, present, and future risks of **Wildfire**, **Flooding**, **Sea Level Rise**, **Extreme Heat**, and **Extreme Precipitation**. A hazard summary provides an overview of which hazards might be more pertinent to each school. Local-level climate adaptation resources are provided alongside a User Guide to walk users through the dashboard. The dashboard serves as a resource that allows teachers and students to explore relevant climate change information and to inform lesson plans centered around climate change and the environment. The dashboard is also accessible to policymakers who can use the information provided to inform school-related climate policy.
 
-To read more details about the creation of the dashboard, please view the "Summary of Solution Design" section of the CASAschools Technical Documentation: https://bren.ucsb.edu/projects/climate-hazards-data-integration-and-visualization-climate-adaptation-solutions
+To read more details about the creation of the dashboard, please view the "Summary of Solution Design" section of the CASAschools Technical Documentation: https://bren.ucsb.edu/projects/climate-hazards-data-integration-and-visualization-climate-adaptation-solutions 
+
+To view the dahsboard click on this link! https://shinyapps.bren.ucsb.edu/CASASchools/ 
 
 ## Dashboard 
 ![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/13ea1fd0-6ee5-4579-9b44-992a7487b2df)
