@@ -6,7 +6,7 @@ To help schools and communities understand their climate risks, we created an R 
 
 To read more details about the creation of the dashboard, please view the "Summary of Solution Design" section of the CASAschools Technical Documentation: https://bren.ucsb.edu/projects/climate-hazards-data-integration-and-visualization-climate-adaptation-solutions 
 
-To view the dahsboard click on this link! https://shinyapps.bren.ucsb.edu/CASASchools/ 
+To view the dashboard click on this link! https://shinyapps.bren.ucsb.edu/CASASchools/ 
 
 ## Dashboard 
 ![image](https://github.com/CASAschools/shiny_dashboard/assets/108312152/13ea1fd0-6ee5-4579-9b44-992a7487b2df)
